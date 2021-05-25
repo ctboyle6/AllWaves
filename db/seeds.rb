@@ -29,11 +29,18 @@ require_relative 'spot_scrape'
 # end
 
 # <<---- User seeds ---->>
+user1 = User.new(email: "chris_test@lewagon.com", username: "chris_test", password: "123456", location: "Florida")
+if user1.save
+  puts "#{user1.username} saved"
+else
+  puts "#{user1.errors.messages}"
+end
 
 
 
 # <<---- Preference seeds ---->>
 preset1 = Preference.new(name: "Rookie", pref_unit: "ft", pref_swell_height: 1, pref_swell_int: 8, pref_swell_direction: 70, pref_wind_strength: 4, pref_wind_direction: 270, pref_tide_position: "low", pref_tide_range: 1 )
+preset1.user = user1
 if preset1.save
   puts "#{preset1.name} preference was saved"
 else
@@ -41,6 +48,7 @@ else
 end
 
 preset2 = Preference.new(name: "Experienced", pref_unit: "ft", pref_swell_height: 3, pref_swell_int: 10, pref_swell_direction: 70, pref_wind_strength: 6, pref_wind_direction: 270, pref_tide_position: "low", pref_tide_range: 2 )
+preset2.user = user1
 if preset2.save
   puts "#{preset2.name} preference was saved"
 else
@@ -48,6 +56,7 @@ else
 end
 
 preset3 = Preference.new(name: "God Mode", pref_unit: "ft", pref_swell_height: 8, pref_swell_int: 12, pref_swell_direction: 70, pref_wind_strength: 10, pref_wind_direction: 270, pref_tide_position: "low", pref_tide_range: 3 )
+preset3.user = user1
 if preset3.save
   puts "#{preset3.name} preference was saved"
 else
