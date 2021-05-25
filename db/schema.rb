@@ -10,9 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2021_05_25_155245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "preferences", force: :cascade do |t|
+    t.string "name"
+    t.string "pref_unit"
+    t.float "pref_swell_height"
+    t.float "pref_swell_int"
+    t.string "pref_swell_direction"
+    t.string "pref_wind_strength"
+    t.string "pref_wind_direction"
+    t.string "pref_tide_position"
+    t.string "pref_tide_range"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
 end
