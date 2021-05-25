@@ -17,9 +17,9 @@ class ApplicationController < ActionController::Base
   end
 
   def skip_pundit?
-    devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)|(^dashboards$)/
+    devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)|(^dashboards$)|(^spots$)/
   end
-
+s
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :location, :avatar])

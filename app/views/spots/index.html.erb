@@ -1,0 +1,11 @@
+<h1>All the Spots</h1>
+
+<% @spots.each do |spot| %>
+  <h2> <%= spot.name %> </h2>
+  <ul>
+    <li> <%= spot.longitude %> </li>
+    <li> <%= spot.latitude %> </li>
+    <li> <%= spot.surfline_spot %> </li>
+    <li> <%= spot.surfline_subregion %> </li>
+  </ul>
+<% end %>
