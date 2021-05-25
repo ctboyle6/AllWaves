@@ -1,10 +1,11 @@
 class PreferencesController < ApplicationController
+  before_action :set_preference, only: [:show]
+
   def index
     @preferences = policy_scope(Preference)
   end
 
-  def show
-  end
+  def show; end
 
   def new
   end
@@ -22,6 +23,11 @@ class PreferencesController < ApplicationController
   end
 
   private
+
+  def set_preference
+    @preference = Preference.find(params[:id])
+    authorize(@preference)
+  end
 
   def preference_params
     params.require(:preference).permit(:name, :pref_unit, :pref_swell_height,
