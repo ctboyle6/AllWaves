@@ -46,8 +46,6 @@ def call_wave_api(spot_id_location)
   JSON.parse(waves_serialized)
 end
 
-# @wave_json = call_wave_api(@spot_id)
-
 
 # << Wind >>
 def call_wind_api(spot_id_location)
@@ -55,8 +53,6 @@ def call_wind_api(spot_id_location)
   winds_serialized = URI.open(url).read
   JSON.parse(winds_serialized)
 end
-
-# @wind_json = call_wind_api(@spot_id)
 
 
 # << Tide >>
@@ -66,8 +62,6 @@ def call_tide_api(spot_id_location)
   JSON.parse(tides_serialized)
 end
 
-# @tide_json = call_tide_api(@spot_id)
-
 
 
 # << conditions >>
@@ -76,8 +70,6 @@ def call_condition_api(subregion_id_location)
   conditions_serialized = URI.open(url).read
   JSON.parse(conditions_serialized)
 end
-
-# @condition_json = call_condition_api(@subregion_id)
 
 
 

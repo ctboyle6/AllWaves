@@ -8,9 +8,16 @@ require_relative 'spot_scrape'
 
 scrap_surfline_spot_id(location_human_to_query("sebastian inlet")) # TODO: interpolate search value
 @spot_id = get_id_location(@url_spot_id)
-puts @spot_id
+# puts @spot_id
 
 
 scrap_surfline_subregion_id(@url_spot_id)
 @subregion_id = get_id_location(@url_subregion_id)
-puts @subregion_id
+# puts @subregion_id
+
+# @wave_json = call_wave_api(@spot_id)
+# @wind_json = call_wind_api(@spot_id)
+# @tide_json = call_tide_api(@spot_id)
+# @condition_json = call_condition_api(@subregion_id)
+
+# puts @condition_json
