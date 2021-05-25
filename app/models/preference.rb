@@ -9,6 +9,6 @@ class Preference < ApplicationRecord
   validates :pref_swell_direction, presence: :true
   validates :pref_wind_strength, presence: :true
   validates :pref_wind_direction, presence: :true
-  validates :pref_tide_position, presence: :true
+  validates :pref_tide_position, presence: :true, inclusion: { in: %w(low medium high) }
   validates :pref_tide_range, presence: :true
 end
