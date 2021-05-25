@@ -3,7 +3,7 @@ require_relative 'spot_scrape'
 
 # <<---- Spot seeds ---->>
 
-spot_names = %w[ pipeline jaws trestles]
+spot_names = %w[ pipeline jaws trestles ]
 
 spot_names.each do |name|
   new_spot = Spot.new(name: name)
