@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :user_spots
   has_many :users, through: :user_spots
   has_one_attached :avatar
+
 end
