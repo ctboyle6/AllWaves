@@ -21,7 +21,6 @@ def location_human_to_query(params_location)
 end
 
 
-
 # <---- get spotID ---->
 def scrap_surfline_spot_id(location)
   search_url = "https://www.surfline.com/search/#{location}"
@@ -30,12 +29,6 @@ def scrap_surfline_spot_id(location)
   @url_spot_id = html_doc.search('#surf-spots .result a').first.attributes["href"].value
 end
 
-scrap_surfline_spot_id(location_human_to_query("sebastian inlet")) # TODO: interpolate search value
-@spot_id = get_id_location(@url_spot_id)
-puts @spot_id
-
-
-
 
 # <---- get subregionID ---->
 def scrap_surfline_subregion_id(url_spot_id)
@@ -43,11 +36,6 @@ def scrap_surfline_subregion_id(url_spot_id)
   html_doc = Nokogiri::HTML(html_file)
   @url_subregion_id = html_doc.search(".sl-forecast-header__nav__page-level__link").first.attributes["href"].value
 end
-
-# scrap_surfline_subregion_id(@url_spot_id)
-# @subregion_id = get_id_location(@url_subregion_id)
-# puts @subregion_id
-
 
 
 # <---- call Surfline APIs (spot) ---->
@@ -82,10 +70,16 @@ end
 
 
 
+# << conditions >>
+def call_condition_api(subregion_id_location)
+  url = "https://services.surfline.com/kbyg/regions/forecasts/conditions?subregionId=#{subregion_id_location}&days=1"
+  conditions_serialized = URI.open(url).read
+  JSON.parse(conditions_serialized)
+end
+
+# @condition_json = call_condition_api(@subregion_id)
 
 
-
-# @conditions_info = conditions_infos_api(@subregion_id)
 
 
 
@@ -98,11 +92,11 @@ end
 
 # # write to csv
 
-# csv_options = { col_sep: ',', force_quotes: true, quote_char: '"' }
-# filepath    = 'spots.csv'
+csv_options = { col_sep: ',', force_quotes: true, quote_char: '"' }
+filepath    = 'spots.csv'
 
-# CSV.open(filepath, 'wb', csv_options) do |csv|
-#   # csv << ['Name', 'Appearance', 'Origin']
-#   # csv << ['Asahi', 'Pale Lager', 'Japan']
-#   # csv << ['Guinness', 'Stout', 'Ireland']
-# end
+CSV.open(filepath, 'wb', csv_options) do |csv|
+  # csv << ['Name', 'Appearance', 'Origin']
+  # csv << ['Asahi', 'Pale Lager', 'Japan']
+  # csv << ['Guinness', 'Stout', 'Ireland']
+end
