@@ -73,5 +73,4 @@ ActiveRecord::Schema.define(version: 2021_05_25_173805) do
   add_foreign_key "conditions", "spots"
   add_foreign_key "user_spots", "spots"
   add_foreign_key "user_spots", "users"
-
 end
