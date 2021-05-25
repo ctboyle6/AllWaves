@@ -1,16 +1,12 @@
 class PreferencesController < ApplicationController
   
   def index
-    @preferences = Preference.all
   end
 
   def show
-    @preference = Preference.find(params[:id])
   end
 
   def new
-    @preference = Preference.new()
-    
   end
 
   def create
@@ -27,6 +23,8 @@ class PreferencesController < ApplicationController
 
   private
 
-
+  def preference_params
+    params.require(:preference).permit(:name, :pref_unit, :pref_swell_height, :pref_swell_int, :pref_swell_direction, :pref_wind_strength, :pref_wind_direction, :pref_tide_position, :pref_tide_range)
+  end
 
 end
