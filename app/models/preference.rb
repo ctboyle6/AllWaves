@@ -1,5 +1,5 @@
 class Preference < ApplicationRecord
-  # belongs_to :user, dependent: :destroy
+  belongs_to :user
 
   # Validations
   validates :name, presence: :true

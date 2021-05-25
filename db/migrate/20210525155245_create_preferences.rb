@@ -11,7 +11,7 @@ class CreatePreferences < ActiveRecord::Migration[6.0]
       t.string :pref_wind_direction
       t.string :pref_tide_position
       t.string :pref_tide_range
-      # t.references :user, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end
