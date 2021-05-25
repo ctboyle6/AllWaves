@@ -1,7 +1,7 @@
 require 'csv'
 require 'open-uri'
 require 'nokogiri'
-
+require 'json'
 
 # <---- search helper methods ---->
 def get_id_location(url)
@@ -44,38 +44,37 @@ def scrap_surfline_subregion_id(url_spot_id)
   @url_subregion_id = html_doc.search(".sl-forecast-header__nav__page-level__link").first.attributes["href"].value
 end
 
-scrap_surfline_subregion_id(@url_spot_id)
-@subregion_id = get_id_location(@url_subregion_id)
-puts @subregion_id
+# scrap_surfline_subregion_id(@url_spot_id)
+# @subregion_id = get_id_location(@url_subregion_id)
+# puts @subregion_id
+
+
+
+# <---- call Surfline APIs (spot) ---->
+# << Wave >>
+def call_wave_api(spot_id_location)
+  url = "https://services.surfline.com/kbyg/spots/forecasts/wave?spotId=#{spot_id_location}&days=1&intervalHours=3&maxHeights=false"
+  waves_serialized = URI.open(url).read
+  JSON.parse(waves_serialized)
+end
+
+# @wave_json = call_wave_api(@spot_id)
+
+# << Wind >>
+def call_tide_api(spot_id_location)
+  url = "https://services.surfline.com/kbyg/spots/forecasts/tides?spotId=#{spot_id_location}&days=1"
+  tides_serialized = URI.open(url).read
+  JSON.parse(tides_serialized)
+end
+
+@tide_json = call_tide_api(@spot_id)
+
+
 
 
 
 
 # @conditions_info = conditions_infos_api(@subregion_id)
-
-# call Wave API
-# @waves_infos = waves_infos_api(@spot_id)
-
-# call Tide API
-# @tides_infos = tides_infos_api(@spot_id)
-
-
-
-
-# def tides_infos_api(spot_id_location)
-#   url = "https://services.surfline.com/kbyg/spots/forecasts/tides?spotId=#{spot_id_location}&days=1"
-#   puts url
-#   tides_serialized = URI.open(url).read
-#   JSON.parse(tides_serialized)
-# end
-
-# def waves_infos_api(spot_id_location)
-#   url = "https://services.surfline.com/kbyg/spots/forecasts/wave?spotId=#{spot_id_location}&days=1&intervalHours=24&maxHeights=false"
-#   # puts url
-#   waves_serialized = URI.open(url).read
-#   JSON.parse(waves_serialized)
-# end
-
 
 
 
