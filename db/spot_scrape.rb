@@ -26,7 +26,7 @@ def scrap_surfline_spot_id(location)
   search_url = "https://www.surfline.com/search/#{location}"
   html_file = URI.open(search_url).read
   html_doc = Nokogiri::HTML(html_file)
-  @url_spot_id = html_doc.search('#surf-spots .result a').first.attributes["href"].value
+  html_doc.search('#surf-spots .result a').first.attributes["href"].value
 end
 
 
@@ -34,7 +34,7 @@ end
 def scrap_surfline_subregion_id(url_spot_id)
   html_file = URI.open(url_spot_id).read
   html_doc = Nokogiri::HTML(html_file)
-  @url_subregion_id = html_doc.search(".sl-forecast-header__nav__page-level__link").first.attributes["href"].value
+  html_doc.search(".sl-forecast-header__nav__page-level__link").first.attributes["href"].value
 end
 
 
@@ -49,7 +49,7 @@ end
 
 # << Wind >>
 def call_wind_api(spot_id_location)
-  url = "https://services.surfline.com/kbyg/spots/forecasts/tides?spotId=#{spot_id_location}&days=1"
+  url = "https://services.surfline.com/kbyg/spots/forecasts/wind?spotId=#{spot_id_location}&days=1&intervalHours=1=3&sds=true"
   winds_serialized = URI.open(url).read
   JSON.parse(winds_serialized)
 end
@@ -57,7 +57,7 @@ end
 
 # << Tide >>
 def call_tide_api(spot_id_location)
-  url = "https://services.surfline.com/kbyg/spots/forecasts/wind?spotId=#{spot_id_location}&days=1&intervalHours=1=3&sds=true"
+  url = "https://services.surfline.com/kbyg/spots/forecasts/tides?spotId=#{spot_id_location}&days=1"
   tides_serialized = URI.open(url).read
   JSON.parse(tides_serialized)
 end
@@ -73,22 +73,13 @@ end
 
 
 
-
-
-
-
-
-
-
-
-
 # # write to csv
 
-csv_options = { col_sep: ',', force_quotes: true, quote_char: '"' }
-filepath    = 'spots.csv'
+# csv_options = { col_sep: ',', force_quotes: true, quote_char: '"' }
+# filepath    = 'spots.csv'
 
-CSV.open(filepath, 'wb', csv_options) do |csv|
-  # csv << ['Name', 'Appearance', 'Origin']
-  # csv << ['Asahi', 'Pale Lager', 'Japan']
-  # csv << ['Guinness', 'Stout', 'Ireland']
-end
+# CSV.open(filepath, 'wb', csv_options) do |csv|
+#   # csv << ['Name', 'Appearance', 'Origin']
+#   # csv << ['Asahi', 'Pale Lager', 'Japan']
+#   # csv << ['Guinness', 'Stout', 'Ireland']
+# end
