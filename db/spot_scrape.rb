@@ -60,14 +60,25 @@ end
 
 # @wave_json = call_wave_api(@spot_id)
 
+
 # << Wind >>
-def call_tide_api(spot_id_location)
+def call_wind_api(spot_id_location)
   url = "https://services.surfline.com/kbyg/spots/forecasts/tides?spotId=#{spot_id_location}&days=1"
+  winds_serialized = URI.open(url).read
+  JSON.parse(winds_serialized)
+end
+
+# @wind_json = call_wind_api(@spot_id)
+
+
+# << Tide >>
+def call_tide_api(spot_id_location)
+  url = "https://services.surfline.com/kbyg/spots/forecasts/wind?spotId=#{spot_id_location}&days=1&intervalHours=1=3&sds=true"
   tides_serialized = URI.open(url).read
   JSON.parse(tides_serialized)
 end
 
-@tide_json = call_tide_api(@spot_id)
+# @tide_json = call_tide_api(@spot_id)
 
 
 
