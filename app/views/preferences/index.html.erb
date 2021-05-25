@@ -2,6 +2,6 @@
 
 <% @preferences.each do |preference| %>
   <ul>
-    <li><strong><%= preference.name %></strong></li>
+    <li><%= link_to preference.name, preference_path(preference) %></li>
   </ul>
 <% end %>
