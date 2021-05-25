@@ -3,30 +3,30 @@ require_relative 'spot_scrape'
 
 # <<---- Spot seeds ---->>
 
-# spot_names = %w[ pipeline jaws trestles ]
+spot_names = %w[ pipeline jaws trestles ]
 
-# spot_names.each do |name|
-#   new_spot = Spot.new(name: name)
+spot_names.each do |name|
+  new_spot = Spot.new(name: name)
 
-#   url_spot_id = scrap_surfline_spot_id(location_human_to_query("#{name}")) # TODO: interpolate search value
-#   spot_id = get_id_location(url_spot_id)
-#   new_spot.surfline_spot = spot_id
+  url_spot_id = scrap_surfline_spot_id(location_human_to_query("#{name}")) # TODO: interpolate search value
+  spot_id = get_id_location(url_spot_id)
+  new_spot.surfline_spot = spot_id
 
 
-#   url_subregion_id = scrap_surfline_subregion_id(url_spot_id)
-#   subregion_id = get_id_location(url_subregion_id)
-#   new_spot.surfline_subregion = subregion_id
+  url_subregion_id = scrap_surfline_subregion_id(url_spot_id)
+  subregion_id = get_id_location(url_subregion_id)
+  new_spot.surfline_subregion = subregion_id
 
-#   wind_json = call_wind_api(spot_id)
-#   new_spot.latitude = wind_json["associated"]["location"]["lat"]
-#   new_spot.longitude = wind_json["associated"]["location"]["lon"]
+  wind_json = call_wind_api(spot_id)
+  new_spot.latitude = wind_json["associated"]["location"]["lat"]
+  new_spot.longitude = wind_json["associated"]["location"]["lon"]
 
-#   if new_spot.save
-#     puts "#{new_spot.name} saved"
-#   else
-#     puts "#{new_spot.name} not saved"
-#   end
-# end
+  if new_spot.save
+    puts "#{new_spot.name} saved"
+  else
+    puts "#{new_spot.name} not saved"
+  end
+end
 
 # <<---- User seeds ---->>
 user1 = User.new(email: "chris_test@lewagon.com", username: "chris_test", password: "123456", location: "Florida")
