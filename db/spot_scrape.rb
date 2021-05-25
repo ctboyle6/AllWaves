@@ -1,29 +1,28 @@
-# required modules to scrape and write csv
-
 require 'csv'
 require 'open-uri'
 require 'nokogiri'
 
-# scrape logic
 
-# ingredient = 'chocolate'
-# url = "https://www.bbcgoodfood.com/search/recipes?q=#{ingredient}"
-
-# html_file = URI.open(url).read
-# html_doc = Nokogiri::HTML(html_file)
-
-# html_doc.search('.standard-card-new__article-title').each do |element|
-#   puts element.text.strip
-#   puts element.attribute('href').value
-# end
-
-
-# <---- get spotID ---->
+# <---- search helper methods ---->
 def get_id_location(url)
   regex = /[^\/]+$/
   url.match(regex)
 end
 
+def location_human_to_query(params_location)
+  array = []
+  query = ""
+  array = params_location.split(" ")
+  array.map do |element|
+    query += "%20#{element}"
+  end
+
+  query
+end
+
+
+
+# <---- get spotID ---->
 def scrap_surfline_spot_id(location)
   search_url = "https://www.surfline.com/search/#{location}"
   html_file = URI.open(search_url).read
@@ -31,10 +30,28 @@ def scrap_surfline_spot_id(location)
   @url_spot_id = html_doc.search('#surf-spots .result a').first.attributes["href"].value
 end
 
-scrap_surfline_spot_id("pipeline") # TODO: interpolate search value
+scrap_surfline_spot_id(location_human_to_query("sebastian inlet")) # TODO: interpolate search value
 @spot_id = get_id_location(@url_spot_id)
+puts @spot_id
 
 
+
+
+# <---- get subregionID ---->
+def scrap_surfline_subregion_id(url_spot_id)
+  html_file = URI.open(url_spot_id).read
+  html_doc = Nokogiri::HTML(html_file)
+  @url_subregion_id = html_doc.search(".sl-forecast-header__nav__page-level__link").first.attributes["href"].value
+end
+
+scrap_surfline_subregion_id(@url_spot_id)
+@subregion_id = get_id_location(@url_subregion_id)
+puts @subregion_id
+
+
+
+
+# @conditions_info = conditions_infos_api(@subregion_id)
 
 # call Wave API
 # @waves_infos = waves_infos_api(@spot_id)
