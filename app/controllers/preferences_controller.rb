@@ -14,7 +14,7 @@ class PreferencesController < ApplicationController
 
   def create
     # TODO: fix form to send all params on submit
-    raise params.inspect
+    raise
     @preference = Preference.new(preference_params)
   end
 
@@ -36,8 +36,9 @@ class PreferencesController < ApplicationController
 
   def preference_params
     params.require(:preference).permit(:name, :pref_unit, :swell_hgt_min, :swell_hgt_max,
-                                       :swell_int_min, :swell_int_max, :swell_dir_min, :swell_dir_max,
-                                       :wind_str_min, :wind_str_max, :wind_dir_min, :wind_dir_max,
+                                       :swell_int_min, :swell_int_max, :swell_dir_min,
+                                       :swell_dir_max, :wind_str_min, :wind_str_max,
+                                       :wind_dir_min, :wind_dir_max,
                                        :pref_tide_position, :pref_tide_range)
   end
 end
