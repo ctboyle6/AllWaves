@@ -1,17 +1,5 @@
 <h1><%= @preference.name %></h1>
 
-<!-- <ul>
-  <li>Units: <%= @preference.pref_unit %> </li>
-  <li>Swell Height: <%= @preference.swell_hgt_min %> to <%= @preference.swell_hgt_min %></li>
-  <li>Swell Interval: <%= @preference.swell_int_min %> to <%= @preference.swell_int_max %></li>
-  <li>Swell Direction: <%= @preference.swell_dir_min %> to <%= @preference.swell_dir_max %></li>
-  <li>Wind Strength: <%= @preference.wind_str_min %> to <%= @preference.wind_str_max %></li>
-  <li>Wind Direction: <%= @preference.wind_dir_min %> to <%= @preference.wind_dir_max %></li>
-  <li>Tide Position: ±<%= @preference.pref_tide_position %> hours </li>
-  <li>Tide Range: <%= @preference.pref_tide_range %> </li>
-</ul> -->
-
-
 <div class="container">
   <%= simple_form_for @preference do |f| %>
     <%= f.input :name, disabled: true %>
