@@ -1,8 +1,6 @@
 require_relative 'spot_scrape'
 
-
 # <<---- Spot seeds ---->>
-
 spot_names = %w[ pipeline jaws trestles ]
 
 spot_names.each do |name|
@@ -28,7 +26,6 @@ spot_names.each do |name|
   end
 end
 
-
 # <<---- Preference seeds ---->>
 preset1 = Preference.new(name: "Rookie", pref_unit: "ft", pref_swell_height: "1", pref_swell_int: "1", pref_swell_direction: "Rookie", pref_wind_strength: "Rookie", pref_wind_direction: "Rookie", pref_tide_position: "Rookie", pref_tide_range: "Rookie" )
 preset2 = Preference.new(name: "Experienced", pref_unit: "ft", pref_swell_height: "1", pref_swell_int: "1", pref_swell_direction: "Experienced", pref_wind_strength: "Experienced", pref_wind_direction: "Experienced", pref_tide_position: "Experienced", pref_tide_range: "Experienced" )
@@ -44,3 +41,8 @@ preset3 = Preference.new(name: "God Mode", pref_unit: "ft", pref_swell_height: "
 # wave_json = call_wave_api(spot_id)
 # tide_json = call_tide_api(spot_id)
 # condition_json = call_condition_api(subregion_id)
+
+# <<---- User seeds ---->>
+user1 = User.create!(email: "a@a.a", password:"123456", username:"user1", location: "Miami")
+user1 = User.create!(email: "b@b.b", password:"123456", username:"user2", location: "Orldando")
+user1 = User.create!(email: "c@c.c", password:"123456", username:"user3", location: "tallahassee")
