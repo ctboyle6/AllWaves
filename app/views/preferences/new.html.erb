@@ -1,51 +1,98 @@
 <h1>New Preference Preset</h1>
 
-<!-- name: input -->
-<div class="mb-3">
-  <label for="name" class="form-label">Preset Name</label>
-  <input type="name" class="form-control" id="name" placeholder="Try-hard, hungover, etc..">
-</div>
+<form action="">
+  <div class="mb-3">
 
-<!-- unit: radio -->
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="unitOptions" id="feet" value="ft">
-  <label class="form-check-label" for="feet">ft</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="unitOptions" id="meters" value="m">
-  <label class="form-check-label" for="meters">m</label>
-</div>
+  <!-- name: input -->
+    <label for="name" class="form-label">Preset Name</label>
+    <input type="name" class="form-control" id="name" placeholder="Try-hard, hungover, etc..">
 
-<!-- swell_hgt_min: range -->
-<!-- swell_hgt_max: range -->
+    <br>
 
-<!-- swell_int_min: range -->
-<!-- swell_int_max: range -->
+    <!-- unit: radio -->
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="unitOptions" id="feet" value="ft">
+      <label class="form-check-label" for="feet">ft</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="unitOptions" id="meters" value="m">
+      <label class="form-check-label" for="meters">m</label>
+    </div>
+    <br>
 
-<!-- swell_dir_min: range -->
-<!-- swell_dir_max: range -->
+    <!-- swell_hgt_min: range -->
+    <!-- swell_hgt_max: range -->
+    <label for="swell_hgt_min" class="form-label">Swell Height: Min</label>
+    <input type="range" class="form-range" min="0" max="20" step="0.5" id="swell_hgt_min">
+    <br>
+    <label for="swell_hgt_max" class="form-label">Swell Height: Max</label>
+    <input type="range" class="form-range" min="0" max="20" step="0.5" id="swell_hgt_max">
 
-<!-- wind_str_min: range -->
-<!-- wind_str_max: range -->
+    <br>
 
-<!-- wind_dir_min: range -->
-<!-- wind_dir_max: range -->
+    <!-- swell_int_min: range -->
+    <!-- swell_int_max: range -->
+    <label for="swell_int_min" class="form-label">Swell Interval: Min</label>
+    <input type="range" class="form-range" min="0" max="20" step="0.5" id="swell_int_min">
+    <br>
+    <label for="swell_int_max" class="form-label">Swell Interval: Max</label>
+    <input type="range" class="form-range" min="0" max="20" step="0.5" id="swell_int_max">
 
-<!-- tide_position: radio -->
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="tideOptions" id="low" value="low">
-  <label class="form-check-label" for="low">Low</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="tideOptions" id="mid" value="mid">
-  <label class="form-check-label" for="mid">Mid</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="tideOptions" id="high" value="high">
-  <label class="form-check-label" for="high">High</label>
-</div>
+    <br>
 
-<!-- tide_range_min: range -->
-<!-- tide_range_max: range -->
+    <!-- swell_dir_min: range -->
+    <!-- swell_dir_max: range -->
+    <label for="swell_dir_min" class="form-label">Swell Direction: Min</label>
+    <input type="range" class="form-range" min="0" max="360" step="5" id="swell_dir_min">
+    <br>
+    <label for="swell_dir_max" class="form-label">Swell Direction: Max</label>
+    <input type="range" class="form-range" min="0" max="360" step="5" id="swell_dir_max">
+
+    <br>
+
+    <!-- wind_str_min: range -->
+    <!-- wind_str_max: range -->
+    <label for="wind_str_min" class="form-label">Wind Strength: Min</label>
+    <input type="range" class="form-range" min="0" max="30" step="0.5" id="wind_str_min">
+    <br>
+    <label for="wind_str_max" class="form-label">Wind Strength: Max</label>
+    <input type="range" class="form-range" min="0" max="30" step="0.5" id="wind_str_max">
+
+    <br>
+
+    <!-- wind_dir_min: range -->
+    <!-- wind_dir_max: range -->
+    <label for="wind_dir_min" class="form-label">Wind Direction: Min</label>
+    <input type="range" class="form-range" min="0" max="360" step="5" id="wind_dir_min">
+    <br>
+    <label for="wind_dir_max" class="form-label">Wind Direction: Max</label>
+    <input type="range" class="form-range" min="0" max="360" step="5" id="wind_dir_max">
+
+    <br>
+
+    <!-- tide_position: radio -->
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="tideOptions" id="low" value="low">
+      <label class="form-check-label" for="low">Low</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="tideOptions" id="mid" value="mid">
+      <label class="form-check-label" for="mid">Mid</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="tideOptions" id="high" value="high">
+      <label class="form-check-label" for="high">High</label>
+    </div>
+    <br>
+
+    <!-- tide_range_min: range -->
+    <label for="tide_range" class="form-label">Tide Range</label>
+    <input type="range" class="form-range" min="1" max="12" step="1" id="tide_range">
+    <br>
+
+    <!-- submit button -->
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
 
 
