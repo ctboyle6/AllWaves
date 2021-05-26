@@ -8,6 +8,8 @@ class PreferencesController < ApplicationController
   def show; end
 
   def new
+    @preference = Preference.new
+    authorize(@preference)
   end
 
   def create
