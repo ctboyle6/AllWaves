@@ -21,7 +21,6 @@ spot_names.each do |name|
   wind_json = call_wind_api(spot_id)
   new_spot.latitude = wind_json["associated"]["location"]["lat"]
   new_spot.longitude = wind_json["associated"]["location"]["lon"]
-  p new_spot.save!
 
   if new_spot.save
     puts "#{new_spot.name} saved"
@@ -109,10 +108,6 @@ end
 
 # <<---- User seeds ---->>
 user1 = User.create!(email: "a@a.a", password:"123456", username:"user1", location: "Miami")
-user1 = User.create!(email: "b@b.b", password:"123456", username:"user2", location: "Orlando")
-user1 = User.create!(email: "c@c.c", password:"123456", username:"user3", location: "Tallahassee")
-
-
 
 
 # <<---- Preference seeds ---->>
