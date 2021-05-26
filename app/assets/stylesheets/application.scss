@@ -1,3 +1,7 @@
+/*
+*= require simple_form_extension
+*/
+
 // Graphical variables
 @import "config/fonts";
 @import "config/colors";
@@ -7,6 +11,7 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "simple_form_extension";
 
 // Your CSS partials
 @import "components/index";
