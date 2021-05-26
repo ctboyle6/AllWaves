@@ -13,6 +13,9 @@ class PreferencesController < ApplicationController
   end
 
   def create
+    # TODO: fix hidden authenticity token
+    raise
+    @preference = Preference.new(preference_params)
   end
 
   def edit
