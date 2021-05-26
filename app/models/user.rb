@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :user_spots, dependent: :destroy
   has_many :spots, through: :user_spots
+  has_many :preferences, dependent: :destroy
   has_one_attached :avatar
 end
