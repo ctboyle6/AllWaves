@@ -1,6 +1,4 @@
 require_relative 'spot_scrape'
-Spot.destroy_all
-User.destroy_all
 
 
 # <<---- Spot seeds ---->>
