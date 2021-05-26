@@ -12,5 +12,10 @@ class SpotsController < ApplicationController
 
   def show
     @spot = Spot.find(params[:id])
+    @markers =
+      [{
+        lat: @spot.latitude,
+        lng: @spot.longitude
+      }]
   end
 end
