@@ -60,7 +60,7 @@ spot_names.each do |name|
         result["swells"].each do |swell|
           if swell["height"] > biggest_swell
             biggest_swell = swell["height"]
-            pp biggest_swell
+            biggest_swell
             @waves_swell_height = biggest_swell
             @waves_swell_period = swell["period"]
             @waves_swell_direction = swell["direction"]
