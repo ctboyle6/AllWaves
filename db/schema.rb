@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_25_173805) do
+ActiveRecord::Schema.define(version: 2021_05_26_153143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,16 +26,21 @@ ActiveRecord::Schema.define(version: 2021_05_25_173805) do
   create_table "preferences", force: :cascade do |t|
     t.string "name"
     t.string "pref_unit"
-    t.float "pref_swell_height"
-    t.float "pref_swell_int"
-    t.float "pref_swell_direction"
-    t.float "pref_wind_strength"
-    t.float "pref_wind_direction"
     t.string "pref_tide_position"
     t.float "pref_tide_range"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "swell_hgt_min"
+    t.float "swell_hgt_max"
+    t.float "swell_int_min"
+    t.float "swell_int_max"
+    t.float "swell_dir_min"
+    t.float "swell_dir_max"
+    t.float "wind_str_min"
+    t.float "wind_str_max"
+    t.float "wind_dir_min"
+    t.float "wind_dir_max"
     t.index ["user_id"], name: "index_preferences_on_user_id"
   end
 
