@@ -13,7 +13,7 @@ class PreferencesController < ApplicationController
   end
 
   def create
-    # TODO: fix hidden authenticity token
+    # TODO: fix form to send all params on submit
     raise
     @preference = Preference.new(preference_params)
   end
