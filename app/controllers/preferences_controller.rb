@@ -13,9 +13,15 @@ class PreferencesController < ApplicationController
   end
 
   def create
-    # TODO: fix form to send all params on submit
-    raise
     @preference = Preference.new(preference_params)
+    @preference.user = current_user
+    authorize @preference
+    if @preference.save
+      redirect_to preference_path(@preference)
+    else
+      raise
+      render :new
+    end
   end
 
   def edit

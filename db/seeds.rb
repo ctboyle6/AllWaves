@@ -39,7 +39,7 @@ end
 
 
 # <<---- Preference seeds ---->>
-preset1 = Preference.new(name: "Rookie", pref_unit: "ft", swell_hgt_min: 1, swell_hgt_max: 4, swell_int_min: 6, swell_int_max: 10, swell_dir_min: 70, swell_dir_max: 80, wind_str_min: 4, wind_str_max: 8, wind_dir_min: 270, wind_dir_max: 290, pref_tide_position: "low", pref_tide_range: 1 )
+preset1 = Preference.new(name: "Rookie", pref_unit: "FT", swell_hgt_min: 1, swell_hgt_max: 4, swell_int_min: 6, swell_int_max: 10, swell_dir_min: 70, swell_dir_max: 80, wind_str_min: 4, wind_str_max: 8, wind_dir_min: 270, wind_dir_max: 290, pref_tide_position: "Low", pref_tide_range: 1 )
 preset1.user = user1
 if preset1.save
   puts "#{preset1.name} preference was saved"
@@ -47,7 +47,7 @@ else
   puts"#{preset1.name} preference was not saved"
 end
 
-preset2 = Preference.new(name: "Experienced", pref_unit: "ft", swell_hgt_min: 2, swell_hgt_max: 5, swell_int_min: 6, swell_int_max: 12, swell_dir_min: 70, swell_dir_max: 80, wind_str_min: 4, wind_str_max: 8, wind_dir_min: 270, wind_dir_max: 290, pref_tide_position: "low", pref_tide_range: 2 )
+preset2 = Preference.new(name: "Experienced", pref_unit: "FT", swell_hgt_min: 2, swell_hgt_max: 5, swell_int_min: 6, swell_int_max: 12, swell_dir_min: 70, swell_dir_max: 80, wind_str_min: 4, wind_str_max: 8, wind_dir_min: 270, wind_dir_max: 290, pref_tide_position: "Low", pref_tide_range: 2 )
 preset2.user = user1
 if preset2.save
   puts "#{preset2.name} preference was saved"
@@ -55,7 +55,7 @@ else
   puts"#{preset2.name} preference was not saved"
 end
 
-preset3 = Preference.new(name: "God Mode", pref_unit: "ft", swell_hgt_min: 6, swell_hgt_max: 12, swell_int_min: 10, swell_int_max: 14, swell_dir_min: 70, swell_dir_max: 80, wind_str_min: 4, wind_str_max: 8, wind_dir_min: 270, wind_dir_max: 290, pref_tide_position: "low", pref_tide_range: 3 )
+preset3 = Preference.new(name: "God Mode", pref_unit: "FT", swell_hgt_min: 6, swell_hgt_max: 12, swell_int_min: 10, swell_int_max: 14, swell_dir_min: 70, swell_dir_max: 80, wind_str_min: 4, wind_str_max: 8, wind_dir_min: 270, wind_dir_max: 290, pref_tide_position: "Low", pref_tide_range: 3 )
 preset3.user = user1
 if preset3.save
   puts "#{preset3.name} preference was saved"
