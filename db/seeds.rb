@@ -1,4 +1,7 @@
 require_relative 'spot_scrape'
+Spot.destroy_all
+User.destroy_all
+
 
 # <<---- Spot seeds ---->>
 spot_names = %w[ pipeline jaws trestles]
@@ -24,7 +27,7 @@ spot_names.each do |name|
   else
     puts "#{new_spot.name} not saved"
   end
-  
+
   # <<---- Conditions seeds ---->>
   puts "Getting conditions..."
   # << Wind >>
@@ -93,25 +96,18 @@ spot_names.each do |name|
               waves_swell_direction_min: @waves_swell_direction_min,
               waves_swell_optimal_score: @waves_swell_optimal_score
             )
-  
+
           end
         end
       end
     end
-    
+
   end
   puts "Finished seeding conditions..."
 end
 
 # <<---- User seeds ---->>
-user1 = User.new(email: "chris_test@lewagon.com", username: "chris_test", password: "123456", location: "Florida")
-if user1.save
-  puts "#{user1.username} saved"
-else
-  puts "#{user1.errors.messages}"
-end
-
-
+user1 = User.create!(email: "a@a.a", password:"123456", username:"user1", location: "Miami")
 
 
 # <<---- Preference seeds ---->>
@@ -149,7 +145,3 @@ end
 # tide_json = call_tide_api(spot_id)
 # condition_json = call_condition_api(subregion_id)
 
-# <<---- User seeds ---->>
-user1 = User.create!(email: "a@a.a", password:"123456", username:"user1", location: "Miami")
-user1 = User.create!(email: "b@b.b", password:"123456", username:"user2", location: "Orldando")
-user1 = User.create!(email: "c@c.c", password:"123456", username:"user3", location: "tallahassee")

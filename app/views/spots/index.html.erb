@@ -4,6 +4,13 @@
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
+<div class="search-bar d-flex justify-content-center">
+  <%= form_with url: spots_path, local: true, html: { class: "form-search justify-content-between align-items-center " } ,method: :get do |form| %>
+    <%= form.label :query, "Find your spot:" %>
+    <%= form.text_field :query %>
+    <%= form.submit "Search", class: "btn btn-primary"%>
+  <% end %>
+</div>
 
 <% @spots.each do |spot| %>
   <h2>Spot name: <%= spot.name %> </h2>

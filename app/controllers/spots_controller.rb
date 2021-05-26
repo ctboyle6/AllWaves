@@ -1,6 +1,10 @@
 class SpotsController < ApplicationController
   def index
-    @spots = Spot.all
+    if params[:query].present?
+      @spots = Spot.near(params[:query], 200)
+    else
+      @spots = Spot.all
+    end
 
     @markers = @spots.map do |spot|
       {
