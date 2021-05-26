@@ -41,7 +41,7 @@ end
 # <---- call Surfline APIs (spot) ---->
 # << Wave >>
 def call_wave_api(spot_id_location)
-  url = "https://services.surfline.com/kbyg/spots/forecasts/wave?spotId=#{spot_id_location}&days=1&intervalHours=3&maxHeights=false"
+  url = "https://services.surfline.com/kbyg/spots/forecasts/wave?spotId=#{spot_id_location}&days=6&intervalHours=3&maxHeights=false"
   waves_serialized = URI.open(url).read
   JSON.parse(waves_serialized)
 end
@@ -49,7 +49,7 @@ end
 
 # << Wind >>
 def call_wind_api(spot_id_location)
-  url = "https://services.surfline.com/kbyg/spots/forecasts/wind?spotId=#{spot_id_location}&days=1&intervalHours=1=3&sds=true"
+  url = "https://services.surfline.com/kbyg/spots/forecasts/wind?spotId=#{spot_id_location}&days=6&intervalHours=3&sds=true"
   winds_serialized = URI.open(url).read
   JSON.parse(winds_serialized)
 end
@@ -57,7 +57,7 @@ end
 
 # << Tide >>
 def call_tide_api(spot_id_location)
-  url = "https://services.surfline.com/kbyg/spots/forecasts/tides?spotId=#{spot_id_location}&days=1"
+  url = "https://services.surfline.com/kbyg/spots/forecasts/tides?spotId=#{spot_id_location}&days=6&intervalHours=3"
   tides_serialized = URI.open(url).read
   JSON.parse(tides_serialized)
 end
