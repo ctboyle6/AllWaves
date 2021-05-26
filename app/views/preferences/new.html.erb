@@ -97,3 +97,9 @@
     </div>
   </form>
 </div>
+
+<div class="container">
+  <%= simple_form_for @preference do |form| %>
+    <%= form.input :swell_hgt_min, as: :slider, min: 0, max: 10, step: 2, range: true, ticks: [0, 5, 10] %>
+  <% end %>
+</div>
