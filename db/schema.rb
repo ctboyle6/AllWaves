@@ -10,16 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_25_173805) do
+ActiveRecord::Schema.define(version: 2021_05_26_123545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "conditions", force: :cascade do |t|
-    t.jsonb "conditions_json"
     t.bigint "spot_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "timestamp"
+    t.float "wind_strength"
+    t.float "wind_direction"
+    t.float "wind_gust"
+    t.float "wind_optimal_score"
+    t.float "waves_surf_min"
+    t.float "waves_surf_max"
+    t.float "waves_optimal_score"
+    t.float "waves_swell_height"
+    t.float "waves_swell_period"
+    t.float "waves_swell_direction"
+    t.float "waves_swell_direction_min"
+    t.float "waves_swell_optimal_score"
+    t.string "tide_type"
+    t.float "tide_height"
     t.index ["spot_id"], name: "index_conditions_on_spot_id"
   end
 
