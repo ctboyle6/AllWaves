@@ -14,7 +14,7 @@ class PreferencesController < ApplicationController
 
   def create
     # TODO: fix form to send all params on submit
-    raise
+    raise params.inspect
     @preference = Preference.new(preference_params)
   end
 
