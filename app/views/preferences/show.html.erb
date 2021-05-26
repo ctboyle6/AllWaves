@@ -17,7 +17,7 @@
     <%= f.input :pref_tide_position, as: :radio_buttons, collection: ['Low', 'Mid', 'High'], disabled: true %>
     <%= f.input :pref_tide_range, as: :range, input_html: { min: 1, max: 12, step: 1 }, disabled: true %>
     <%= f.button :button, "Update Preferences", class: "btn", id: "form-toggle" %>
-    <%= f.button :submit, "Save Preferences", disabled: true %>
+    <%= f.button :submit, "Save Preferences", style: 'display:none', class: "btn", id: "form-save" %>
   <% end %>
 </div>
 
