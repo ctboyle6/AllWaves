@@ -16,7 +16,8 @@
     <%= f.input :wind_dir_max, as: :range, input_html: { min: 0, max: 360, step: 5 }, disabled: true %>
     <%= f.input :pref_tide_position, as: :radio_buttons, collection: ['Low', 'Mid', 'High'], disabled: true %>
     <%= f.input :pref_tide_range, as: :range, input_html: { min: 1, max: 12, step: 1 }, disabled: true %>
-    <%= f.button :submit, disabled: true %>
+    <%= f.button :button, "Update Preferences", class: "btn" %>
+    <%= f.button :submit, "Save Preferences", disabled: true %>
   <% end %>
 </div>
 

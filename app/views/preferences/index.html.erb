@@ -6,13 +6,13 @@
   </ul>
 <% end %>
 
-<select class="form-select" aria-label="Default select example" onchange="location = this.value;">
+<!-- <select class="form-select" aria-label="Default select example" onchange="location = this.value;">
     <option selected>Select a preference</option>
     <% @preferences.each_with_index do |preference, index| %>
       <option value="<%= preference_path(preference) %>"><%= preference.name %></option>
     <% end %>
 </select>
-
+ -->
 <br>
 
 <%= link_to "Create new preference set", new_preference_path %>
