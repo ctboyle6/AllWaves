@@ -36,7 +36,6 @@ class Result::ConditionsController < ApplicationController
     timestamp = Date.today.midnight.to_i + (7 * 3600)
     # @days_conditions = Condition.where("time_at BETWEEN ? AND ?", DateTime.current.midnight, DateTime.current.end_of_day).where(spot: @spot)
     @days_conditions = Condition.where("timestamp BETWEEN ? AND ?", timestamp, timestamp + (24 * 6 * 3600)).where(spot: @spot)
-  # TODO: update variable name
   end
 
   def set_pref_spot
