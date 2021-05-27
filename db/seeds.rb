@@ -5,7 +5,6 @@ require_relative 'conditions_fetch'
 
 # <<---- Spot seeds ---->>
 spot_names = %w[ pipeline jaws trestles ]
-
 spot_names.each do |name|
   puts "Creating new spot names..."
   new_spot = Spot.new(name: name)

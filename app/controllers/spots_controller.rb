@@ -29,10 +29,20 @@ class SpotsController < ApplicationController
     @spot = Spot.new
   end
   
-  def create
-    @spot = Spot.new(params[:name])
+ def create
+    url_spot_id = scrap_surfline_spot_id(location_human_to_query(params[:spot][:name]))
+    spot_id = get_id_location(url_spot_id)
+    @spot = Spot.new(name: params[:spot][:name])
+    @spot.surfline_spot = spot_id
     
-    
+    wind_json = call_wind_api(spot_id)
+    @spot.latitude = wind_json["associated"]["location"]["lat"]
+    @spot.longitude = wind_json["associated"]["location"]["lon"]
+
+    url_subregion_id = scrap_surfline_subregion_id(url_spot_id)
+    subregion_id = get_id_location(url_subregion_id)
+    @spot.surfline_subregion = subregion_id
+
     if @spot.save
       flash[:success] = "Spot successfully created"
       redirect_to @spot
@@ -41,14 +51,9 @@ class SpotsController < ApplicationController
       render 'new'
     end
     
-    url_spot_id = scrap_surfline_spot_id(location_human_to_query(params[:spot][:name]))
     spot_id = get_id_location(url_spot_id)
     
     create_condition(@spot,spot_id)
-    
-    @spot.latitude = wind_json["associated"]["location"]["lat"]
-    @spot.longitude = wind_json["associated"]["location"]["lon"]
   end
-  
 
 end
