@@ -7,8 +7,10 @@
     <% end %>
   </div>
   <div class="row justify-content-center">
-    <% @go_array.each do |day| %>
+    <% @go_array.each_with_index do |day, idx| %>
+      <%= (Date.today + idx).strftime("%A, %b %d") %>
       <%= day %>
+      <br>
     <% end %>
   </div>
 </div>
