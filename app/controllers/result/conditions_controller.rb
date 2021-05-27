@@ -2,13 +2,14 @@ require 'date'
 class Result::ConditionsController < ApplicationController
   before_action :set_day_conditions
   def show
-   @go_array = go?(@days_conditions)
+    @go_array = go?(@days_conditions)
   end
 
   def wind?(condition)
     strength = condition.wind_strength >= @p.wind_str_min && condition.wind_strength <= @p.wind_str_max
     direction = condition.wind_direction >= @p.wind_dir_min && condition.wind_direction <= @p.wind_dir_max
     strength && direction
+    # true
   end
 
   def waves?(condition)
@@ -32,12 +33,12 @@ class Result::ConditionsController < ApplicationController
 
   def set_day_conditions
     set_pref_spot
-    @timestamp = Date.today.midnight.to_i + (10 * 3600)#utc
+    @timestamp = Date.today.midnight.to_i + (10 * 3600) # TODO: make this UTC dynamic based on spot
     @c = Condition.where({ spot: @spot, timestamp: @timestamp })
     @days_conditions = [@c.first]
     7.times do
       @b = Condition.find(@c.first.id + 1)
-      @days_conditions << @b
+      @days_conditions << @b #TODO: update variable name
     end
   end
 

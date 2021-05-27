@@ -63,7 +63,7 @@ def call_tide_api(spot_id_location)
 end
 
 def get_tides_variables(timestamp,results)
-  filtered_results =  results.select do |result| 
+  filtered_results =  results.select do |result|
     result["timestamp"] < ( timestamp + 3600*3 ) && result["timestamp"] >= timestamp
   end
   filtered_results_high = filtered_results.select {|result| result["type"] == "HIGH" }
@@ -73,7 +73,7 @@ def get_tides_variables(timestamp,results)
     @tide_type = "LOW"
   elsif filtered_results_high.size > 0
     @tide_type = "HIGH"
-  else 
+  else
     @tide_type = "NORMAL"
   end
   filtered_results_high = 0
@@ -127,7 +127,7 @@ def create_condition(new_spot,spot_id)
         biggest_swell = 0
         result["swells"].each do |swell|
           if swell["height"] > biggest_swell
-            @biggest_swell = swell["height"]
+            biggest_swell = swell["height"]
             @waves_swell_height = biggest_swell
             @waves_swell_period = swell["period"]
             @waves_swell_direction = swell["direction"]

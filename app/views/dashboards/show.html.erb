@@ -2,6 +2,6 @@
 <% @user_spots.each do |user_spot| %>
   <h2>My preferences: <%= current_user.preferences.first.name%></h2>
   <h2><%= user_spot.spot.name %>'s forecast: <%= user_spot.spot.conditions.last.waves_surf_max %></h2>
-  <%= link_to "go?", result_condition_path(user_spot.spot.conditions.last, preference_id: current_user.preferences.first.id)  %>
+  <%= link_to "go?", result_condition_path(user_spot.spot.conditions.first, preference_id: current_user.preferences.first.id)  %>
 <% end %>
 
