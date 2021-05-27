@@ -9,7 +9,9 @@
   <div class="row justify-content-center">
     <% @go_array.each_with_index do |day, idx| %>
       <%= (Date.today + idx).strftime("%A, %b %d") %>
-      <%= day %>
+      <br>
+      <%= day == true ? "GO" : "no go.." %>
+      <br>
       <br>
     <% end %>
   </div>
