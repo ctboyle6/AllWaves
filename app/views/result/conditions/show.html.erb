@@ -7,8 +7,20 @@
     <% end %>
   </div>
   <div class="row justify-content-center">
+    <!-- potentially javascript to add active class to Go days here -->
     <% @go_array.each do |hour_slot| %>
-      <p> <%= hour_slot %> </p>
+      <p> <%= hour_slot == false ? '[ ]' : '[ GO ]' %> </p>
+    <% end %>
+  </div>
+  <div class="row justify-content-center">
+    <% go_week_array = [[false, true, true, false], [true, true, false ,false]] %>
+
+    <% go_week_array.each do |day| %>
+      <%= day %>
+      <br>
     <% end %>
   </div>
 </div>
+
+
+
