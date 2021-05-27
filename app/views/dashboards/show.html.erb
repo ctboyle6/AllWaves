@@ -1,7 +1,12 @@
 <h1>Dashboards#show</h1>
+<h2>My preferences:</h2>
+<ul>
+  <% current_user.preferences.each do |preference|%>
+  <li><%= preference.name %></li>
+  <% end %>
+</ul>
 <% @user_spots.each do |user_spot| %>
-  <h2>My preferences: <%= current_user.preferences.first.name%></h2>
-  <h2><%= user_spot.spot.name %>'s forecast: <%= user_spot.spot.conditions.last.waves_surf_max %></h2>
-  <%= link_to "go?", result_condition_path(user_spot.spot.conditions.first, preference_id: current_user.preferences.first.id)  %>
+  <h2><%= user_spot.spot.name %></h2>
+  <%= link_to "go?", result_condition_path(Condition.find_by(spot: user_spot.spot), preference_id: current_user.preferences.last.id)  %>
 <% end %>
 

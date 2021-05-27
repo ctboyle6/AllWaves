@@ -20,12 +20,12 @@ class Result::ConditionsController < ApplicationController
   end
 
   def tide?(condition)
-    condition.tide_type == "NORMAL"
+    condition.tide_type == "LOW"
   end
 
   def go?(conditions)
     @go_array = conditions.map do |condition|
-      waves?(condition) && wind?(condition) && tide?(condition)
+      [waves?(condition), wind?(condition), tide?(condition)].all?(&:present?)
     end
   end
 
@@ -33,17 +33,14 @@ class Result::ConditionsController < ApplicationController
 
   def set_day_conditions
     set_pref_spot
-    @timestamp = Date.today.midnight.to_i + (10 * 3600) # TODO: make this UTC dynamic based on spot
-    @c = Condition.where({ spot: @spot, timestamp: @timestamp })
-    @days_conditions = [@c.first]
-    7.times do
-      @b = Condition.find(@c.first.id + 1)
-      @days_conditions << @b #TODO: update variable name
-    end
+    timestamp = Date.today.midnight.to_i + (7 * 3600)
+    # @days_conditions = Condition.where("time_at BETWEEN ? AND ?", DateTime.current.midnight, DateTime.current.end_of_day).where(spot: @spot)
+    @days_conditions = Condition.where("timestamp BETWEEN ? AND ?", timestamp, timestamp + (24 * 6 * 3600)).where(spot: @spot)
+  # TODO: update variable name
   end
 
   def set_pref_spot
     @p = Preference.find(params[:preference_id])
-    @spot = current_user.user_spots.first.spot
+    @spot = Condition.find(params[:id]).spot
   end
 end
