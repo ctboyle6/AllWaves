@@ -66,7 +66,7 @@ end
 
 # << conditions >>
 def call_condition_api(subregion_id_location)
-  url = "https://services.surfline.com/kbyg/regions/forecasts/conditions?subregionId=#{subregion_id_location}&days=1"
+  url = "https://services.surfline.com/kbyg/regions/forecasts/conditions?subregionId=#{subregion_id_location}&days=6"
   conditions_serialized = URI.open(url).read
   JSON.parse(conditions_serialized)
 end
