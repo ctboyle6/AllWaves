@@ -1,10 +1,13 @@
 require_relative 'spot_scrape'
+require_relative 'conditions_fetch'
+
 
 
 # <<---- Spot seeds ---->>
-spot_names = %w[ pipeline jaws trestles]
+spot_names = %w[ pipeline jaws trestles ]
 
 spot_names.each do |name|
+  puts "Creating new spot names..."
   new_spot = Spot.new(name: name)
 
   url_spot_id = scrap_surfline_spot_id(location_human_to_query("#{name}")) # TODO: interpolate search value
@@ -21,9 +24,9 @@ spot_names.each do |name|
   new_spot.longitude = wind_json["associated"]["location"]["lon"]
 
   if new_spot.save
-    puts "#{new_spot.name} saved"
+    puts "#{new_spot.name.capitalize} has been saved"
   else
-    puts "#{new_spot.name} not saved"
+    puts "#{new_spot.name.capitalize} was not saved"
   end
 
   # <<---- Conditions seeds ---->>
