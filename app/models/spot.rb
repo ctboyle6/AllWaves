@@ -1,5 +1,5 @@
 class Spot < ApplicationRecord
-  has_many :user_spots
+  has_many :user_spots, dependent: :destroy
   has_many :conditions, dependent: :destroy
   reverse_geocoded_by :latitude, :longitude
 
