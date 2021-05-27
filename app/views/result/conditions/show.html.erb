@@ -1,2 +1,14 @@
+<h1>GO week view</h1>
 
-<h3> <%= @go_array %></h3>
+<div class="container">
+  <div class="row justify-content-center">
+    <% 6.times do |i| %>
+      <p> <%= (Date.today + i).strftime("%A, %b %d") %> </p>
+    <% end %>
+  </div>
+  <div class="row justify-content-center">
+    <% @go_array.each do |hour_slot| %>
+      <p> <%= hour_slot %> </p>
+    <% end %>
+  </div>
+</div>
