@@ -8,16 +8,14 @@ class Result::ConditionsController < ApplicationController
   def wind?(condition)
     strength = condition.wind_strength >= @p.wind_str_min && condition.wind_strength <= @p.wind_str_max
     direction = condition.wind_direction >= @p.wind_dir_min && condition.wind_direction <= @p.wind_dir_max
-    # strength && direction
-    true
+    strength && direction
   end
 
   def waves?(condition)
-    # direction = condition.waves_swell_direction >= @p.swell_dir_min && condition.waves_swell_direction <= @p.swell_dir_max
+    direction = condition.waves_swell_direction >= @p.swell_dir_min && condition.waves_swell_direction <= @p.swell_dir_max
     period = condition.waves_swell_period >= @p.swell_int_min && condition.waves_swell_period <= @p.swell_int_max
     height = condition.waves_swell_height >= @p.swell_hgt_min && condition.waves_swell_height <= @p.swell_hgt_max
-    # direction && period && height
-    period && height
+    direction && period && height
   end
 
   def tide?(condition)
@@ -26,7 +24,7 @@ class Result::ConditionsController < ApplicationController
 
   def go?(conditions)
     @go_array = conditions.map do |condition|
-      wind?(condition) && waves?(condition) && tide?(condition)
+      waves?(condition) && wind?(condition) && tide?(condition)
     end
   end
 
