@@ -81,7 +81,6 @@ def get_tides_variables(timestamp,results)
 end
 
 
-
 # << conditions >>
 def call_condition_api(subregion_id_location)
   url = "https://services.surfline.com/kbyg/regions/forecasts/conditions?subregionId=#{subregion_id_location}&days=6"
