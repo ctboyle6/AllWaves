@@ -78,7 +78,6 @@ def get_tides_variables(timestamp,results)
   end
   filtered_results_high = 0
   filtered_results_low = 0
-  pp 
 end
 
 
