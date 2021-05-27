@@ -1,4 +1,4 @@
-require_relative 'spot_scrape'
+# require_relative 'spot_scrape'
 
 # puts "Enter a location :"
 
@@ -70,20 +70,20 @@ results_tide = tide_json["data"]["tides"]
 # end
 
 
-def get_tides_variables(timestamp,results)
-  filtered_results =  results.select do |result| 
-    result["timestamp"] < ( timestamp + 3600*3 ) && result["timestamp"] >= timestamp
-  end
-  filtered_results_high = filtered_results.select {|result| result["type"] == "HIGH" }
-  filtered_results_low = filtered_results.select {|result| result["type"] == "LOW" }
+# def get_tides_variables(timestamp,results)
+#   filtered_results =  results.select do |result| 
+#     result["timestamp"] < ( timestamp + 3600*3 ) && result["timestamp"] >= timestamp
+#   end
+#   filtered_results_high = filtered_results.select {|result| result["type"] == "HIGH" }
+#   filtered_results_low = filtered_results.select {|result| result["type"] == "LOW" }
 
-  if filtered_results_low.size > 0
-    @tide_type = "LOW"
-  elsif filtered_results_high.size > 0
-    @tide_type = "HIGH"
-  else 
-    @tide_type = "NORMAL"
-  end
-  filtered_results_high = 0
-  filtered_results_low = 0
-end
+#   if filtered_results_low.size > 0
+#     @tide_type = "LOW"
+#   elsif filtered_results_high.size > 0
+#     @tide_type = "HIGH"
+#   else 
+#     @tide_type = "NORMAL"
+#   end
+#   filtered_results_high = 0
+#   filtered_results_low = 0
+# end
