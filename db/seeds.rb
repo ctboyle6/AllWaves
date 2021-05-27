@@ -2,6 +2,7 @@ require_relative 'spot_scrape'
 require_relative 'conditions_fetch'
 
 
+
 # <<---- Spot seeds ---->>
 spot_names = %w[ pipeline jaws trestles ]
 
@@ -27,7 +28,7 @@ spot_names.each do |name|
   else
     puts "#{new_spot.name.capitalize} was not saved"
   end
-  
+
   # <<---- Conditions seeds ---->>
   puts "Getting conditions..."
   # << Wind >>
@@ -102,17 +103,37 @@ spot_names.each do |name|
     end
   end
 
-
   puts "Finished seeding conditions..."
 end
 
+# <<---- User seeds ---->>
+user1 = User.create!(email: "a@a.a", password:"123456", username:"user1", location: "Miami")
 
 
 # <<---- Preference seeds ---->>
-preset1 = Preference.new(name: "Rookie", pref_unit: "ft", pref_swell_height: "1", pref_swell_int: "1", pref_swell_direction: "Rookie", pref_wind_strength: "Rookie", pref_wind_direction: "Rookie", pref_tide_position: "Rookie", pref_tide_range: "Rookie" )
-preset2 = Preference.new(name: "Experienced", pref_unit: "ft", pref_swell_height: "1", pref_swell_int: "1", pref_swell_direction: "Experienced", pref_wind_strength: "Experienced", pref_wind_direction: "Experienced", pref_tide_position: "Experienced", pref_tide_range: "Experienced" )
-preset3 = Preference.new(name: "God Mode", pref_unit: "ft", pref_swell_height: "1", pref_swell_int: "1", pref_swell_direction: "God Mode", pref_wind_strength: "God Mode", pref_wind_direction: "God Mode", pref_tide_position: "God Mode", pref_tide_range: "God Mode" )
+preset1 = Preference.new(name: "Rookie", pref_unit: "FT", swell_hgt_min: 1, swell_hgt_max: 4, swell_int_min: 6, swell_int_max: 10, swell_dir_min: 70, swell_dir_max: 80, wind_str_min: 4, wind_str_max: 8, wind_dir_min: 270, wind_dir_max: 290, pref_tide_position: "Low", pref_tide_range: 1 )
+preset1.user = user1
+if preset1.save
+  puts "#{preset1.name} preference was saved"
+else
+  puts"#{preset1.name} preference was not saved"
+end
 
+preset2 = Preference.new(name: "Experienced", pref_unit: "FT", swell_hgt_min: 2, swell_hgt_max: 5, swell_int_min: 6, swell_int_max: 12, swell_dir_min: 70, swell_dir_max: 80, wind_str_min: 4, wind_str_max: 8, wind_dir_min: 270, wind_dir_max: 290, pref_tide_position: "Low", pref_tide_range: 2 )
+preset2.user = user1
+if preset2.save
+  puts "#{preset2.name} preference was saved"
+else
+  puts"#{preset2.name} preference was not saved"
+end
+
+preset3 = Preference.new(name: "God Mode", pref_unit: "FT", swell_hgt_min: 6, swell_hgt_max: 12, swell_int_min: 10, swell_int_max: 14, swell_dir_min: 70, swell_dir_max: 80, wind_str_min: 4, wind_str_max: 8, wind_dir_min: 270, wind_dir_max: 290, pref_tide_position: "Low", pref_tide_range: 3 )
+preset3.user = user1
+if preset3.save
+  puts "#{preset3.name} preference was saved"
+else
+  puts"#{preset3.name} preference was not saved"
+end
 
 # << tests >>
 # url_spot_id = scrap_surfline_spot_id(location_human_to_query("pipeline")) # TODO: interpolate search value
@@ -124,7 +145,3 @@ preset3 = Preference.new(name: "God Mode", pref_unit: "ft", pref_swell_height: "
 # tide_json = call_tide_api(spot_id)
 # condition_json = call_condition_api(subregion_id)
 
-# <<---- User seeds ---->>
-user1 = User.create!(email: "a@a.a", password:"123456", username:"user1", location: "Miami")
-user1 = User.create!(email: "b@b.b", password:"123456", username:"user2", location: "Orldando")
-user1 = User.create!(email: "c@c.c", password:"123456", username:"user3", location: "tallahassee")

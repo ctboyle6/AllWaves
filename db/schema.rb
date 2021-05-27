@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_26_123545) do
+ActiveRecord::Schema.define(version: 2021_05_26_204555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "conditions", force: :cascade do |t|
     t.bigint "spot_id", null: false
@@ -40,16 +61,21 @@ ActiveRecord::Schema.define(version: 2021_05_26_123545) do
   create_table "preferences", force: :cascade do |t|
     t.string "name"
     t.string "pref_unit"
-    t.float "pref_swell_height"
-    t.float "pref_swell_int"
-    t.float "pref_swell_direction"
-    t.float "pref_wind_strength"
-    t.float "pref_wind_direction"
     t.string "pref_tide_position"
     t.float "pref_tide_range"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "swell_hgt_min"
+    t.float "swell_hgt_max"
+    t.float "swell_int_min"
+    t.float "swell_int_max"
+    t.float "swell_dir_min"
+    t.float "swell_dir_max"
+    t.float "wind_str_min"
+    t.float "wind_str_max"
+    t.float "wind_dir_min"
+    t.float "wind_dir_max"
     t.index ["user_id"], name: "index_preferences_on_user_id"
   end
 
@@ -86,6 +112,7 @@ ActiveRecord::Schema.define(version: 2021_05_26_123545) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "conditions", "spots"
   add_foreign_key "preferences", "users"
   add_foreign_key "user_spots", "spots"
