@@ -1,36 +1,50 @@
+require 'date'
 class Result::ConditionsController < ApplicationController
-  before_action :set_pref_conds
+  before_action :set_day_conditions
   def show
-    @wind = wind?
-    @waves = waves?
+   @go_array = go?(@days_conditions)
   end
 
-  def wind?
-    strength = @c.wind_strength >= @p.wind_str_min && @c.wind_strength <= @p.wind_str_max
-    direction = @c.wind_direction >= @p.wind_dir_min && @c.wind_direction <= @p.wind_dir_max
-    strength && direction
+  def wind?(condition)
+    strength = condition.wind_strength >= @p.wind_str_min && condition.wind_strength <= @p.wind_str_max
+    direction = condition.wind_direction >= @p.wind_dir_min && condition.wind_direction <= @p.wind_dir_max
+    # strength && direction
+    true
   end
 
-  def waves?
-    direction = @c.waves_swell_direction >= @p.swell_dir_min && @c.waves_swell_direction <= @p.swell_dir_max
-    period = @c.waves_swell_period >= @p.swell_int_min && @c.waves_swell_period <= @p.swell_int_max
-    height = @c.waves_swell_height >= @p.swell_hgt_min && @c.waves_swell_height <= @p.swell_hgt_max
-    direction && period && height
+  def waves?(condition)
+    # direction = condition.waves_swell_direction >= @p.swell_dir_min && condition.waves_swell_direction <= @p.swell_dir_max
+    period = condition.waves_swell_period >= @p.swell_int_min && condition.waves_swell_period <= @p.swell_int_max
+    height = condition.waves_swell_height >= @p.swell_hgt_min && condition.waves_swell_height <= @p.swell_hgt_max
+    # direction && period && height
+    period && height
   end
 
-  def tide?
-
+  def tide?(condition)
+    condition.tide_type == "NORMAL"
   end
 
-  def go?
-    wind? && waves? && tide?
+  def go?(conditions)
+    @go_array = conditions.map do |condition|
+      wind?(condition) && waves?(condition) && tide?(condition)
+    end
   end
-
 
   private
 
-  def set_pref_conds
+  def set_day_conditions
+    set_pref_spot
+    @timestamp = Date.today.midnight.to_i + (10 * 3600)#utc
+    @c = Condition.where({ spot: @spot, timestamp: @timestamp })
+    @days_conditions = [@c.first]
+    7.times do
+      @b = Condition.find(@c.first.id + 1)
+      @days_conditions << @b
+    end
+  end
+
+  def set_pref_spot
     @p = Preference.find(params[:preference_id])
-    @c = Condition.find(params[:id])
+    @spot = current_user.user_spots.first.spot
   end
 end
