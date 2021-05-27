@@ -1,6 +1,6 @@
-<h1><%= @preference.name %></h1>
-
 <div class="container">
+  <h1><%= @preference.name %></h1>
+
   <%= simple_form_for @preference, remote: true do |f| %>
     <%= f.input :name, disabled: true %>
     <%= f.input :pref_unit, as: :radio_buttons, collection: ['FT', 'M'], disabled: true, label: 'Preferred Units' %>
@@ -19,6 +19,8 @@
     <%= f.button :button, "Update Preferences", class: "btn", id: "form-toggle" %>
     <%= f.button :submit, "Save Preferences", style: 'display:none', class: "btn", id: "form-save" %>
   <% end %>
-</div>
 
-<%= link_to "Back to preferences", preferences_path, class: "btn" %>
+  <br>
+
+  <%= link_to "Back to preferences", preferences_path, class: "btn" %>
+</div>
