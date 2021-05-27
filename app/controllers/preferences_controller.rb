@@ -1,5 +1,5 @@
 class PreferencesController < ApplicationController
-  before_action :set_preference, only: [:show]
+  before_action :set_preference, only: [:show, :edit, :update, :destroy]
 
   def index
     @preferences = policy_scope(Preference)
@@ -23,10 +23,11 @@ class PreferencesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
+    @preference.update(preference_params)
+    redirect_to @preference
   end
 
   def destroy
