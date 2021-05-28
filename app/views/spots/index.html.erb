@@ -14,7 +14,7 @@
   <% end %>
 </div>
 
-  <% @spots.each do |spot| %>
+<% @spots.each do |spot| %>
 <div class="d-flex justify-content-center">
     <div class="card-trip" style="margin:20px; width: 60%; overflow: hidden; background: white; box-shadow: 0 0 15px rgba(0,0,0,0.2);">
       <img src="https://source.unsplash.com/700x200/?surf,waves/" style="height: 200px; width: 100%; object-fit: cover;"
@@ -23,10 +23,14 @@
           <h2 style=" font-size: 16px; font-weight: bold; margin: 10px;"><%= spot.name.capitalize %></h2>
         </div>
         <div style=" margin-right: 10px; margin-bottom: 10px; text-align: right">
-          <%= link_to "Add this spot to your Spots", spot_user_spots_path(spot), method: :post %>
+          <% @user_spots.each do |user_spot| %>
+            <% if user_spot.spot_id != spot.id %>
+              <%= link_to "Add this spot to your Spots", spot_user_spots_path(spot), method: :post %>
+            <% else %>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
-  </div>
-<% end %>
 </div>
+<% end %>
