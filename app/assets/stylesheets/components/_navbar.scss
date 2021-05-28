@@ -1,12 +1,50 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+#navbar {
+  width: 14%;
+  height: 100%;
+  position: fixed;
+  z-index: 1; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(90deg, rgba(38,160,176,0.85), rgba(51,174,191,0.21));
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+#navbar-content {
+  margin: 0 auto;
+  width: max-content;
+  height: 100%;
+  text-align: center;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+#logo {
+  width: 75px;
 }
+
+.nav-button {
+  width: 120px;
+  height: 40px;
+  border-radius: 20px;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-button > a {
+  text-decoration: none;
+  color: white;
+  margin: auto 0;
+}
+
+.dark {
+  background-image: linear-gradient(135deg, rgba(2, 21, 43, 0.6976),rgba(2, 21, 43, 0.3273));
+}
+
+.light {
+  background-image: linear-gradient(90deg, rgba(53, 176, 193, 0.3581),rgba(58, 182, 198, 0.1977));
+}
+
+#user-image {
+  width: 50px;
+  border-radius: 50%;
+}
+
