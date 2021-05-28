@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container my-3 p-3">
   <h1><%= @preference.name %></h1>
 
   <%= simple_form_for @preference, remote: true do |f| %>
@@ -15,12 +15,11 @@
     <%= f.input :wind_dir_min, as: :range, input_html: { min: 0, max: 360, step: 5 }, disabled: true, label: 'Wind Direction: Min' %>
     <%= f.input :wind_dir_max, as: :range, input_html: { min: 0, max: 360, step: 5 }, disabled: true, label: 'Wind Direction: Max' %>
     <%= f.input :pref_tide_position, as: :radio_buttons, collection: ['LOW', 'NORMAL', 'HIGH'], disabled: true, label: 'Preferred Tide Position' %>
-    <%= f.input :pref_tide_range, as: :range, input_html: { min: 1, max: 12, step: 1 }, disabled: true, label: 'Preferred Tide Range' %>
-    <%= f.button :button, "Update Preferences", class: "btn", id: "form-toggle" %>
-    <%= f.button :submit, "Save Preferences", style: 'display:none', class: "btn", id: "form-save" %>
+    <%= f.button :button, "Update Preferences", class: "btn btn-secondary", id: "form-toggle" %>
+    <%= f.button :submit, "Save Preferences", style: 'display:none', class: "btn btn-primary", id: "form-save" %>
   <% end %>
 
   <br>
 
-  <%= link_to "Back to preferences", preferences_path, class: "btn" %>
+  <%= link_to "Back to preferences", preferences_path, class: "btn btn-secondary" %>
 </div>
