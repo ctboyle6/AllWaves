@@ -27,6 +27,7 @@
         <%= link_to "Delete this spot", "/spots/#{user_spot.spot.id}/user_spots/#{user_spot.id}", method: :delete, class: "btn btn-danger m-3" %>
       </form>
 
+
       <%= link_to "Add a new spot", spots_path, class: "btn btn-primary my-3" %>
     <% end %>
     <% else %>
