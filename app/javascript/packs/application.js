@@ -37,5 +37,5 @@ import { initDropdownSelect } from '../components/init_dropdown_select';
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initFormtoggle();
-  initDropdownSelect();
+  // initDropdownSelect();
 });

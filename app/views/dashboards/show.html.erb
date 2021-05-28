@@ -1,32 +1,37 @@
 <div class="container m-3">
   <h1>Dashboard</h1>
   <h2><%= link_to "My preferences:", preferences_path, class: "text-decoration-none" %></h2>
-  <ul>
-    <% current_user.preferences.each do |preference|%>
-    <li><%= preference.name %></li>
-    <% end %>
-  </ul>
 
   <br>
 
-  <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Preferences
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-      <% current_user.preferences.each do |preference| %>
-      <button class="dropdown-item" type="button"><%= preference.name %></button>
-      <% end %>
-      <button class="dropdown-item" type="button">Action</button>
-      <button class="dropdown-item" type="button">Another action</button>
-      <button class="dropdown-item" type="button">Something else here</button>
+  <form action="/result/conditions/383">
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Preferences
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <% current_user.preferences.each do |preference| %>
+          <button class="dropdown-item" type="button"><%= preference.name %></button>
+        <% end %>
+      </div>
     </div>
-  </div>
 
-  <br>
+    <br>
 
-  <% @user_spots.each do |user_spot| %>
-    <h2><%= user_spot.spot.name %></h2>
-    <%= link_to "go?", result_condition_path(Condition.find_by(spot: user_spot.spot), preference_id: current_user.preferences.last.id)  %>
-  <% end %>
+    <select class="custom-select" name="preference_id">
+      <option selected>Open this select menu</option>
+      <% current_user.preferences.each do |preference| %>
+        <option value="<%= preference.id %>"><%= preference.name %></option>
+      <% end %>
+    </select>
+
+    <br>
+
+    <% @user_spots.each do |user_spot| %>
+      <h2><%= user_spot.spot.name %></h2>
+      <%= link_to "go?", result_condition_path(Condition.find_by(spot: user_spot.spot), preference_id: current_user.preferences.last.id)  %>
+    <% end %>
+
+    <button type="submit" class="btn btn-primary">GO</button>
+  </form>
 </div>
