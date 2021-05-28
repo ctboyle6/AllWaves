@@ -11,6 +11,7 @@
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Preferences
         </button>
+
         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
           <% current_user.preferences.each do |preference| %>
             <button class="dropdown-item" type="button"><%= preference.name %></button>
@@ -32,6 +33,7 @@
         <%#= link_to "go?", result_condition_path(Condition.find_by(spot: user_spot.spot), preference_id: current_user.preferences.last.id)  %>
 
       <button type="submit" class="btn btn-primary">GO</button>
+      <%= link_to "Delete this spot", "/spots/#{user_spot.spot.id}/user_spots/#{user_spot.id}", method: :delete %>
     </form>
   <% end %>
 </div>
