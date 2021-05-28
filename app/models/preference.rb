@@ -16,4 +16,5 @@ class Preference < ApplicationRecord
   validates :wind_dir_max, presence: true
   validates :pref_tide_position, presence: true, inclusion: { in: %w[LOW NORMAL HIGH] }
   validates :pref_tide_range, presence: true
+
 end
