@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   namespace :result do
     resources :conditions, only: :show
   end
-  resources :spots, only: [:index, :show, :new, :create]
+  resources :spots, only: [:index, :show, :new, :create] do
+    resources :user_spots, only: [:index, :show, :create, :destroy]
+  end
 end

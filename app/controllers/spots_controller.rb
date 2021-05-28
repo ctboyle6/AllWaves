@@ -14,6 +14,7 @@ class SpotsController < ApplicationController
         lng: spot.longitude
       }
     end
+    @user_spots = current_user.user_spots
   end
 
   def show
@@ -29,7 +30,7 @@ class SpotsController < ApplicationController
     @spot = Spot.new
   end
   
- def create
+  def create
     url_spot_id = scrap_surfline_spot_id(location_human_to_query(params[:spot][:name]))
     spot_id = get_id_location(url_spot_id)
     @spot = Spot.new(name: params[:spot][:name])

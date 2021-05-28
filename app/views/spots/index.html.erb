@@ -1,10 +1,12 @@
 <h1>All the Spots</h1>
-<div id="map"
-     style="width: 100%; height: 600px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+<div class="d-flex justify-content-center">
+  <div id="map"
+      style="width: 80%; height: 600px;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 </div>
-<div class="search-bar d-flex justify-content-center">
+<div class="search-bar d-flex justify-content-center my-2">
   <%= form_with url: spots_path, local: true, html: { class: "form-search justify-content-between align-items-center " } ,method: :get do |form| %>
     <%= form.label :query, "Find your spot:" %>
     <%= form.text_field :query %>
@@ -12,13 +14,19 @@
   <% end %>
 </div>
 
-<% @spots.each do |spot| %>
-  <h2>Spot name: <%= spot.name %> </h2>
-  <h3><%= spot.id %></h3>
-  <ul>
-    <li> Longitude: <%= spot.longitude %> </li>
-    <li> Latitude: <%= spot.latitude %> </li>
-    <li> Surfline_spot: <%= spot.surfline_spot %> </li>
-    <li> Subregion_spot: <%= spot.surfline_subregion %> </li>
-  </ul>
+  <% @spots.each do |spot| %>
+<div class="d-flex justify-content-center">
+    <div class="card-trip" style="margin:20px; width: 60%; overflow: hidden; background: white; box-shadow: 0 0 15px rgba(0,0,0,0.2);">
+      <img src="https://source.unsplash.com/700x200/?surf,waves/" style="height: 200px; width: 100%; object-fit: cover;"
+      <div class="card-trip-infos" style=" padding: 16px; display: flex; justify-content: space-between; align-items: flex-end; position: relative;">
+        <div>
+          <h2 style=" font-size: 16px; font-weight: bold; margin: 10px;"><%= spot.name.capitalize %></h2>
+        </div>
+        <div style=" margin-right: 10px; margin-bottom: 10px; text-align: right">
+          <%= link_to "Add this spot to your Spots", spot_user_spots_path(spot), method: :post %>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>
+</div>
