@@ -28,10 +28,10 @@ class UserSpotsController < ApplicationController
     @user_spot = UserSpot.find(params[:id])
     if @user_spot.destroy
       flash[:alert]  = 'UserSpot was successfully deleted.'
-      redirect_to spots_path
+      redirect_to "/"
     else
       flash[:alert]  = 'Something went wrong'
-      redirect_to spots_path
+      redirect_to "/"
     end
   end
 
