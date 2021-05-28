@@ -1,12 +1,13 @@
-<h1>Dashboards#show</h1>
-<h2>My preferences:</h2>
-<ul>
-  <% current_user.preferences.each do |preference|%>
-  <li><%= preference.name %></li>
+<div class="container m-3">
+  <h1>Dashboards#show</h1>
+  <h2>My preferences:</h2>
+  <ul>
+    <% current_user.preferences.each do |preference|%>
+    <li><%= preference.name %></li>
+    <% end %>
+  </ul>
+  <% @user_spots.each do |user_spot| %>
+    <h2><%= user_spot.spot.name %></h2>
+    <%= link_to "go?", result_condition_path(Condition.find_by(spot: user_spot.spot), preference_id: current_user.preferences.last.id)  %>
   <% end %>
-</ul>
-<% @user_spots.each do |user_spot| %>
-  <h2><%= user_spot.spot.name %></h2>
-  <%= link_to "go?", result_condition_path(Condition.find_by(spot: user_spot.spot), preference_id: current_user.preferences.last.id)  %>
-<% end %>
-
+</div>
