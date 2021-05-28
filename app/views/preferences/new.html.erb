@@ -16,7 +16,6 @@
     <%= f.input :wind_dir_min, as: :range, input_html: { min: 0, max: 360, step: 5 } %>
     <%= f.input :wind_dir_max, as: :range, input_html: { min: 0, max: 360, step: 5 } %>
     <%= f.input :pref_tide_position, as: :radio_buttons, collection: ['LOW', 'NORMAL', 'HIGH'] %>
-    <%= f.input :pref_tide_range, as: :range, input_html: { min: 1, max: 12, step: 1 } %>
     <%= f.button :submit %>
   <% end %>
 </div>
