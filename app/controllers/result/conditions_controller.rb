@@ -33,7 +33,7 @@ class Result::ConditionsController < ApplicationController
 
   def set_day_conditions
     set_pref_spot
-    timestamp = Date.today.midnight.to_i + (7 * 3600)
+    timestamp = Date.today.midnight.to_i + (10 * 3600) # TODO: hardcoded time > dynamic
     # @days_conditions = Condition.where("time_at BETWEEN ? AND ?", DateTime.current.midnight, DateTime.current.end_of_day).where(spot: @spot)
     @days_conditions = Condition.where("timestamp BETWEEN ? AND ?", timestamp, timestamp + (24 * 6 * 3600)).where(spot: @spot)
   end
