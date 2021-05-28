@@ -7,17 +7,6 @@
   <% @user_spots.each do |user_spot| %>
     <h2><%= user_spot.spot.name %></h2>
     <form action="/result/conditions/<%= Condition.find_by(spot: user_spot.spot).id %>">
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Preferences
-        </button>
-
-        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-          <% current_user.preferences.each do |preference| %>
-            <button class="dropdown-item" type="button"><%= preference.name %></button>
-          <% end %>
-        </div>
-      </div>
 
       <br>
 
