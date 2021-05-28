@@ -19,6 +19,7 @@ class PreferencesController < ApplicationController
     if @preference.save
       redirect_to preference_path(@preference)
     else
+      raise
       render :new
     end
   end

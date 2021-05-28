@@ -19,7 +19,7 @@
     <br>
 
     <select class="custom-select" name="preference_id">
-      <option selected>Open this select menu</option>
+      <option selected>Select a preference</option>
       <% current_user.preferences.each do |preference| %>
         <option value="<%= preference.id %>"><%= preference.name %></option>
       <% end %>
