@@ -1,7 +1,6 @@
 <div class="container my-3 p-3">
   <h1>New Preference Preset</h1>
 
-
   <%= simple_form_for @preference do |f| %>
     <%= f.input :name %>
     <%= f.input :pref_unit, as: :radio_buttons, collection: ['FT', 'M'] %>
@@ -18,4 +17,6 @@
     <%= f.input :pref_tide_position, as: :radio_buttons, collection: ['LOW', 'NORMAL', 'HIGH'] %>
     <%= f.button :submit, class: "btn btn-primary" %>
   <% end %>
+
+  <%= link_to "Back to preferences", preferences_path, class: "btn btn-secondary my-3"  %>
 </div>
