@@ -26,7 +26,7 @@
           </div>
           <div style=" margin-right: 10px; margin-bottom: 10px; text-align: right">
             <% if @user_spots.find { |user_spot| user_spot.spot_id == spot.id } != []  %>
-            <p> Spot already saved. <p>
+            <p> Spot already saved ✅ <p>
             <% else %>
             <%= link_to "Add this spot to your Spots", spot_user_spots_path(spot), method: :post, class: "btn btn-primary" %>
             <% end %>
