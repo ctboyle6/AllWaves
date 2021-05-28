@@ -7,12 +7,12 @@ const initFormtoggle = () => {
   // console.log(form_ranges);
   // form_items[3].insertAdjacentHTML('beforebegin', '<span>kooook</span>')
 
-  form_ranges.forEach((range) => {
-    const range_val = range.insertAdjacentHTML('beforebegin', `<span>${range.value}</span>`);
-    range.addEventListener('input', () => {
-      range.innerText = range.value;
-    });
-  });
+  // form_ranges.forEach((range) => {
+  //   const range_val = range.insertAdjacentHTML('beforebegin', `<span>${range.value}</span>`);
+  //   range.addEventListener('input', () => {
+  //     range.innerText = range.value;
+  //   });
+  // });
 
 
   if(btn) {
