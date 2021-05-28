@@ -1,6 +1,6 @@
 <div class="container m-3">
-  <h1>Dashboards#show</h1>
-  <h2>My preferences:</h2>
+  <h1>Dashboard</h1>
+  <h2><%= link_to "My preferences:", preferences_path, class: "text-decoration-none" %></h2>
   <ul>
     <% current_user.preferences.each do |preference|%>
     <li><%= preference.name %></li>
