@@ -9,10 +9,12 @@
           <div class="card">
             <strong><%= (Date.today + i).strftime("%A, %b %d") %></strong>
             <br>
-            <%= p day %>
+            <% day.each_with_index do |block, index| %>
+              <p style="color:<%= block ?  "green" : "red"   %>;"><%= (index * 3) %>:00  <%= block ? "- GO!" : "" %></p>
+            <% end %>
             <br>
             <br>
-            <strong><%= day.include?(true) ? "GO" : "" %></strong>
+            <strong><%= day.include?(true) ? "There is a GO today!" : "No good surf today!" %></strong>
           </div>
           <% i += 1 %>
           <br>
@@ -20,7 +22,8 @@
       </div>
     </div>
   </div>
-  <%= link_to "Preferences", preferences_path, class: "btn my-3"  %>
+  <%= link_to "Preferences", preferences_path, class: "btn btn-primary my-3"  %>
+  <%= link_to "Dashboard", user_root_path, class: "btn btn-primary my-3"  %>
 </div>
 
 
