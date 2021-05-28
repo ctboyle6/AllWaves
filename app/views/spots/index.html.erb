@@ -25,7 +25,7 @@
             <h2 style=" font-size: 16px; font-weight: bold; margin: 10px;"><%= spot.name.capitalize %></h2>
           </div>
           <div style=" margin-right: 10px; margin-bottom: 10px; text-align: right">
-            <% if @user_spots.find { |user_spot| user_spot.spot_id == spot.id } != []  %>
+            <% if @user_spots.select { |user_spot| user_spot.spot_id == spot.id } != []  %>
             <p> Spot already saved ✅ <p>
             <% else %>
             <%= link_to "Add this spot to your Spots", spot_user_spots_path(spot), method: :post, class: "btn btn-primary" %>
