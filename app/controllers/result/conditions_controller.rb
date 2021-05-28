@@ -20,7 +20,7 @@ class Result::ConditionsController < ApplicationController
   end
 
   def tide?(condition)
-    condition.tide_type == "LOW"
+    condition.tide_type == @p.pref_tide_position
   end
 
   def go?(conditions)
