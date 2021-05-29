@@ -55,11 +55,15 @@ class SpotsController < ApplicationController
         redirect_to spots_path
       else
         flash[:alert] = "We couldn't save this spot, please try again later"
-        render 'new'
+        redirect_to spots_path
       end
 
       spot_id = get_id_location(url_spot_id)
-      create_condition(@spot,spot_id)
+      if @spot.id.nil?
+        flash[:alert] = "Spot already exists" 
+      else 
+        create_condition(@spot,spot_id)
+      end
     end
   end
 end

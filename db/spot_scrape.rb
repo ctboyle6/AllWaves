@@ -66,7 +66,6 @@ def get_tides_variables(timestamp,results)
   filtered_results =  results.select do |result|
     result["timestamp"] < ( timestamp + 3600*3 ) && result["timestamp"] >= timestamp
   end
-  # pp filtered_results
   filtered_results_high = filtered_results.select {|result| result["type"] == "HIGH" }
   filtered_results_low = filtered_results.select {|result| result["type"] == "LOW" }
 
@@ -113,7 +112,6 @@ def create_condition(new_spot,spot_id)
   # Better way to do it
   i = 0
   while i < results_wind.length
-    pp "i = #{i}"
     @timestamp = results_wind[i]["timestamp"]
     @wind_strength = results_wind[i]["speed"]
     @wind_direction = results_wind[i]["direction"]
@@ -159,6 +157,5 @@ def create_condition(new_spot,spot_id)
     )
 
     i += 1
-    pp i
   end
 end
