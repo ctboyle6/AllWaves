@@ -106,16 +106,12 @@ def create_condition(new_spot,spot_id)
   results_tide = tide_json["data"]["tides"]
 
   # Keeping the same timestamps
- results_wind.each do |result|
+  results_wind.each do |result|
     @timestamp = result["timestamp"]
     @wind_strength = result["speed"]
     @wind_direction = result["direction"]
     @wind_gust = result["gust"]
     @wind_optimal_score = result["optimalScore"]
-    url_spot_id = scrap_surfline_spot_id(location_human_to_query("pipeline")) # REMOVE HARDCODE LOL
-    spot_id = get_id_location(url_spot_id) # REMOVE
-    tide_json = call_tide_api(spot_id) # do not need this line, ref from line 99
-    results_tide = tide_json["data"]["tides"] # do not need this line, ref from line 106
     get_tides_variables(@timestamp, results_tide)
     results_wave.each do |result|
       if result["timestamp"] == @timestamp

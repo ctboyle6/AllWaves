@@ -160,7 +160,7 @@ def create_condition(spot_id) #new_spot,
         end
         results_tide.each do |result|
           if @timestamp == result["timestamp"]
-            @tide_height = result["height"]
+            p @tide_height = result["height"]
             # Condition.create!(
             #   spot_id: new_spot.id,
             #   timestamp: @timestamp,
