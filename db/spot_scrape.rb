@@ -103,15 +103,14 @@ def create_condition(new_spot,spot_id)
 
   # Get the results in an array of wind objects
   results_wind = wind_json["data"]["wind"]
-  @utc_offset = wind_json["associated"]["utcOffset"]
+  # @utc_offset = wind_json["associated"]["utcOffset"]
 
   # Get the results in an array of wave objects
   results_wave = wave_json["data"]["wave"]
   # Get the results in an array of tide objects
   results_tide = tide_json["data"]["tides"]
 
-  # Better way to do it
-  # Keeping the same timestamps
+
   timestamps = results_wind.map { |result| result["timestamp"] }
 
   timestamps.each_with_index do |timestamp, index|
@@ -129,27 +128,9 @@ def create_condition(new_spot,spot_id)
     @waves_swell_direction = primary_swell["direction"]
     @waves_swell_optimal_score = primary_swell["optimalScore"]
     @tide_type = get_tides_variables(timestamp, results_tide)
-    # @tide_height = results_tide[index]["height"]
-    # pp condition = {
-    #   timestamp: @timestamp,
-    #   # spot_id: new_spot.id,
-    #   wind_strength: @wind_strength,
-    #   wind_direction: @wind_direction,
-    #   # wind_gust: @wind_gust,
-    #   wind_optimal_score: @wind_optimal_score,
-    #   waves_surf_min: @waves_surf_min,
-    #   waves_surf_max: @waves_surf_max,
-    #   waves_optimal_score: @waves_surf_optimal_score,
-    #   tide_type: @tide_type,
-    #   # tide_height: @tide_height,
-    #   waves_swell_height: @waves_swell_height,
-    #   waves_swell_period: @waves_swell_period,
-    #   waves_swell_direction: @waves_swell_direction,
-    #   waves_swell_direction_min: @waves_swell_direction_min,
-    #   waves_swell_optimal_score: @waves_swell_optimal_score
-    # }
+
     Condition.create!(
-      utc_offset: @utc_offset,
+      # utc_offset: @utc_offset,
       spot_id: new_spot.id,
       timestamp: @timestamp,
       wind_strength: @wind_strength,
