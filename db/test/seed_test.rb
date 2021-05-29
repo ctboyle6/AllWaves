@@ -3,6 +3,34 @@ require 'open-uri'
 require 'nokogiri'
 require 'json'
 
+
+# <<---- Spot seeds ---->>
+puts "Creating new spot names..."
+# new_spot = Spot.new(name: "trestles")
+
+# url_spot_id = scrap_surfline_spot_id(location_human_to_query("#{name}")) # TODO: interpolate search value
+# spot_id = get_id_location(url_spot_id)
+# new_spot.surfline_spot = spot_id
+
+
+# url_subregion_id = scrap_surfline_subregion_id(url_spot_id)
+# subregion_id = get_id_location(url_subregion_id)
+# new_spot.surfline_subregion = subregion_id
+
+# wind_json = call_wind_api(spot_id)
+# new_spot.latitude = wind_json["associated"]["location"]["lat"]
+# new_spot.longitude = wind_json["associated"]["location"]["lon"]
+
+# if new_spot.save
+#   puts "#{new_spot.name.capitalize} has been saved"
+# else
+#   puts "#{new_spot.name.capitalize} was not saved"
+# end
+
+
+
+
+
 # <---- search helper methods ---->
 def get_id_location(url)
   regex = /[^\/]+$/
@@ -88,7 +116,7 @@ def call_condition_api(subregion_id_location)
   JSON.parse(conditions_serialized)
 end
 
-def create_condition(new_spot,spot_id)
+def create_condition(spot_id) #new_spot,
   # << Wind >>
   wind_json = call_wind_api(spot_id)
 
@@ -112,10 +140,6 @@ def create_condition(new_spot,spot_id)
     @wind_direction = result["direction"]
     @wind_gust = result["gust"]
     @wind_optimal_score = result["optimalScore"]
-    url_spot_id = scrap_surfline_spot_id(location_human_to_query("pipeline")) # REMOVE HARDCODE LOL
-    spot_id = get_id_location(url_spot_id) # REMOVE
-    tide_json = call_tide_api(spot_id) # do not need this line, ref from line 99
-    results_tide = tide_json["data"]["tides"] # do not need this line, ref from line 106
     get_tides_variables(@timestamp, results_tide)
     results_wave.each do |result|
       if result["timestamp"] == @timestamp
@@ -137,27 +161,34 @@ def create_condition(new_spot,spot_id)
         results_tide.each do |result|
           if @timestamp == result["timestamp"]
             @tide_height = result["height"]
-            Condition.create!(
-              spot_id: new_spot.id,
-              timestamp: @timestamp,
-              wind_strength: @wind_strength,
-              wind_direction: @wind_direction,
-              wind_gust: @wind_gust,
-              wind_optimal_score: @wind_optimal_score,
-              waves_surf_min: @waves_surf_min,
-              waves_surf_max: @waves_surf_max,
-              waves_optimal_score: @waves_surf_optimal_score,
-              tide_type: @tide_type,
-              tide_height: @tide_height,
-              waves_swell_height: @waves_swell_height,
-              waves_swell_period: @waves_swell_period,
-              waves_swell_direction: @waves_swell_direction,
-              waves_swell_direction_min: @waves_swell_direction_min,
-              waves_swell_optimal_score: @waves_swell_optimal_score
-            )
+            # Condition.create!(
+            #   spot_id: new_spot.id,
+            #   timestamp: @timestamp,
+            #   wind_strength: @wind_strength,
+            #   wind_direction: @wind_direction,
+            #   wind_gust: @wind_gust,
+            #   wind_optimal_score: @wind_optimal_score,
+            #   waves_surf_min: @waves_surf_min,
+            #   waves_surf_max: @waves_surf_max,
+            #   waves_optimal_score: @waves_surf_optimal_score,
+            #   tide_type: @tide_type,
+            #   tide_height: @tide_height,
+            #   waves_swell_height: @waves_swell_height,
+            #   waves_swell_period: @waves_swell_period,
+            #   waves_swell_direction: @waves_swell_direction,
+            #   waves_swell_direction_min: @waves_swell_direction_min,
+            #   waves_swell_optimal_score: @waves_swell_optimal_score
+            # )
           end
         end
       end
     end
   end
 end
+
+# <<---- Conditions seeds ---->>
+puts "Getting conditions..."
+
+create_condition("5842041f4e65fad6a770888a") #new_spot,
+
+puts "Finished seeding conditions..."
