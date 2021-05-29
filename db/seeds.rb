@@ -1,10 +1,10 @@
 require_relative 'spot_scrape'
-require_relative 'conditions_fetch'
+# require_relative 'conditions_fetch'
 
 
 
 # <<---- Spot seeds ---->>
-spot_names = %w[ pipeline jaws trestles ]
+spot_names = %w[ pipeline jaws trestles]
 spot_names.each do |name|
   puts "Creating new spot names..."
   new_spot = Spot.new(name: name)
@@ -41,7 +41,7 @@ user1 = User.create!(email: "a@a.a", password:"123456", username:"user1", locati
 
 
 # <<---- Preference seeds ---->>
-preset1 = Preference.new(name: "Rookie", pref_unit: "FT", swell_hgt_min: 0.5, swell_hgt_max: 2, swell_int_min: 10, swell_int_max: 15, swell_dir_min: 150, swell_dir_max: 200, wind_str_min: 2, wind_str_max: 10, wind_dir_min: 200, wind_dir_max: 300, pref_tide_position: "LOW", pref_tide_range: 1 )
+preset1 = Preference.new(name: "Default - Rookie", pref_unit: "FT", swell_hgt_min: 0.5, swell_hgt_max: 2, swell_int_min: 10, swell_int_max: 15, swell_dir_min: 150, swell_dir_max: 200, wind_str_min: 2, wind_str_max: 10, wind_dir_min: 200, wind_dir_max: 300, pref_tide_position: "LOW", pref_tide_range: 1 )
 preset1.user = user1
 if preset1.save
   puts "#{preset1.name} preference was saved"
@@ -49,7 +49,7 @@ else
   puts"#{preset1.name} preference was not saved"
 end
 
-preset2 = Preference.new(name: "Mediocre", pref_unit: "FT", swell_hgt_min: 0.5, swell_hgt_max: 2, swell_int_min: 10, swell_int_max: 15, swell_dir_min: 150, swell_dir_max: 200, wind_str_min: 2, wind_str_max: 10, wind_dir_min: 200, wind_dir_max: 300, pref_tide_position: "NORMAL", pref_tide_range: 2 )
+preset2 = Preference.new(name: "Default - Mediocre", pref_unit: "FT", swell_hgt_min: 0.5, swell_hgt_max: 2, swell_int_min: 10, swell_int_max: 15, swell_dir_min: 150, swell_dir_max: 200, wind_str_min: 2, wind_str_max: 10, wind_dir_min: 200, wind_dir_max: 300, pref_tide_position: "NORMAL", pref_tide_range: 2 )
 preset2.user = user1
 if preset2.save
   puts "#{preset2.name} preference was saved"
@@ -57,7 +57,7 @@ else
   puts"#{preset2.name} preference was not saved"
 end
 
-preset3 = Preference.new(name: "Advanced", pref_unit: "FT", swell_hgt_min: 0.5, swell_hgt_max: 2, swell_int_min: 10, swell_int_max: 15, swell_dir_min: 150, swell_dir_max: 200, wind_str_min: 2, wind_str_max: 10, wind_dir_min: 200, wind_dir_max: 300, pref_tide_position: "HIGH", pref_tide_range: 3 )
+preset3 = Preference.new(name: "Default - Advanced", pref_unit: "FT", swell_hgt_min: 0.5, swell_hgt_max: 2, swell_int_min: 10, swell_int_max: 15, swell_dir_min: 150, swell_dir_max: 200, wind_str_min: 2, wind_str_max: 10, wind_dir_min: 200, wind_dir_max: 300, pref_tide_position: "HIGH", pref_tide_range: 3 )
 preset3.user = user1
 if preset3.save
   puts "#{preset3.name} preference was saved"
