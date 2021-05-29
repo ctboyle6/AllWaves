@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_29_180337) do
+ActiveRecord::Schema.define(version: 2021_05_29_222031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(version: 2021_05_29_180337) do
     t.string "tide_type"
     t.float "tide_height"
     t.datetime "time_at"
-    t.integer "utc_offset"
     t.index ["spot_id"], name: "index_conditions_on_spot_id"
   end
 
@@ -89,6 +88,7 @@ ActiveRecord::Schema.define(version: 2021_05_29_180337) do
     t.string "surfline_subregion"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "utc_offset"
   end
 
   create_table "user_spots", force: :cascade do |t|
