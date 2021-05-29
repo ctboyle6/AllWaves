@@ -134,16 +134,26 @@ def create_condition(spot_id) #new_spot,
   # Get the results in an array of tide objects
   results_tide = tide_json["data"]["tides"]
 
+  # largest swell
+  # primary_swell = results_wave[1]["swells"].max_by{ |height, v| v }
+
+
   # Keeping the same timestamps
   timestamps = results_wind.map { |result| result["timestamp"] }
 
-  p timestamps
-
   timestamps.each_with_index do |timestamp, index|
-    @timestamp = timestamp
-    @wind_strength = results_wind[index]["speed"]
-    @wind_direction = results_wind[index]["direction"]
-    @wind_direction = results_wind[index]["direction"]
+    # @timestamp = timestamp
+    # @wind_strength = results_wind[index]["speed"]
+    # @wind_direction = results_wind[index]["direction"]
+    # @wind_optimal_score = results_wind[index]["optimalScore"]
+    # @waves_surf_min = results_wave[index]["surf"]["min"]
+    # @waves_surf_max = results_wave[index]["surf"]["max"]
+    # @waves_surf_optimal_score = results_wave[index]["surf"]["optimalScore"]
+    pp primary_swell = results_wave[index]["swells"].max_by{ |height, v| v }
+    p @waves_swell_height = primary_swell["height"]
+    # @waves_swell_period = primary_swell["period"]
+    # @waves_swell_direction = primary_swell["direction"]
+    # @waves_swell_optimal_score = primary_swell["optimalScore"]
   end
 
   @condition = {
