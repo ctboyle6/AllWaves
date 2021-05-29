@@ -1,5 +1,7 @@
 class Result
   class Day
+    attr_reader :date
+
     def initialize(params)
       @date       = params[:date] || Date.today
       @preference = params[:preference]
@@ -19,9 +21,8 @@ class Result
     private
 
     def conditions
-      # Use spot to query with AR for the conditions
-      # Condition.where(spot: @spot).where("BETWEEN STUFF")
-      Condition.where(spot: @spot).where("timestamp BETWEEN ? AND ?", @date.midnight.to_i, Date.tomorrow.midnight.to_i)
+      # TODO: Add Spot.utc (seed file update) to @date to make tz dynamic
+      Condition.where(spot: @spot).where("timestamp BETWEEN ? AND ?", @date.midnight.to_i, @date.tomorrow.midnight.to_i)
     end
   end
 end

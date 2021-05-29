@@ -17,22 +17,22 @@ class Preference < ApplicationRecord
   validates :pref_tide_position, presence: true, inclusion: { in: %w[LOW NORMAL HIGH] }
 
   def swell_h_range
-    :swell_hgt_min..:swell_hgt_max
+    (swell_hgt_min..swell_hgt_max)
   end
 
   def swell_p_range
-    :swell_int_min..:swell_int_max
+    (swell_int_min..swell_int_max)
   end
 
   def swell_d_range
-    :swell_dir_min..:swell_dir_max
+    (swell_dir_min..swell_dir_max)
   end
 
   def wind_s_range
-    :wind_str_min..:wind_str_max
+    (wind_str_min..wind_str_max)
   end
 
   def wind_d_range
-    :wind_dir_min..:wind_dir_max
+    (wind_dir_min..wind_dir_max)
   end
 end

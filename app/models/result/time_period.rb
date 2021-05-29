@@ -16,14 +16,16 @@ class Result
     end
 
     def winds_good?
-      @preference.wind_d_range.include?(@condition.wind_direction)
-      @preference.wind_s_range.include?(@condition.strength)
+      dir = @preference.wind_d_range.include?(@condition.wind_direction)
+      str = @preference.wind_s_range.include?(@condition.wind_strength)
+      dir && str
     end
 
     def waves_good?
-      preference.swell_h_range.include?(@condition.waves_swell_height)
-      preference.swell_p_range.include?(@condition.waves_swell_period)
-      preference.swell_d_range.include?(@condition.waves_swell_direction)
+      ht = @preference.swell_h_range.include?(@condition.waves_swell_height)
+      per = @preference.swell_p_range.include?(@condition.waves_swell_period)
+      dir = @preference.swell_d_range.include?(@condition.waves_swell_direction)
+      ht && per && dir
     end
   end
 end

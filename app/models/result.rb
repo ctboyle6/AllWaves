@@ -1,4 +1,5 @@
 class Result
+  attr_reader :spot
   def initialize(params)
     @preference = params[:preference]
     @spot       = params[:spot]
