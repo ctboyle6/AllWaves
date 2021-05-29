@@ -1,5 +1,5 @@
 require_relative 'spot_scrape'
-require_relative 'conditions_fetch'
+# require_relative 'conditions_fetch'
 
 
 

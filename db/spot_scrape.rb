@@ -26,7 +26,7 @@ def scrap_surfline_spot_id(location)
   search_url = "https://www.surfline.com/search/#{location}"
   html_file = URI.open(search_url).read
   html_doc = Nokogiri::HTML(html_file)
-  html_doc.search('#surf-spots .result a').first.attributes["href"].value
+  html_doc.search('#surf-spots .result a').first.nil? ? true : html_doc.search('#surf-spots .result a').first.attributes["href"].value
 end
 
 
@@ -80,7 +80,7 @@ def get_tides_variables(timestamp,results)
   filtered_results_high = 0
   filtered_results_low = 0
   filtered_results_tide =  results.find{ |result| result["timestamp"] == timestamp }
-  @tide_height = filtered_results_tide["height"]
+  filtered_results_tide.nil? ? filtered_results_tide = []  : @tide_height = filtered_results_tide["height"]
 end
 
 
