@@ -103,7 +103,7 @@ def create_condition(new_spot,spot_id)
 
   # Get the results in an array of wind objects
   results_wind = wind_json["data"]["wind"]
-  @utc_offset = wind_json["associated"]["utcOffset"]
+  # @utc_offset = wind_json["associated"]["utcOffset"]
 
   # Get the results in an array of wave objects
   results_wave = wave_json["data"]["wave"]
@@ -130,7 +130,7 @@ def create_condition(new_spot,spot_id)
     @tide_type = get_tides_variables(timestamp, results_tide)
 
     Condition.create!(
-      utc_offset: @utc_offset,
+      # utc_offset: @utc_offset,
       spot_id: new_spot.id,
       timestamp: @timestamp,
       wind_strength: @wind_strength,

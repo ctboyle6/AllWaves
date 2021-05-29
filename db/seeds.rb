@@ -19,6 +19,7 @@ spot_names.each do |name|
   wind_json = call_wind_api(spot_id)
   new_spot.latitude = wind_json["associated"]["location"]["lat"]
   new_spot.longitude = wind_json["associated"]["location"]["lon"]
+  new_spot.utc_offset = wind_json["associated"]["utcOffset"]
 
   if new_spot.save
     puts "#{new_spot.name.capitalize} has been saved"
