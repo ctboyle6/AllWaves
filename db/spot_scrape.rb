@@ -76,10 +76,10 @@ def get_tides_variables(timestamp,results)
   else
     @tide_type = "NORMAL"
   end
-  filtered_results_high = 0
-  filtered_results_low = 0
-  filtered_results_tide =  results.find{ |result| result["timestamp"] == timestamp }
-  filtered_results_tide.nil? ? filtered_results_tide = []  : @tide_height = filtered_results_tide["height"]
+  # filtered_results_high = 0
+  # filtered_results_low = 0
+  # filtered_results_tide =  results.find{ |result| result["timestamp"] == timestamp }
+  # filtered_results_tide.nil? ? filtered_results_tide = []  : @tide_height = filtered_results_tide["height"]
 end
 
 
@@ -111,52 +111,61 @@ def create_condition(new_spot,spot_id)
   results_tide = tide_json["data"]["tides"]
 
   # Better way to do it
-  i = 0
-  while i < results_wind.length
-    @timestamp = results_wind[i]["timestamp"]
-    @wind_strength = results_wind[i]["speed"]
-    @wind_direction = results_wind[i]["direction"]
-    @wind_gust = results_wind[i]["gust"]
-    @wind_optimal_score = results_wind[i]["optimalScore"]
-    results_tide = tide_json["data"]["tides"]
+  # Keeping the same timestamps
+  timestamps = results_wind.map { |result| result["timestamp"] }
 
-    get_tides_variables(@timestamp, results_tide)
-    @waves_surf_min = results_wave[i]["surf"]["min"]
-    @waves_surf_max = results_wave[i]["surf"]["max"]
-    @waves_surf_optimal_score = results_wave[i]["surf"]["optimalScore"]
-    # Logic to keep the highest swell
-    biggest_swell = 0
-    results_wave[i]["swells"].each do |swell|
-
-      if swell["height"] > biggest_swell
-        biggest_swell = swell["height"]
-        @waves_swell_height = biggest_swell
-        @waves_swell_period = swell["period"]
-        @waves_swell_direction = swell["direction"]
-        @waves_swell_direction_min = swell["directionMin"]
-        @waves_swell_optimal_score = swell["optimalScore"]
-      end
-    end
+  timestamps.each_with_index do |timestamp, index|
+    @timestamp = timestamp
+    @wind_strength = results_wind[index]["speed"]
+    @wind_direction = results_wind[index]["direction"]
+    @wind_optimal_score = results_wind[index]["optimalScore"]
+    @waves_surf_min = results_wave[index]["surf"]["min"]
+    @waves_surf_max = results_wave[index]["surf"]["max"]
+    @waves_surf_optimal_score = results_wave[index]["surf"]["optimalScore"]
+    # logic to determine largest swell
+    primary_swell = results_wave[index]["swells"].sort_by{ |swell| swell["height"] }.reverse.first
+    @waves_swell_height = primary_swell["height"]
+    @waves_swell_period = primary_swell["period"]
+    @waves_swell_direction = primary_swell["direction"]
+    @waves_swell_optimal_score = primary_swell["optimalScore"]
+    @tide_type = get_tides_variables(timestamp, results_tide)
+    # @tide_height = results_tide[index]["height"]
+    # pp condition = {
+    #   timestamp: @timestamp,
+    #   # spot_id: new_spot.id,
+    #   wind_strength: @wind_strength,
+    #   wind_direction: @wind_direction,
+    #   # wind_gust: @wind_gust,
+    #   wind_optimal_score: @wind_optimal_score,
+    #   waves_surf_min: @waves_surf_min,
+    #   waves_surf_max: @waves_surf_max,
+    #   waves_optimal_score: @waves_surf_optimal_score,
+    #   tide_type: @tide_type,
+    #   # tide_height: @tide_height,
+    #   waves_swell_height: @waves_swell_height,
+    #   waves_swell_period: @waves_swell_period,
+    #   waves_swell_direction: @waves_swell_direction,
+    #   waves_swell_direction_min: @waves_swell_direction_min,
+    #   waves_swell_optimal_score: @waves_swell_optimal_score
+    # }
     Condition.create!(
       utc_offset: @utc_offset,
       spot_id: new_spot.id,
       timestamp: @timestamp,
       wind_strength: @wind_strength,
       wind_direction: @wind_direction,
-      wind_gust: @wind_gust,
+      # wind_gust: @wind_gust,
       wind_optimal_score: @wind_optimal_score,
       waves_surf_min: @waves_surf_min,
       waves_surf_max: @waves_surf_max,
       waves_optimal_score: @waves_surf_optimal_score,
       tide_type: @tide_type,
-      tide_height: @tide_height,
+      # tide_height: @tide_height,
       waves_swell_height: @waves_swell_height,
       waves_swell_period: @waves_swell_period,
       waves_swell_direction: @waves_swell_direction,
       waves_swell_direction_min: @waves_swell_direction_min,
       waves_swell_optimal_score: @waves_swell_optimal_score,
     )
-
-    i += 1
   end
 end
