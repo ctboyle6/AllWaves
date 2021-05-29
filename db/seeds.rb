@@ -1,6 +1,4 @@
 require_relative 'spot_scrape'
-# require_relative 'conditions_fetch'
-
 
 
 # <<---- Spot seeds ---->>
@@ -9,7 +7,7 @@ spot_names.each do |name|
   puts "Creating new spot names..."
   new_spot = Spot.new(name: name)
 
-  url_spot_id = scrap_surfline_spot_id(location_human_to_query("#{name}")) # TODO: interpolate search value
+  url_spot_id = scrap_surfline_spot_id(location_human_to_query("#{name}"))
   spot_id = get_id_location(url_spot_id)
   new_spot.surfline_spot = spot_id
 
@@ -66,14 +64,4 @@ else
 end
 
 UserSpot.create(user: user1, spot: Spot.last)
-
-# << tests >>
-# url_spot_id = scrap_surfline_spot_id(location_human_to_query("pipeline")) # TODO: interpolate search value
-# spot_id = get_id_location(url_spot_id)
-
-# << API JSON retrieves >>
-# wind_json = call_wind_api(spot_id)
-# wave_json = call_wave_api(spot_id)
-# tide_json = call_tide_api(spot_id)
-# condition_json = call_condition_api(subregion_id)
 
