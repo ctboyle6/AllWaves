@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_27_211818) do
+ActiveRecord::Schema.define(version: 2021_05_29_180337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2021_05_27_211818) do
     t.string "tide_type"
     t.float "tide_height"
     t.datetime "time_at"
+    t.integer "utc_offset"
     t.index ["spot_id"], name: "index_conditions_on_spot_id"
   end
 
