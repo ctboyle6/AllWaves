@@ -15,6 +15,7 @@ class SpotsController < ApplicationController
       }
     end
     @user_spots = current_user.user_spots
+    @spot = Spot.new
   end
 
   def show

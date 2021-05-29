@@ -36,4 +36,10 @@
   </div>
 <% end %>
 
-<%= link_to "Dashboard", "/" , class: "btn btn-primary", style: "position: fixed; bottom: 0px; right: 0px;"%>
+<div style= "position: fixed; bottom: 37.60px; right: 0px;">
+  <%= simple_form_for @spot do |f| %>
+    <%= f.input :name, label: 'Add a new spot', style: "width: 216.22" %>
+    <%= f.submit "Search", class: "btn btn-primary", style: "width: 216.22"%>
+  <% end %>
+</div>
+<%= link_to "Dashboard", "/" , class: "btn btn-primary", style: "position: fixed; bottom: 0px; right: 0px; width: 216.22;"%>
