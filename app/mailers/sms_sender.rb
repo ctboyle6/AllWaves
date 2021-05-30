@@ -13,7 +13,7 @@ def send_sms_notification(user, user_spot)
   client.messages.create(
   from: from,
   to: to,
-  body: "Your #{user_spot.spot.name} has been updated"
+  body: "#{user_spot.spot.name.capitalize} has been updated - Check the app to look at it ! 🏄"
   )
 
 end
