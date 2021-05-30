@@ -5,7 +5,6 @@
     <%= f.input :name, disabled: true %>
     <%= f.input :pref_unit, as: :radio_buttons, collection: ['FT', 'M'], disabled: true, label: 'Preferred Units' %>
     <%= f.input :swell_hgt_min, as: :range, input_html: { min: 0, max: 20, step: 0.5 }, disabled: true, label: 'Swell Height: Min'  %>
-    <!-- <p id=test>test</p> -->
     <%= f.input :swell_hgt_max, as: :range, input_html: { min: 0, max: 20, step: 0.5 }, disabled: true, label: 'Swell Height: Max' %>
     <%= f.input :swell_int_min, as: :range, input_html: { min: 0, max: 20, step: 0.5 }, disabled: true, label: 'Swell Interval: Min' %>
     <%= f.input :swell_int_max, as: :range, input_html: { min: 0, max: 20, step: 0.5 }, disabled: true, label: 'Swell Interval: Max' %>
