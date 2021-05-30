@@ -8,23 +8,21 @@ const initFormtoggle = () => {
     node.innerHTML = template;
   }
 
-
-  // form_ranges.forEach((range) => {
-  //   const range_val = range.insertAdjacentHTML('beforebegin', `<span>${range.value}</span>`);
-  //   range.addEventListener('input', () => {
-  //     range.innerText = range.value;
-  //     range_val.innerText = range.value;
-  //   });
+  // single range js added
+  // const range_slide = document.getElementById('preference_swell_hgt_min');
+  // range_slide.insertAdjacentHTML('afterend', '<p id=test2>TEST</p>');
+  // range_slide.addEventListener('input', () => {
+  //   let template = `<span>${range_slide.value}</span>`;
+  //   render(template, document.querySelector('#test2'));
   // });
 
-  // console.log(document.querySelector('#test'));
-
-  const range_slide = document.getElementById('preference_swell_hgt_min');
-  range_slide.addEventListener('input', () => {
-    let template = `<span>${range_slide.value}</span>`;
-    render(template, document.querySelector('#test'));
+  form_ranges.forEach((range, index) => {
+    range.insertAdjacentHTML('afterend', `<p id=range-val-insert-${index}></p>`);
+    range.addEventListener('input', () => {
+      let template = `<span>${range.value}</span>`;
+      render(template, document.querySelector(`#range-val-insert-${index}`));
+    });
   });
-  // console.log(range_slide);
 
 
   if(btn) {
