@@ -4,17 +4,21 @@ const initFormtoggle = () => {
   const form_ranges = document.querySelectorAll('.numeric.range')
   const form_save = document.getElementById('form-save');
 
-  // console.log(form_ranges);
-  // form_items[3].insertAdjacentHTML('beforebegin', '<span>kooook</span>')
+  // range slider display value
+  const render = (template, node) => {
+    node.innerHTML = template;
+  }
 
-  // form_ranges.forEach((range) => {
-  //   const range_val = range.insertAdjacentHTML('beforebegin', `<span>${range.value}</span>`);
-  //   range.addEventListener('input', () => {
-  //     range.innerText = range.value;
-  //   });
-  // });
+  form_ranges.forEach((range, index) => {
+    range.insertAdjacentHTML('afterend', `<p id=range-val-insert-${index}>${range.value}</p>`);
+    range.addEventListener('input', () => {
+      let template = `<span>${range.value}</span>`;
+      render(template, document.querySelector(`#range-val-insert-${index}`));
+    });
+  });
 
 
+  // lock/unlock form
   if(btn) {
   btn.addEventListener('click', (event) => {
     event.preventDefault();
