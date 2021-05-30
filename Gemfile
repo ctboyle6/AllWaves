@@ -37,6 +37,7 @@ gem 'devise'
 gem 'pundit'
 gem 'geocoder'
 gem 'simple_form_extension'
+gem 'twilio-ruby', '~> 5.54.0'
 
 group :development, :test do
   gem 'pry-byebug'
