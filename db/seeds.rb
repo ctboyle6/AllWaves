@@ -1,8 +1,9 @@
 require_relative 'spot_scrape'
-
+require_relative '../app/mailers/sms_sender'
+require 'twilio-ruby'
 
 # <<---- Spot seeds ---->>
-spot_names = %w[ pipeline jaws trestles]
+spot_names = %w[ pipeline] #jaws trestles 
 spot_names.each do |name|
   puts "Creating new spot names..."
   new_spot = Spot.new(name: name)
@@ -36,7 +37,7 @@ spot_names.each do |name|
 end
 
 # <<---- User seeds ---->>
-user1 = User.create!(email: "a@a.a", password:"123456", username:"user1", location: "Miami")
+user1 = User.create!(email: "a@a.a", password:"123456", username:"user1", location: "Miami", phone_number: "+15142681755")
 user2 = User.create!(email: "allwavesproject@gmail.com", password:"123456", username:"user2", location: "Florida")
 
 
@@ -65,7 +66,13 @@ else
   puts"#{preset3.name} preference was not saved"
 end
 
-UserSpot.create(user: user1, spot: Spot.last)
+user1_spot = UserSpot.new(user: user1, spot: Spot.last)
+
+if user1_spot.save!
+  send_sms_notification(user1, user1_spot)
+  puts "Sms sent to #{user1.phone_number}" 
+end
+
 user_spot2 =  UserSpot.new(user: user2, spot: Spot.first)
 
 if user_spot2.save

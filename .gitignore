@@ -41,6 +41,6 @@ yarn-debug.log*
 *.swp
 .DS_Store
 .env*
-sendgrid.env
-sendgrid.env
-sendgrid.env
+twilio.env*
+sendgrid.env*
+
