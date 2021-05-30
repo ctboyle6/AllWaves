@@ -3,6 +3,7 @@ class PreferencesController < ApplicationController
 
   def index
     @preferences = policy_scope(Preference)
+    @preference = Preference.new
   end
 
   def show; end
