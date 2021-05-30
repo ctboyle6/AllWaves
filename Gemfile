@@ -37,6 +37,7 @@ gem 'devise'
 gem 'pundit'
 gem 'geocoder'
 gem 'simple_form_extension'
+gem 'sendgrid-ruby'
 
 group :development, :test do
   gem 'pry-byebug'

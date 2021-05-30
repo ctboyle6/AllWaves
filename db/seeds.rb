@@ -37,6 +37,7 @@ end
 
 # <<---- User seeds ---->>
 user1 = User.create!(email: "a@a.a", password:"123456", username:"user1", location: "Miami")
+user2 = User.create!(email: "allwavesproject@gmail.com", password:"123456", username:"user2", location: "Florida")
 
 
 # <<---- Preference seeds ---->>
@@ -65,4 +66,8 @@ else
 end
 
 UserSpot.create(user: user1, spot: Spot.last)
+user_spot2 =  UserSpot.new(user: user2, spot: Spot.first)
 
+if user_spot2.save
+  UserNotifierMailer.update_conditions(user2,user_spot2).deliver
+end

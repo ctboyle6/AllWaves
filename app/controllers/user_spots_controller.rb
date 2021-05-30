@@ -1,6 +1,6 @@
 class UserSpotsController < ApplicationController
 
-    def index
+  def index
     @user_spots = UserSpot.all
   end
   
