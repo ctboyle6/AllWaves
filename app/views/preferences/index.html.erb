@@ -19,7 +19,7 @@
           </h2>
         </div>
 
-        <div id="collapse-<%= index + 1 %>" class="collapse show" aria-labelledby="heading-<%= index + 1 %>" data-parent="#accordionPreferences">
+        <div id="collapse-<%= index + 1 %>" class="collapse" aria-labelledby="heading-<%= index + 1 %>" data-parent="#accordionPreferences">
           <div class="card-body">
             <%= simple_form_for preference, remote: true do |f| %>
               <%= f.input :name, disabled: true %>
