@@ -7,6 +7,13 @@
     </ul>
   <% end %>
 
+  <select class="custom-select" name="preference_id">
+    <option selected>Select a preference</option>
+    <% current_user.preferences.each do |preference| %>
+      <option value="<%= preference.id %>"><%= preference.name %></option>
+    <% end %>
+  </select>
+
   <br>
 
   <%= link_to "Create new preference set", new_preference_path, class: "btn btn-primary my-3" %>
