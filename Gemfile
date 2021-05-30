@@ -38,6 +38,7 @@ gem 'pundit'
 gem 'geocoder'
 gem 'simple_form_extension'
 gem 'sendgrid-ruby'
+gem 'pg_search', '~> 2.3.0'
 
 group :development, :test do
   gem 'pry-byebug'

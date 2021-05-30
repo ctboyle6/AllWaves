@@ -8,4 +8,10 @@ class Spot < ApplicationRecord
   validates :longitude, presence: true
   validates :surfline_spot, uniqueness: true
   validates :surfline_subregion, presence: true
+  include PgSearch::Model
+  pg_search_scope :search_by_spot_name,
+    against: :name,
+    using: {
+      tsearch: { prefix: true }
+    }
 end
