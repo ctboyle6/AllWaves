@@ -52,6 +52,7 @@ class SpotsController < ApplicationController
       wind_json = call_wind_api(spot_id)
       @spot.latitude = wind_json["associated"]["location"]["lat"]
       @spot.longitude = wind_json["associated"]["location"]["lon"]
+      @spot.utc_offset = wind_json["associated"]["utcOffset"]
 
       url_subregion_id = scrap_surfline_subregion_id(url_spot_id)
       subregion_id = get_id_location(url_subregion_id)
