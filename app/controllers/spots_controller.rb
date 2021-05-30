@@ -2,8 +2,15 @@ require_relative '../../db/spot_scrape'
 
 class SpotsController < ApplicationController
   def index
+    @search_message = ""
     if params[:query].present?
       @spots = Spot.near(params[:query], 400)
+      if @spots.size.zero?
+        @spots = Spot.search_by_spot_name(params[:query])
+        if @spots.size.zero?
+          @search_message = "There are no spots matching your search!"
+        end
+      end
     else
       @spots = Spot.all
     end
@@ -37,7 +44,7 @@ class SpotsController < ApplicationController
       flash[:alert] = "Sorry, the location you entered is not a Surf spot"
       redirect_to spots_path
     else
-      url_spot_id = scrap_surfline_spot_id(location_human_to_query(params[:spot][:name])) 
+      url_spot_id = scrap_surfline_spot_id(location_human_to_query(params[:spot][:name]))
       spot_id = get_id_location(url_spot_id)
       @spot = Spot.new(name: params[:spot][:name])
       @spot.surfline_spot = spot_id
@@ -60,8 +67,8 @@ class SpotsController < ApplicationController
 
       spot_id = get_id_location(url_spot_id)
       if @spot.id.nil?
-        flash[:alert] = "Spot already exists" 
-      else 
+        flash[:alert] = "Spot already exists"
+      else
         create_condition(@spot,spot_id)
       end
     end
