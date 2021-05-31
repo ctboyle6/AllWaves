@@ -5,7 +5,7 @@
       <%= image_tag "allWaves_logo_bright.png", id: "logo" %>
     <% end %>
 
-    <div class="user-info">
+    <div id="user-info">
 
       <%= link_to "#" do %>
         <%= image_tag "Stephfoo.png", id: "user-image" %>
@@ -14,11 +14,11 @@
      <p><%= current_user.username %></p>
     </div>
 
-    <div class="dark nav-button">
+    <div class="dark nav-button" id="dashboard">
       <%= link_to "Dashboard", "#" %>
     </div>
     
-    <div class="light nav-button">
+    <div class="light nav-button" id="logout">
      <%= link_to "Log Out", "#" %>
     </div>
   </div>
