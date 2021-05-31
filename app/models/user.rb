@@ -7,4 +7,9 @@ class User < ApplicationRecord
   has_many :spots, through: :user_spots
   has_many :preferences, dependent: :destroy
   has_one_attached :avatar
+
+  def grouped_spots
+    # spots.order(favourite: :desc)
+    spots
+  end
 end

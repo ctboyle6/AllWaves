@@ -5,7 +5,6 @@ class DashboardsController < ApplicationController
       set_pref_and_spot
       @result = Result.new(preference: @preference, spot: @spot)
     end
-    raise
   end
 
   private
