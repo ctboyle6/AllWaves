@@ -37,7 +37,9 @@
             <%= f.input :wind_dir_max, as: :range, input_html: { min: 0, max: 360, step: 5 }, label: 'Wind Direction: Max 🧭 ⬆', hint: 'Wind direction refers to the trajectory of nearby winds. Onshore winds (perpendicular and toward beach) push behind incoming swell, while offshores (perpendicular and toward sea) groom up the faces of incoming swells. Generally, offshore winds = greater wave quality.' %>
             <br>
             <br>
-            <%= f.input :pref_tide_position, as: :radio_buttons, collection: ['LOW', 'NORMAL', 'HIGH'], label: 'Preferred Tide Position' %>
+            <%= f.input :pref_tide_position, as: :radio_buttons, collection: ['LOW', 'NORMAL', 'HIGH'], label: 'Preferred Tide Position', hint: 'Tide position refers to the time periods where the tide is at its lowest, highest, or mid-points. High tide with too weak of swell may result in a flat day, while low tide may introduce more friction to incoming swells. Consult with your locals!' %>
+            <br>
+            <br>
             <%= f.button :submit, class: "btn btn-primary" %>
           <% end %>
         </div>
@@ -78,7 +80,9 @@
               <%= f.input :wind_dir_max, as: :range, input_html: { min: 0, max: 360, step: 5 }, label: 'Wind Direction: Max 🧭 ⬆', hint: 'Wind direction refers to the trajectory of nearby winds. Onshore winds (perpendicular and toward beach) push behind incoming swell, while offshores (perpendicular and toward sea) groom up the faces of incoming swells. Generally, offshore winds = greater wave quality.' %>
               <br>
               <br>
-              <%= f.input :pref_tide_position, as: :radio_buttons, collection: ['LOW', 'NORMAL', 'HIGH'], label: 'Preferred Tide Position' %>
+              <%= f.input :pref_tide_position, as: :radio_buttons, collection: ['LOW', 'NORMAL', 'HIGH'], label: 'Preferred Tide Position', hint: 'Tide position refers to the time periods where the tide is at its lowest, highest, or mid-points. High tide with too weak of swell may result in a flat day, while low tide may introduce more friction to incoming swells. Consult with your locals!' %>
+              <br>
+              <br>
               <%= f.submit class: "btn btn-secondary", id: "form-toggle" %>
             <% end %>
             <%= link_to "Delete Preference", preference_path(preference), method: :delete, class: "btn btn-danger my-3" %>
