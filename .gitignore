@@ -44,3 +44,4 @@ yarn-debug.log*
 twilio.env*
 sendgrid.env*
 
+sendgrid.env
