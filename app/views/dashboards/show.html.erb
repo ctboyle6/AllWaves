@@ -8,7 +8,8 @@
   <% if @user_spots.present? %>
     <% @user_spots.each do |user_spot| %>
       <h2><%= user_spot.spot.name.capitalize %></h2>
-      <form action="/result/conditions/<%= Condition.find_by(spot: user_spot.spot).id %>">
+      <!-- <form action="/result/conditions/<%#= Condition.find_by(spot: user_spot.spot).id %>"> -->
+      <form action="<%= result_spot_path(user_spot.spot)%>">
 
         <br>
 

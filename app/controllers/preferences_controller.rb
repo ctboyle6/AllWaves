@@ -3,6 +3,7 @@ class PreferencesController < ApplicationController
 
   def index
     @preferences = policy_scope(Preference)
+    @preference = Preference.new
   end
 
   def show; end
@@ -17,7 +18,7 @@ class PreferencesController < ApplicationController
     @preference.user = current_user
     authorize @preference
     if @preference.save
-      redirect_to preference_path(@preference)
+      redirect_to preferences_path
     else
       render :new
     end
@@ -27,7 +28,7 @@ class PreferencesController < ApplicationController
 
   def update
     @preference.update(preference_params)
-    redirect_to @preference
+    redirect_to preferences_path
   end
 
   def destroy

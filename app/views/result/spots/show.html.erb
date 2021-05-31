@@ -1,0 +1,32 @@
+
+<div class="container">
+  <h1 class="my-3 text-center">GO week view</h1>
+  <div class="row justify-content-center py-3">
+    <div class="col-10">
+      <div class="card-group">
+        <% @result.days.each do |day| %>
+          <div class="card">
+            <h2><%= @result.spot.name %></h2>
+            <p><%= day.date %></p>
+            <p><%= day.any_go? %></p>
+            <p><%= day.time_periods.count %></p>
+            <ul>
+              <% day.time_periods.each do |block| %>
+                <li><%= block.go? %></li>
+                <!-- <#% raise %> -->
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="text-center">
+    <%= link_to "Preferences", preferences_path, class: "btn btn-primary my-3"  %>
+    <%= link_to "Dashboard", user_root_path, class: "btn btn-primary my-3"  %>
+  </div>
+</div>
+
+
+
+
