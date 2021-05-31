@@ -1,13 +1,20 @@
-.dashboard > h1, h2 {
+h1, h2 {
   color:white;
 }
 
 .top-bubble-lg {
-  background-color: rgba(196, 196, 196, 0.1);
+  background-color: $bubble;
   display: flex;
   position: relative;
   top: 20px;
   border-radius: 26px;
   margin: 0px 20px;
   height: 220px;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+}
+
+.preference-spot-block {
+  margin: 60px 20px;
 }
