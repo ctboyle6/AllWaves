@@ -5,6 +5,7 @@
       <%= image_tag "allWaves_logo_bright.png", id: "logo" %>
     <% end %>
 
+    <% if user_signed_in? %>
     <div id="user-info">
 
       <%= link_to "#" do %>
@@ -13,13 +14,15 @@
 
      <p id="username"><%= current_user.username %></p>
     </div>
-
+    
+  
     <div class="dark nav-button" id="dashboard">
       <%= link_to "Dashboard", "#" %>
     </div>
     
     <div class="light nav-button" id="logout">
-     <%= link_to "Log Out", "#" %>
+    <%= link_to "Log out", destroy_user_session_path, method: :delete %>
     </div>
+    <% end %>
   </div>
 </div>
