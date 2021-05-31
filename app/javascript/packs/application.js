@@ -26,6 +26,7 @@ require("channels")
 
 // External imports
 import "bootstrap";
+import "controllers"
 
 
 // Internal imports, e.g:
@@ -33,9 +34,12 @@ import "bootstrap";
 import { initMapbox } from '../plugins/init_mapbox';
 import { initFormtoggle } from '../components/init_formtoggle';
 import { initDropdownSelect } from '../components/init_dropdown_select';
+import { initResultCreator } from '../components/init_result_creator';
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initFormtoggle();
+  // initResultCreator();
   // initDropdownSelect();
 });
+
