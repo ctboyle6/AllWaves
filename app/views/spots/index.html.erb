@@ -23,7 +23,7 @@
         <img src="https://source.unsplash.com/700x200/?/" style="height: 200px; width: 100%; object-fit: cover;"
         <div class="card-trip-infos" style=" padding: 16px; display: flex; justify-content: space-between; align-items: flex-end; position: relative;">
           <div>
-            <h2 style=" font-size: 16px; font-weight: bold; margin: 10px;"><%= spot.name.capitalize %></h2>
+            <h2 id="<%= spot.name.capitalize %>" style=" font-size: 16px; font-weight: bold; margin: 10px;"><%= spot.name.capitalize %></h2>
           </div>
           <div style=" margin-right: 10px; margin-bottom: 10px; text-align: right">
             <% if @user_spots.select { |user_spot| user_spot.spot_id == spot.id } != []  %>

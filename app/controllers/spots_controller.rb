@@ -18,7 +18,8 @@ class SpotsController < ApplicationController
     @markers = @spots.map do |spot|
       {
         lat: spot.latitude,
-        lng: spot.longitude
+        lng: spot.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { spot: spot })
       }
     end
     @user_spots = current_user.user_spots
