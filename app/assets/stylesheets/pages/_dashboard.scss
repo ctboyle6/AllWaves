@@ -37,6 +37,11 @@ h1, h2 {
   border: none;
   color: white;
   border-radius: 26px;
+  margin: 0px 0px;
+}
+
+.dropdown-button-group {
+  display: flex;
 }
 
 // Weekly schedule with days

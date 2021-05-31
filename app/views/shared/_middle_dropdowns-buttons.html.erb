@@ -1,15 +1,25 @@
 <div class="preference-spot-block">
 
     <%# Preferences dropdown and buttons %>
-    <div class="preferences-btn body-btn">
-      <%= link_to "My preferences", preferences_path %>
-    </div>
+    
 
     <%# Preferences dropdown and buttons %>
     <% if @user_spots.present? %>
     <%= simple_form_for :result, url: result_spot_path(:all_waves), remote: true, html: { 'data-controller': 'dashboard', class: "dropdown"}, method: :get do |f| %>
-      <%= f.input :spot_id, collection: current_user.grouped_spots, include_blank: false, input_html: { 'data-action': 'change->dashboard#handleSelect', class: "dropdown-list"} %>
-      <%= f.input :preference_id, collection: current_user.preferences, include_blank: false, input_html: { 'data-action': 'change->dashboard#handleSelect', class: "dropdown-list"} %>
+      
+      <div class="preference-group dropdown-button-group">
+        <%= f.input :preference_id, collection: current_user.preferences, include_blank: false, input_html: { 'data-action': 'change->dashboard#handleSelect', class: "dropdown-list"}, label: false %>
+        <div class="preferences-btn body-btn">
+          <%= link_to "My preferences", preferences_path %>
+        </div>
+      </div>
+
+      <div class="spot-group dropdown-button-group">
+        <%= f.input :spot_id, collection: current_user.grouped_spots, include_blank: false, input_html: { 'data-action': 'change->dashboard#handleSelect', class: "dropdown-list"}, label: false %>      
+        <div class="preferences-btn body-btn">
+          <%= link_to "Add a new spot", spots_path %>
+        </div>
+      </div>
     <% end %>
      <!--  <form id="dashboard-result" action="<%= user_root_path %>">
 
@@ -38,6 +48,6 @@
     <% else %>
       <h2>You don't have any spots saved!</h2>
   <% end %>
-  <%= link_to "Add a new spot", spots_path, class: "btn btn-primary my-3" %>
+  
 
 </div>
