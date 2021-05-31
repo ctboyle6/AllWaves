@@ -28,6 +28,17 @@ h1, h2 {
   justify-content: space-evenly;
 }
 
+.dropdown {
+  display: flex;
+}
+
+.dropdown-list {
+  background-color: $bubble;
+  border: none;
+  color: white;
+  border-radius: 26px;
+}
+
 // Weekly schedule with days
 
 .weekly-schedule {

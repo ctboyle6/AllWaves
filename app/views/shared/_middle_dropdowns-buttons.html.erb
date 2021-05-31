@@ -7,9 +7,9 @@
 
     <%# Preferences dropdown and buttons %>
     <% if @user_spots.present? %>
-    <%= simple_form_for :result, url: result_spot_path(:all_waves), remote: true, html: { 'data-controller': 'dashboard'}, method: :get do |f| %>
-      <%= f.input :spot_id, collection: current_user.grouped_spots, include_blank: false, input_html: { 'data-action': 'change->dashboard#handleSelect'} %>
-      <%= f.input :preference_id, collection: current_user.preferences, include_blank: false, input_html: { 'data-action': 'change->dashboard#handleSelect'} %>
+    <%= simple_form_for :result, url: result_spot_path(:all_waves), remote: true, html: { 'data-controller': 'dashboard', class: "dropdown"}, method: :get do |f| %>
+      <%= f.input :spot_id, collection: current_user.grouped_spots, include_blank: false, input_html: { 'data-action': 'change->dashboard#handleSelect', class: "dropdown-list"} %>
+      <%= f.input :preference_id, collection: current_user.preferences, include_blank: false, input_html: { 'data-action': 'change->dashboard#handleSelect', class: "dropdown-list"} %>
     <% end %>
      <!--  <form id="dashboard-result" action="<%= user_root_path %>">
 
