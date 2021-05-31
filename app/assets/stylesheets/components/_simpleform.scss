@@ -1,0 +1,17 @@
+.simple_form .field_with_hint input{
+  margin-bottom: 0;
+  &:hover~.hint{
+    display: block;
+  }
+}
+
+.simple_form .hint {
+  display: none;
+  padding: 0.375rem 0.5625rem;
+  margin-bottom: 1rem;
+  font-size: 0.75rem;
+  font-weight: normal;
+  font-style: italic;
+  background: #a0d3e8;
+  color: white;
+}
