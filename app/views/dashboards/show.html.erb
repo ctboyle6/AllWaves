@@ -1,9 +1,21 @@
-<div class="container m-3">
+<div class="top-bubble-lg">
+  <%# display flex %>
+  <h2>27</h2>
+  <div>
+    <p>clear sky</p>
+  </div>
+  <div>
+    <p>today</p>
+    <p>friday, 28 May</p>
+    <p>Miami, Florida</p>
+  </div>
+</div>
+
+<div class="dashboard m-3">
   <h1>Dashboard</h1>
   <h2><%= link_to "My preferences", preferences_path, class: "btn btn-primary" %></h2>
 
   <br>
-
 
   <% if @user_spots.present? %>
     <% @user_spots.each do |user_spot| %>
