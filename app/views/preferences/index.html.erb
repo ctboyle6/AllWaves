@@ -16,6 +16,7 @@
         <div class="card-body">
           <%= simple_form_for @preference, remote: true do |f| %>
             <%= f.input :name %>
+            <%= f.input :favourite %>
             <%= f.input :pref_unit, as: :radio_buttons, collection: ['FT', 'M'], label: 'Preferred Units 📏' %>
             <h3>Swell</h3>
             <hr>
@@ -79,6 +80,7 @@
           <div class="card-body">
             <%= simple_form_for preference, remote: true do |f| %>
               <%= f.input :name %>
+              <%= f.input :favourite %>
               <%= f.input :pref_unit, as: :radio_buttons, collection: ['FT', 'M'], label: 'Preferred Units 📏' %>
               <h3>Swell</h3>
               <hr>

@@ -9,7 +9,6 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   def grouped_spots
-    # spots.order(favourite: :desc)
     spots
   end
 end
