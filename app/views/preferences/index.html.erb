@@ -61,6 +61,7 @@
               <%= f.input :pref_tide_position, as: :radio_buttons, collection: ['LOW', 'NORMAL', 'HIGH'], label: 'Preferred Tide Position' %>
               <%= f.submit class: "btn btn-secondary", id: "form-toggle" %>
             <% end %>
+            <%= link_to "Delete Preference", preference_path(preference), method: :delete, class: "btn btn-danger my-3" %>
           </div>
         </div>
       </div>
