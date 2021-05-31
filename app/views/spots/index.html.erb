@@ -21,7 +21,7 @@
 <% @spots.each do |spot| %>
   <div class="d-flex justify-content-center">
       <div class="card-trip" style="margin:20px; width: 60%; overflow: hidden; background: white; box-shadow: 0 0 15px rgba(0,0,0,0.2);">
-        <img src="https://source.unsplash.com/700x200/?/" style="height: 200px; width: 100%; object-fit: cover;"
+        <img src="https://source.unsplash.com/700x200/?<%=spot.name%>-surf/" style="height: 200px; width: 100%; object-fit: cover;"
         <div class="card-trip-infos" style=" padding: 16px; display: flex; justify-content: space-between; align-items: flex-end; position: relative;">
           <div>
             <h2 id="<%= spot.name.capitalize %>" style=" font-size: 16px; font-weight: bold; margin: 10px;"><%= spot.name.capitalize %></h2>
