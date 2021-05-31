@@ -2,6 +2,8 @@ h1, h2 {
   color:white;
 }
 
+// Top bubble info
+
 .top-bubble-lg {
   background-color: $bubble;
   display: flex;
@@ -9,12 +11,76 @@ h1, h2 {
   top: 20px;
   border-radius: 26px;
   margin: 0px 20px;
+  margin-bottom: 40px;
+  min-width: 1198px;
   height: 220px;
   justify-content: space-around;
   align-items: center;
   color: white;
 }
 
+// Middle block containing the preferences and spots dropdowns/buttons
+
 .preference-spot-block {
-  margin: 60px 20px;
+  display: flex;
+  margin: 0px 20px;
+  justify-content: space-evenly;
+}
+
+// Weekly schedule with days
+
+.weekly-schedule {
+  display: flex;
+  margin: 20px 20px;
+  min-width: 1198px;
+  height: 160px;
+  justify-content: space-around;
+}
+
+.day {
+  background-color: $bubble;
+  min-width: 175px;
+  height: 160px;
+  border-radius: 26px;
+}
+
+// Bottom block
+
+.bottom-block {
+  margin: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 40px;
+  height: 320px;
+}
+
+.current-day {
+  background-color: $bubble;
+  min-width: 372px;
+  height: 280px;
+  border-radius: 26px;
+  flex-grow: 0;
+}
+
+.preferences-overview {
+  color: white;
+  text-align: center;
+}
+
+.preference {
+  width: 170px;
+  height: 58px;
+  background-color: $bubble;
+  border-radius: 26px;
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 8px;
+}
+
+.time-schedule {
+  min-width: 570px;
+  flex-grow: 1;
+  height: 280px;
+  background-color: $bubble;
+  border-radius: 26px;
 }
