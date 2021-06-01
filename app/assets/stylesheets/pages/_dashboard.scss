@@ -24,8 +24,31 @@ h1, h2 {
 .preference-spot-block {
   display: flex;
   margin: 0px 20px;
-  min-width: 1198px;
-  justify-content: space-evenly;
+  
+  align-items: center;
+}
+
+#preference {
+  background-color: $bubble;
+  color: white;
+  border: none;
+  width: 200px;
+  height: 48px;
+  border-radius: 30px;
+  padding-left: 14px;
+  margin-right: 10px;
+}
+
+#spot {
+  background-color: $bubble;
+  color: white;
+  border: none;
+  width: 266px;
+  height: 60px;
+  border-radius: 50px;
+  margin-left: 200px;
+  margin-right: 10px;
+  padding-left: 14px;
 }
 
 // Weekly schedule with days
