@@ -1,23 +1,23 @@
 <div class="preference-spot-block">
 
-  <div class="container m-3">    
+  <div class="container m-3">
 
    <br>
 
     <% if @user_spots.present? %>
         <%= simple_form_for :result, url: result_spot_path(:all_waves), remote: true, html: { 'data-controller': 'dashboard', class: 'preference-spot-block'}, method: :get do |f| %>
-          <%= f.input :preference_id, collection: current_user.preferences, include_blank: false, input_html: { 'data-action': 'change->dashboard#handleSelect', id: 'preference'}, label: false %>
+          <%= f.input :preference_id, collection: current_user.grouped_preferences, include_blank: false, input_html: { 'data-action': 'change->dashboard#handleSelect', id: 'preference'}, label: false %>
           <%= link_to "My preferences", preferences_path, class: "body-btn light-btn" %>
 
-          <%= f.input :spot_id, collection: current_user.grouped_spots, include_blank: false, input_html: { 'data-action': 'change->dashboard#handleSelect', id: 'spot'}, label: false %>
+          <%= f.input :spot_id, collection: current_user.spots, include_blank: false, input_html: { 'data-action': 'change->dashboard#handleSelect', id: 'spot'}, label: false %>
           <%= link_to "Add a new spot", spots_path, class: "body-btn light-btn" %>
         <% end %>
-    
+
        <div id="result"></div>
       <% else %>
       <h2>You don't have any spots saved!</h2>
     <% end %>
-   
+
   </div>
 
 </div>
