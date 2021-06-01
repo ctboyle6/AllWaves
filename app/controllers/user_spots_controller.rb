@@ -17,7 +17,7 @@ class UserSpotsController < ApplicationController
     @user_spot.user_id = @user_id
     if @user_spot.save
       flash[:alert] = "UserSpot successfully created"
-      redirect_to user_root_path
+      redirect_to spots_path
     else
       flash[:alert] = "Something went wrong"
       render 'new'
@@ -28,10 +28,10 @@ class UserSpotsController < ApplicationController
     @user_spot = UserSpot.find(params[:id])
     if @user_spot.destroy
       flash[:alert]  = 'UserSpot was successfully deleted.'
-      redirect_to "/"
+      redirect_to spots_path
     else
       flash[:alert]  = 'Something went wrong'
-      redirect_to "/"
+      redirect_to spots_path
     end
   end
 

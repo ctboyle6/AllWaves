@@ -11,7 +11,6 @@ const fitMapToMarkersAndLocation = (map, markers) => {
     padding: 80,
     duration: 500,
   });
-  console.log(bounds);
 };
 
 const initMapbox = () => {
@@ -58,8 +57,6 @@ const initMapbox = () => {
         .addTo(map);
       });
       markers.push(userLocation._userLocationDotMarker._lngLat)
-      console.log(markers)
-      
       fitMapToMarkersAndLocation(map, markers);
     }
     
