@@ -7,11 +7,4 @@ export default class extends Controller {
   connect() {
     Rails.fire(this.element, "click");
   }
-
-  // handleSelect() {
-  //   this.submitForm();
-  // }
-  // submitForm() {
-  //   Rails.fire(this.element, "submit");
-  // }
 }
