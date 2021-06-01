@@ -1,6 +1,6 @@
 class Result
   class Day
-    attr_reader :date
+    attr_reader :date, :preference, :spot
 
     def initialize(params)
       @date       = params[:date] || Date.today
