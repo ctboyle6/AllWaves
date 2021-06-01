@@ -6,12 +6,12 @@
   align-items: center;
 }
 
-.preferences-btn {
-  width: 120px;
+.light-btn {
+  min-width: 140px;
   height: 40px;
 }
 
-.preferences-btn > a {
+a.light-btn {
   text-decoration: none;
   color: white;
 }
