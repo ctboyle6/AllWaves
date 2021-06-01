@@ -1,0 +1,90 @@
+#signup {
+  margin: 0 auto;
+  width: 600px;
+  height: 600px;
+  text-align: center;
+  color: white;
+  text-align: center;
+  // font-family: sans-serif;
+
+  h2 {
+    padding: 60px 0px;
+    // font-family: "Lato", sans-serif !important;
+  }
+
+  .field {
+    background-color: $bubble;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    margin-bottom: 40px;
+    width: 300px;
+    height: 34px;
+    font-size: 20px;
+    padding: 6px;
+    
+  }
+
+  .form-inputs {
+    // text-align: center;
+  }
+
+  .form-inputs input:focus {
+    box-shadow: 0px 0px 2px 2px #1c3044;
+    outline: none;
+  }
+
+  .email {
+    text-decoration: none;
+    
+  }
+
+  .label-field {
+    text-align: left;
+    width: 300px;
+    margin: 0 auto;
+  }
+
+  label {
+    margin-bottom: 2px;
+    font-weight: 600;
+  }
+
+  .btn {
+    color: white;
+    width: 100px;
+    height: 30px;
+  }
+
+  .form-actions input {
+    background-image: $bodybtn;
+    border-radius: 66px;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    width: 140px;
+    height: 40px;
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 20px;
+  }
+
+  // .body-btn {
+  //   width: 120px;
+  //   height: 40px;
+  //   margin: 20px auto;
+  // }
+
+  a.login {
+    color: white;
+    text-decoration: none;
+    // font-family:  sans-serif !important;
+  }
+
+  p {
+    padding-top: 10px;
+  }
+
+}
