@@ -18,12 +18,12 @@
       <div class="pref-summary">
         <p><%= day.preference.wind_str_min %>kmh-<%= day.preference.wind_str_max %>kmh</p>
         <p><%= day.preference.wind_dir_min %>°-<%= day.preference.wind_dir_max %>°</p>
+        <p><%= day.preference.swell_int_min %>s-<%= day.preference.swell_int_max %>s</p>
       </div>
     </div>
     <div class="preference d-flex">
       <h3>Tide</h3>
       <div class="pref-summary">
-        <p><%= day.preference.swell_int_min %>s-<%= day.preference.swell_int_max %>s</p>
         <p><%= day.preference.pref_tide_position %></p>
       </div>
     </div>
@@ -32,13 +32,13 @@
     <% day.time_periods.each_with_index do |block, index| %>
       <div class="time-period" style='background-color:<%= "#{block.go? ? 'green' : 'red'}" %>';>
         <p><%= index * 3 %>:00</p>
-        <p><%= block.condition.waves_swell_height %>ft</p>
-        <p><%= block.condition.waves_swell_direction %>°</p>
+        <p><%= block.condition.waves_swell_height.round(1) %>ft</p>
+        <p><%= block.condition.waves_swell_direction.round(0) %>°</p>
+        <p><%= block.condition.waves_swell_period %>s</p>
         <br>
         <p><%= block.condition.wind_strength %>kmh</p>
         <p><%= block.condition.wind_direction %>°</p>
         <br>
-        <p><%= block.condition.waves_swell_period %>s</p>
         <p><%= block.condition.tide_type %>°</p>
       </div>
     <% end %>
