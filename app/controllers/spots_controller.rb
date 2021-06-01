@@ -17,7 +17,7 @@ class SpotsController < ApplicationController
         else
       end
     else
-      @spots = Spot.near(current_user.location, 500)
+      @spots = Spot.all
     end
     
     @markers = @spots.map do |spot|
