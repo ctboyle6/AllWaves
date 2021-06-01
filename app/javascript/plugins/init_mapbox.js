@@ -1,29 +1,70 @@
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-const fitMapToMarkers = (map, markers) => {
-  const bounds = new mapboxgl.LngLatBounds();
+const fitMapToMarkersAndLocation = (map, markers) => {
+  const  bounds = new mapboxgl.LngLatBounds();
+
   markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-  map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
+
+
+  map.fitBounds(bounds, { 
+    padding: 80,
+    duration: 500,
+  });
+  console.log(bounds);
 };
 
 const initMapbox = () => {
-  const mapElement = document.getElementById('map');
-  console.log(mapElement);
-  if (mapElement) { // only build a map if there's a div#map to inject into
+  const mapElement = document.getElementById('map');  
+  if (mapElement) {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/clay-land/ckp5osrj83shf17moirgdc925'
+      style: 'mapbox://styles/clay-land/ckp5osrj83shf17moirgdc925',
+      center: [-80.6862, 28.3067]
     });
-    console.log(map);
-    const markers = JSON.parse(mapElement.dataset.markers);
-    markers.forEach((marker) => {
-      new mapboxgl.Marker()
-        .setLngLat([ marker.lng, marker.lat ])
+
+    let geolocate = new mapboxgl.GeolocateControl({
+      fitBoundsOptions: {
+       linear: true,
+       minZoom: 1,
+       maxZoom: 1,
+      center: [-80.6862, 28.3067]
+      },
+      positionOptions: {
+        enableHighAccuracy: false
+      },
+      trackUserLocation: false
+    });
+    map.addControl(geolocate);
+    map.on('load', function () {
+      geolocate.trigger();
+    });
+    
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    
+    async function getUserLocation() {
+      
+      const userLocation = geolocate.on('geolocate');
+      await sleep(3000);
+      const markers = JSON.parse(mapElement.dataset.markers);
+      markers.forEach((marker) => {
+        const popup = new mapboxgl.Popup().setHTML(marker.info_window);
+        new mapboxgl.Marker()
+        .setLngLat([marker.lng, marker.lat])
+        .setPopup(popup)
         .addTo(map);
-    });
-    fitMapToMarkers(map, markers);
+      });
+      markers.push(userLocation._userLocationDotMarker._lngLat)
+      console.log(markers)
+      
+      fitMapToMarkersAndLocation(map, markers);
+    }
+    
+    getUserLocation();
+    
   }
 };
 
