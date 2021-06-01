@@ -15,7 +15,7 @@ class PreferencesController < ApplicationController
 
   def create
     @preference = Preference.new(preference_params)
-    mark_as_favourite!(@preference) if @preference.favourite
+    falsify_favourites! if @preference.favourite
     @preference.user = current_user
     authorize @preference
     if @preference.save
@@ -28,9 +28,12 @@ class PreferencesController < ApplicationController
   def edit; end
 
   def update
-    @preference.update(preference_params)
-    mark_as_favourite!(@preference) if @preference.favourite
-    redirect_to preferences_path
+    if @preference.update(preference_params)
+      falsify_favourites! if @preference.favourite
+      redirect_to preferences_path
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -39,13 +42,12 @@ class PreferencesController < ApplicationController
 
   private
 
-  def mark_as_favourite!(preference)
-    Preference.where(user: current_user).each do |pref|
+  def falsify_favourites!
+    all_but_current = Preference.where(user: current_user).where.not(id: @preference.id)
+    all_but_current.each do |pref|
       pref.favourite = false
       pref.save
     end
-    preference.favourite = true
-
   end
 
   def set_preference
