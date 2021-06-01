@@ -36,10 +36,10 @@
         <p><%= block.condition.waves_swell_direction.round(0) %>°</p>
         <p><%= block.condition.waves_swell_period %>s</p>
         <br>
-        <p><%= block.condition.wind_strength %>kmh</p>
-        <p><%= block.condition.wind_direction %>°</p>
+        <p><%= block.condition.wind_strength.round(1) %>kmh</p>
+        <p><%= block.condition.wind_direction.round(0) %>°</p>
         <br>
-        <p><%= block.condition.tide_type %>°</p>
+        <p><%= block.condition.tide_type %></p>
       </div>
     <% end %>
   </div>
