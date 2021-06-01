@@ -1,5 +1,5 @@
 class Result
-  attr_reader :spot
+  attr_reader :spot, :preference
   def initialize(params)
     @preference = params[:preference]
     @spot       = params[:spot]
@@ -13,5 +13,13 @@ class Result
     (@start_date..@end_date).map do |date|
       Day.new(preference: @preference, spot: @spot, date: date)
     end
+  end
+
+  def spot_id
+    @spot.id
+  end
+
+  def preference_id
+    @preference.id
   end
 end

@@ -15,6 +15,7 @@ class PreferencesController < ApplicationController
 
   def create
     @preference = Preference.new(preference_params)
+    mark_as_favourite!(@preference) if @preference.favourite
     @preference.user = current_user
     authorize @preference
     if @preference.save
@@ -28,13 +29,24 @@ class PreferencesController < ApplicationController
 
   def update
     @preference.update(preference_params)
+    mark_as_favourite!(@preference) if @preference.favourite
     redirect_to preferences_path
   end
 
   def destroy
+    redirect_to preferences_path if @preference.destroy
   end
 
   private
+
+  def mark_as_favourite!(preference)
+    Preference.where(user: current_user).each do |pref|
+      pref.favourite = false
+      pref.save
+    end
+    preference.favourite = true
+
+  end
 
   def set_preference
     @preference = Preference.find(params[:id])
@@ -46,6 +58,6 @@ class PreferencesController < ApplicationController
                                        :swell_int_min, :swell_int_max, :swell_dir_min,
                                        :swell_dir_max, :wind_str_min, :wind_str_max,
                                        :wind_dir_min, :wind_dir_max,
-                                       :pref_tide_position, :pref_tide_range)
+                                       :pref_tide_position, :pref_tide_range, :favourite)
   end
 end

@@ -1,37 +1,15 @@
-<div class="container m-3">
-  <h1>Dashboard</h1>
-  <h2><%= link_to "My preferences", preferences_path, class: "btn btn-primary" %></h2>
+<div class="dashboard m-1">
 
-  <br>
+  <%# Render the dashboard's top-bubble %>
+  <%= render 'shared/top_bubble' %>
 
+  <%# Render the dashboard's middle dropdowns-buttons %>
+  <%= render 'shared/middle_dropdowns-buttons' %>
 
-  <% if @user_spots.present? %>
-    <% @user_spots.each do |user_spot| %>
-      <h2><%= user_spot.spot.name.capitalize %></h2>
-      <!-- <form action="/result/conditions/<%#= Condition.find_by(spot: user_spot.spot).id %>"> -->
-      <form action="<%= result_spot_path(user_spot.spot)%>">
+  <%# Render the week schedule %>
+  <%= render 'shared/weekly_schedule' %>
 
-        <br>
+  <%# Render the bottom block containing the surf data %>
+  <%= render 'shared/bottom_block' %>
 
-        <select class="custom-select" name="preference_id">
-          <option selected>Select a preference</option>
-          <% current_user.preferences.each do |preference| %>
-            <option value="<%= preference.id %>"><%= preference.name %></option>
-          <% end %>
-        </select>
-
-        <br>
-
-          <%#= link_to "go?", result_condition_path(Condition.find_by(spot: user_spot.spot), preference_id: current_user.preferences.last.id)  %>
-
-        <button type="submit" class="btn btn-primary">GO</button>
-        <%= link_to "Delete this spot", "/spots/#{user_spot.spot.id}/user_spots/#{user_spot.id}", method: :delete, class: "btn btn-danger m-3" %>
-      </form>
-
-
-    <% end %>
-    <% else %>
-      <h2>You don't have any spots saved!</h2>
-  <% end %>
-  <%= link_to "Add a new spot", spots_path, class: "btn btn-primary my-3" %>
 </div>

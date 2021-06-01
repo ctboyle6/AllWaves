@@ -1,0 +1,39 @@
+<div class="preference-spot-block">
+
+    <%# Preferences dropdown and buttons %>
+    <div class="preferences-btn body-btn">
+      <%= link_to "My preferences", preferences_path %>
+    </div>
+
+    <%# Spot dropdown and buttons %>
+    <% if @user_spots.present? %>
+    <% @user_spots.each do |user_spot| %>
+      <h2><%= user_spot.spot.name.capitalize %></h2>
+      <!-- <form action="/result/conditions/<%#= Condition.find_by(spot: user_spot.spot).id %>"> -->
+      <form action="<%= result_spot_path(user_spot.spot)%>">
+
+        <br>
+
+        <select class="custom-select" name="preference_id">
+          <option selected>Select a preference</option>
+          <% current_user.preferences.each do |preference| %>
+            <option value="<%= preference.id %>"><%= preference.name %></option>
+          <% end %>
+        </select>
+
+        <br>
+
+          <%#= link_to "go?", result_condition_path(Condition.find_by(spot: user_spot.spot), preference_id: current_user.preferences.last.id)  %>
+
+        <button type="submit" class="btn btn-primary">GO</button>
+        <%= link_to "Delete this spot", "/spots/#{user_spot.spot.id}/user_spots/#{user_spot.id}", method: :delete, class: "btn btn-danger m-3" %>
+      </form>
+
+
+    <% end %>
+    <% else %>
+      <h2>You don't have any spots saved!</h2>
+  <% end %>
+  <%= link_to "Add a new spot", spots_path, class: "btn btn-primary my-3" %>
+
+</div>
