@@ -1,94 +1,49 @@
-<<<<<<< HEAD
-<div class="d-flex" id="top-container">
+<div class="top-container">
 
   <div class="left-top-container">
-    <h2 style="text-align: center">Search New Spots <br> by Location</h2>
-    <div class="search-bar d-flex justify-content-center my-2">
-      <%= form_with url: spots_path, local: true, html: { class: "form-search justify-content-between align-items-center " } ,method: :get do |form| %>
-        <%= form.text_field :query %>
-        <%= form.submit "Search", class: "btn btn-primary"%>
-      <% end %>
-=======
-<div class="container">
-  <h1 style="text-align: center">All the Spots</h1>
-  <div class="d-flex justify-content-center">
-    <div id="map"
-        style="width: 80%; height: 600px;"
-        data-markers="<%= @markers.to_json %>"
-
-        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
->>>>>>> master
-    </div>
-  </div>
-  <div class="right-top-container">
-    <div class="container">
-        <div id="map"
-            style="width: 50%; height: 300px;"
-            data-markers="<%= @markers.to_json %>"
-            data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-        </div>
-      </div>
-  </div>
-</div>
-
-<<<<<<< HEAD
-<div class="bottom-container">
-<div class=my-spots>
-
-
-</div>
-
-<div class="New spots">
-  <% @spots.each do |spot| %>
-    <div class="d-flex justify-content-center">
-        <div class="card-trip" style="margin:20px; width: 60%; overflow: hidden; background: white; box-shadow: 0 0 15px rgba(0,0,0,0.2);">
-          
-          <img src="https://source.unsplash.com/700x200/?/" style="height: 200px; width: 100%; object-fit: cover;"
-          <div class="card-trip-infos" style=" padding: 16px; display: flex; justify-content: space-between; align-items: flex-end; position: relative;">
-            <div>
-              <h2 style=" font-size: 16px; font-weight: bold; margin: 10px;"><%= spot.name.capitalize %></h2>
-            </div>
-            <div style=" margin-right: 10px; margin-bottom: 10px; text-align: right">
-              <% if @user_spots.select { |user_spot| user_spot.spot_id == spot.id } != []  %>
-              <p> Spot already saved ✅ <p>
-              <% else %>
-              <%= link_to "Add this spot to your Spots", spot_user_spots_path(spot), method: :post, class: "btn btn-primary" %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-    </div>
-  <% end %>
-
-  <div style= "position: fixed; bottom: 37.60px; right: 0px;">
-    <%= simple_form_for @spot do |f| %>
-      <%= f.input :name, label: 'Add a new spot', style: "width: 216.22" %>
-      <%= f.submit "Search", class: "btn btn-primary", style: "width: 216.22"%>
+    <h2 style="text-align: center">Search New Spots </h2>
+    <h1 style="text-align: center"> by Location</h1>
+    <%= form_with url: spots_path, local: true, html: { class: "form-search" } ,method: :get do |form| %>
+      <%= form.text_field :query, class: "search-text" %>
+      <%= form.submit "Search", class: "search-button"%>
     <% end %>
   </div>
-  <%= link_to "Dashboard", "/" , class: "btn btn-primary", style: "position: fixed; bottom: 0px; right: 0px; width: 216.22;"%>
+  <div id="map"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
+
 </div>
 
-=======
-<% @spots.each do |spot| %>
-  <div class="d-flex justify-content-center">
-      <div class="card-trip" style="margin:20px; width: 60%; overflow: hidden; background: white; box-shadow: 0 0 15px rgba(0,0,0,0.2);">
-        <img src="https://source.unsplash.com/700x200/?<%=spot.name%>,surf, waves/" style="height: 200px; width: 100%; object-fit: cover;"
-        <div class="card-trip-infos" style=" padding: 16px; display: flex; justify-content: space-between; align-items: flex-end; position: relative;">
-          <div>
-            <h2 id="<%= spot.name.capitalize %>" style=" font-size: 16px; font-weight: bold; margin: 10px;"><%= spot.name.capitalize %></h2>
-          </div>
-          <div style=" margin-right: 10px; margin-bottom: 10px; text-align: right">
-            <% if @user_spots.select { |user_spot| user_spot.spot_id == spot.id } != []  %>
-            <p> Spot already saved ✅ <p>
-            <% else %>
-            <%= link_to "Add this spot to your Spots", spot_user_spots_path(spot), method: :post, class: "btn btn-primary" %>
-            <% end %>
-          </div>
-        </div>
-      </div>
+<div class="bottom-container">
+  <div class=my-spots>
+
+
   </div>
-<% end %>
-<%= link_to "Dashboard", "/" , class: "btn btn-primary", style: "position: fixed; bottom: 0px; right: 0px; width: 216.22;"%>
->>>>>>> master
+
+  <div class="New spots">
+    <% @spots.each do |spot| %>
+      <div class="d-flex justify-content-center">
+          <div class="card-trip" style="margin:20px; width: 60%; overflow: hidden; background: white; box-shadow: 0 0 15px rgba(0,0,0,0.2);">
+            
+            <img src="https://source.unsplash.com/700x200/?/" style="height: 200px; width: 100%; object-fit: cover;"
+            <div class="card-trip-infos" style=" padding: 16px; display: flex; justify-content: space-between; align-items: flex-end; position: relative;">
+              <div>
+                <h2 style=" font-size: 16px; font-weight: bold; margin: 10px;"><%= spot.name.capitalize %></h2>
+              </div>
+              <div style=" margin-right: 10px; margin-bottom: 10px; text-align: right">
+                <% if @user_spots.select { |user_spot| user_spot.spot_id == spot.id } != []  %>
+                <p> Spot already saved ✅ <p>
+                <% else %>
+                <%= link_to "Add this spot to your Spots", spot_user_spots_path(spot), method: :post, class: "btn btn-primary" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+      </div>
+    <% end %>
+
+  </div>
+
+</div>
+

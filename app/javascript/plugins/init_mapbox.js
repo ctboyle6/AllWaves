@@ -20,7 +20,7 @@ const initMapbox = () => {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/clay-land/ckp5osrj83shf17moirgdc925',
+      style: 'mapbox://styles/mapbox/satellite-streets-v11',
       center: [-80.6862, 28.3067]
     });
 
