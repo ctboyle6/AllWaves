@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   namespace :result do
     resources :spots, only: :show
   end
+  resource :day,  only: :show
   resources :spots, only: [:index, :show, :new, :create] do
     resources :user_spots, only: [:index, :show, :create, :destroy]
   end
