@@ -1,6 +1,12 @@
 <div class="container m-3">
   <h1>Your Preferences</h1>
 
+  <% current_user.preferences.each do |preference| %>
+    <%= link_to preference.name, preference_path(preference), class: "btn btn-secondary m-3" %>
+  <% end %>
+
+  <%= link_to "New Preference", new_preference_path, class: "btn btn-primary"  %>
+
 
   <!-- bootstrap accordian -->
   <div class="accordion" id="accordionPreferences">
