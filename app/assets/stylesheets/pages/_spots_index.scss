@@ -1,0 +1,48 @@
+.top-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 48px auto;
+}
+
+.left-top-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-text {
+  width: 140%;
+  margin: 8px 0;
+  border-radius: 50px;
+  height: 2.5rem;
+  text-align: center !important;
+}
+
+.search-button {
+  background-image: $bodybtn;
+  margin-top: 12px;
+  border-radius: 25px;
+  border:  1px;
+  height: 2.5rem;
+  width: 50%;
+  color: white;
+  font-weight: black;
+}
+
+
+
+#map {
+  width: 50%;
+  height: 300px;
+  border-radius: 25px;
+}
+
