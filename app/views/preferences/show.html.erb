@@ -38,8 +38,6 @@
       <div id="slider-wind-str" data-min="5" data-max="15" data-range="50"></div>
       <%= f.hidden_field :wind_str_min, value: "" %>
       <%= f.hidden_field :wind_str_max, value: "" %>
-      <%#= f.input :wind_str_min, as: :range, input_html: { min: 0, max: 50, step: 0.5 }, label: 'Strength: Min 💨 ⬇' %>
-      <%#= f.input :wind_str_max, as: :range, input_html: { min: 0, max: 50, step: 0.5 }, label: 'Strength: Max 💨 ⬆' %>
       <br>
       <br>
       <%= f.hint 'Generally, offshore winds = greater wave quality.' %> <!-- Wind direction refers to the trajectory of nearby winds. Onshore winds (perpendicular and toward beach) push behind incoming swell, while offshores (perpendicular and toward sea) groom up the faces of incoming swells -->
@@ -47,8 +45,6 @@
       <div id="slider-wind-dir" data-min="45" data-max="180" data-range="360"></div>
       <%= f.hidden_field :wind_dir_min, value: "" %>
       <%= f.hidden_field :wind_dir_max, value: "" %>
-      <%#= f.input :wind_dir_min, as: :range, input_html: { min: 0, max: 360, step: 5 }, label: 'Direction: Min 🧭 ⬇' %>
-      <%#= f.input :wind_dir_max, as: :range, input_html: { min: 0, max: 360, step: 5 }, label: 'Direction: Max 🧭 ⬆' %>
       <br>
       <br>
       <h3>Tide</h3>
