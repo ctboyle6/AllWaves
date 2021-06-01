@@ -3,12 +3,6 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 const fitMapToMarkersAndLocation = (map, markers) => {
   const  bounds = new mapboxgl.LngLatBounds();
-  // bounds.extend(["", ""]);
-  // markers.forEach(marker => console.log([marker.lng, marker.lat]));
-  // bounds = markers.reduce(function (bounds, coord) {
-  //   return bounds.extend(coord);
-  // }, new mapboxgl.LngLatBounds(markers[0], markers[0]));
-
 
   markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
 
@@ -21,13 +15,12 @@ const fitMapToMarkersAndLocation = (map, markers) => {
 };
 
 const initMapbox = () => {
-  const mapElement = document.getElementById('map');
-  
+  const mapElement = document.getElementById('map');  
   if (mapElement) {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/clay-land/ckp5osrj83shf17moirgdc925',
+      style: 'mapbox://styles/mapbox/satellite-streets-v11',
       center: [-80.6862, 28.3067]
     });
 
@@ -48,7 +41,6 @@ const initMapbox = () => {
       geolocate.trigger();
     });
     
-    
     function sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
     }
@@ -56,7 +48,6 @@ const initMapbox = () => {
     async function getUserLocation() {
       
       const userLocation = geolocate.on('geolocate');
-      // debugger
       await sleep(3000);
       const markers = JSON.parse(mapElement.dataset.markers);
       markers.forEach((marker) => {
