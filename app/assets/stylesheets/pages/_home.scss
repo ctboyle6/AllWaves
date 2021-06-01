@@ -21,10 +21,25 @@
   text-align: center;
 }
 
+#banner {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 20px;
+}
+
+#video {
+  width: 600px;
+  height: 400px;
+  background-color: $bubble;
+  border-radius: 26px;
+  color: white;
+}
+
 #exemple {
   background-color: $bubble;
   width: 600px;
   height: 400px;
   border-radius: 26px;
   color: white;
+  
 }
