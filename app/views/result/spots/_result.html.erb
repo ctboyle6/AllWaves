@@ -1,10 +1,10 @@
 <div class="weekly-schedule">
   <% @result.days.each_with_index do |day, index| %>
-    <a <%= index.zero? ? "data-controller=day" : "" %> <%= "href=/day?p=#{@result.preference.id}&s=#{@result.spot.id}&d=#{day.date}" %> data-remote=true>
+    <a class="day-link" <%= index.zero? ? "data-controller=day" : "" %> <%= "href=/day?p=#{@result.preference.id}&s=#{@result.spot.id}&d=#{day.date}" %> data-remote=true>
       <div class="day">
         <h2><%= day.date.strftime("%A") %></h2>
         <h3><%= day.date.strftime("%B %e") %></h3>
-        <div class="btn btn-<%= day.any_go? ? 'success' : 'danger' %>"></div>
+        <div class="go-light <%= day.any_go? ? 'on' : 'off' %>"></div>
       </div>
     </a>
   <% end %>

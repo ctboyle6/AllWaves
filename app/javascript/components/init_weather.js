@@ -25,12 +25,13 @@ const initWeather = () => {
     icon.src = iconUrl(data.weather[0].icon);
     temp.innerText = `${Math.round(Number.parseInt(data.main.temp, 10))}`;
   };
-
-  fetch(createUrl())
-    .then(response => response.json())
-    .then((data) => {
-      injectValues(data);
-    });
+  if (city) {
+    fetch(createUrl())
+      .then(response => response.json())
+      .then((data) => {
+        injectValues(data);
+      });
+  }
 };
 
 export { initWeather };
