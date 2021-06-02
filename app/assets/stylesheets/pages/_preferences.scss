@@ -1,5 +1,5 @@
 .preference-page {
-
+  font-family: $body-font;
   > h1 {
     text-align: center;
   }
@@ -43,10 +43,12 @@
 
   .min-max-block {
     display: flex;
+    margin-left: 120px;
+    height: 18px;
   }
 
   .settings-block {
-    margin-left: 100px;
+    padding-left: 100px;
   }
 
   .light-label {
@@ -59,11 +61,40 @@
   // Slider class found in the rendered html
   .c-src, #slider-swell-hgt, #slider-swell-int, #slider-swell-dir {
     height: 20px;
-    width: 460px;
-    margin-top: 20px;
+    width: 400px;
+    // margin-top: 20px;
   }
 
   .checkbox {
     display: flex;
+  }
+
+  h5 {
+    font-weight: 600;
+    width: 100px;
+  }
+
+  .boxes {
+    margin-left: 120px;
+  }
+
+  .setting-slider-group {
+    display: flex;
+    // width: 600px;
+    margin-top: 20px;
+  }
+
+  .setting-slider-group > h5 {
+    margin-right: 20px;
+    margin-bottom: 0px;
+  }
+
+  .c-src-control {
+    width: 20px;
+    height: 20px;
+  }
+
+  .min-max-block div {
+    margin-right: 10px;
   }
 }
