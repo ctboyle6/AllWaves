@@ -1,0 +1,5 @@
+meta_product_name: "allWaves"
+meta_title: "allWaves | Never miss the right conditions"
+meta_description: "Set your preferences, choose a surf spot and get notified when it's time to surf!"
+meta_image: "cover.png" # should exist in `app/assets/images/`
+twitter_account: "@allWaves2"   # required for Twitter Cards
