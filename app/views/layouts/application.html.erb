@@ -13,9 +13,11 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body class="sidebar-margin">
+  <body class="light-gradient">
+  <div class="sidebar-padding">
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
+  </div>
   </body>
 </html>
