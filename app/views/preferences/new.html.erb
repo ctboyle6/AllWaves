@@ -23,6 +23,8 @@
       <div id="slider-swell-int" data-min="<%= @preference.swell_int_min %>" data-max="<%= @preference.swell_int_max %>" data-range="30"></div>
       <%= f.hidden_field :swell_int_min %>
       <%= f.hidden_field :swell_int_max %>
+      <div id="value-swell-int-min">Min: <%= @preference.swell_int_min.to_i %></div>
+      <div id="value-swell-int-max">Max: <%= @preference.swell_int_max.to_i %></div>
       <br>
       <br>
       <%= f.hint 'More perpendicular to your coast (with no obstructions) = better wave quality.' %> <!-- Swell direction refers to the trajectory of an incoming swell -->
@@ -30,6 +32,8 @@
       <div id="slider-swell-dir" data-min="<%= @preference.swell_dir_min %>" data-max="<%= @preference.swell_dir_max %>" data-range="360"></div>
       <%= f.hidden_field :swell_dir_min %>
       <%= f.hidden_field :swell_dir_max %>
+      <div id="value-swell-dir-min">Min: <%= @preference.swell_dir_min.to_i %></div>
+      <div id="value-swell-dir-max">Max: <%= @preference.swell_dir_max.to_i %></div>
       <br>
       <br>
       <h3>Wind</h3>
@@ -40,6 +44,8 @@
       <div id="slider-wind-str" data-min="<%= @preference.wind_str_min %>" data-max="<%= @preference.wind_str_max %>" data-range="50"></div>
       <%= f.hidden_field :wind_str_min %>
       <%= f.hidden_field :wind_str_max %>
+      <div id="value-wind-str-min">Min: <%= @preference.wind_str_min.to_i %></div>
+      <div id="value-wind-str-max">Max: <%= @preference.wind_str_max.to_i %></div>
       <br>
       <br>
       <%= f.hint 'Generally, offshore winds = greater wave quality.' %> <!-- Wind direction refers to the trajectory of nearby winds. Onshore winds (perpendicular and toward beach) push behind incoming swell, while offshores (perpendicular and toward sea) groom up the faces of incoming swells -->
@@ -47,6 +53,8 @@
       <div id="slider-wind-dir" data-min="<%= @preference.wind_dir_min %>" data-max="<%= @preference.wind_dir_max %>" data-range="360"></div>
       <%= f.hidden_field :wind_dir_min %>
       <%= f.hidden_field :wind_dir_max %>
+      <div id="value-wind-dir-min">Min: <%= @preference.wind_dir_min.to_i %></div>
+      <div id="value-wind-dir-max">Max: <%= @preference.wind_dir_max.to_i %></div>
       <br>
       <br>
       <h3>Tide</h3>
