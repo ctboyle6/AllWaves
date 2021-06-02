@@ -1,0 +1,58 @@
+.preference-page {
+
+  > h1 {
+    text-align: center;
+  }
+
+  .preference-params {
+    color:white;
+  }
+
+  .name-favorite {
+    display: flex;
+  }
+
+  .pref-section {
+    display: flex;
+    background-color: $bubble;
+    width: 75%;
+    border-radius: 26px;
+    margin: 25px auto;
+    align-items: center;
+  }
+
+  .swell-section {
+    height: 350px;
+  }
+
+  .swell-info, .wind-info, .tide-info {
+    margin-left: 20px;
+  }
+
+  .wind-section {
+    height: 200px;
+  }
+
+  .tide-section {
+    height: 100px;
+  }
+  
+  .preference_pref_tide_position {
+    display: flex;
+  }
+
+  .min-max-block {
+    display: flex;
+  }
+
+  .settings-block {
+    margin-left: 100px;
+  }
+
+  .light-label {
+    background-color: $bubble;
+    width: 26px;
+    height:inherit;
+    border-radius: 30px 0px 0px 30px;
+  }
+}
