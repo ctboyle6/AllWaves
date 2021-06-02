@@ -1,9 +1,9 @@
 // Signup
 
-#signup {
+.signup {
   margin: 0 auto;
   width: 600px;
-  height: 600px;
+  height: 100vh;
   text-align: center;
   color: white;
   text-align: center;
@@ -11,7 +11,6 @@
 
   h2 {
     padding: 60px 0px;
-    // font-family: "Lato", sans-serif !important;
   }
 
   .field {
@@ -40,6 +39,7 @@
   .label-field {
     text-align: left;
     width: 300px;
+    height: 80px;
     margin: 0 auto;
   }
 
@@ -48,14 +48,8 @@
     font-weight: 600;
   }
 
-  .btn {
-    color: white;
-    width: 100px;
-    height: 30px;
-  }
-
   .form-actions input {
-    background-image: $bodybtn;
+    background-image: linear-gradient(rgba(45, 168, 184, 0.80), rgba(47, 170, 186, 0.70));
     border-radius: 66px;
     // display: flex;
     // justify-content: center;
@@ -66,7 +60,6 @@
     color: white;
     font-size: 18px;
     font-weight: 700;
-    margin-top: 20px;
   }
 
   p {
@@ -139,7 +132,6 @@
   }
 
   .signup-btn, .forgot-psw {
-    
     text-decoration: none;
     font-weight: 600;
   }
@@ -150,7 +142,6 @@
 
   #user_remember_me {
     background-color: $bubble;
-    
   }
 
 }
