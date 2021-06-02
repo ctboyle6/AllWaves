@@ -1,15 +1,23 @@
-<div>
+<div class="login">
 <h2>Log in</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-inputs">
+  <div class="label-field">
+    <%= f.label :email %>
     <%= f.input :email,
                 required: false,
                 autofocus: true,
-                input_html: { autocomplete: "email" } %>
+                input_html: { autocomplete: "email", class: "field" },
+                label: false %>
+  </div>
+  <div class="label-field">
+    <%= f.label :password %>
     <%= f.input :password,
                 required: false,
-                input_html: { autocomplete: "current-password" } %>
+                input_html: { autocomplete: "current-password", class: "field" },
+                label: false %>
+  </div>
     <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
   </div>
 
@@ -18,5 +26,5 @@
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<p>or <%= render "devise/shared/links" %></p>
 </div>
