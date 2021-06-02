@@ -6,10 +6,10 @@
     <div class="left-top-container">
       <h2 style="text-align: center">Search New Surf Spots </h2>
       <h1 style="text-align: center"> by Location</h1>
-      <%= form_with url: spots_path, remote: true, html: { class: "form-search" } ,method: :get do |form| %>
-        <%= form.text_field :query, class: "search-text", placeholder: 'Florida' %>
-        <%= form.submit "Search", class: "search-button"%>
-      <% end %>
+    <%= form_with url: spots_path, local: true, html: { class: "form-search" } ,method: :get do |form| %>
+      <%= form.text_field :query, class: "search-text" %>
+      <%= form.submit "Search", class: "search-button"%>
+    <% end %>
     </div>
     <div id="map"
       data-markerssaved="<%= @markers_saved.to_json %>"
@@ -25,16 +25,13 @@
         <% if current_user.user_spots.empty? %>
          <%= image_tag "sad_dog.png", id: "replacement-img" %>
         <% else %>
-          <% @spots.each do |spot| %>
-            <% if @user_spots.select { |user_spot| user_spot.spot_id == spot.id } != []  %>
+            <% @user_spots.each do |user_spot| %>
               <div class="bubble">
-                <h3 id="<%= spot.name.capitalize %>" style="width: 16%" id="<%= spot.name%>"><%= spot.name.capitalize %></h3>
-                <img class="placeholder-img" src="https://source.unsplash.com/800x200/?<%= spot.name %>,waves,surf/">
-                <% user_spot = @user_spots.find { |user_spot| user_spot.spot_id == spot.id } %>
-                <%= link_to "Remove", "/spots/#{spot.id}/user_spots/#{user_spot.id}", method: :delete, remote: true, class: "bubble-btn" %>
+                <h3 id="<%= user_spot.spot.name.capitalize %>" style="width: 16%" id="<%= user_spot.spot.name%>"><%= user_spot.spot.name.capitalize %></h3>
+                <img class="placeholder-img" src="https://source.unsplash.com/800x200/?<%= user_spot.spot.name %>,waves,surf/">
+                <%= link_to "Remove", "/spots/#{user_spot.spot.id}/user_spots/#{user_spot.id}", method: :delete, remote: true, class: "bubble-btn" %>
               </div>
-            <% end %>
-          <% end %>
+        <% end %>
         <% end %>
       </div>
     </div>

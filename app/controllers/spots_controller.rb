@@ -3,6 +3,7 @@ require_relative '../../db/spot_scrape'
 class SpotsController < ApplicationController
   def index
     @search_message = ""
+    @spots = Spot.all
 
     if params[:query].present?
       @spots = Spot.search_by_spot_name(params[:query])
@@ -14,16 +15,13 @@ class SpotsController < ApplicationController
         else
           @spots = Spot.near(params[:query], 500)
         end
-        else
       end
-    else
-      @spots = Spot.all
     end
+    # raise
 
     @markers_saved = []
     @markers_new = []
     @user_spots = UserSpot.all
-    @spots = Spot.all
     @user_spots.each do |user_spot|
       @markers_saved.push(
           {
@@ -65,7 +63,7 @@ class SpotsController < ApplicationController
 
   def create
     if scrap_surfline_spot_id(location_human_to_query(params["query"])) == true
-      flash[:alert] = "Sorry, the location you entered is not a Surf spot"
+      flash[:alert] = "Sorry, the location you entered is not a Surf spot. See above for nearby spots"
     else
       url_spot_id = scrap_surfline_spot_id(location_human_to_query(params["query"]))
       spot_id = get_id_location(url_spot_id)
@@ -83,10 +81,8 @@ class SpotsController < ApplicationController
 
       if @spot.save
         flash[:alert] = "Spot successfully created"
-        redirect_to spots_path
       else
         flash[:alert] = "We couldn't save this spot, please try again later"
-        redirect_to spots_path
       end
 
       spot_id = get_id_location(url_spot_id)
