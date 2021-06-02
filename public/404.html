@@ -8,6 +8,25 @@
       background-color: rgb(5,40,80);
     }
 
+    .container {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      display: flex;
+    }
+
+    .container::before {
+      content: "";
+      background-image: url("images/underwater.jpeg");
+      background-size: cover;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      opacity: 0.3;
+    }
+
     .big-text-404 {
       color: #F4F4F4;
       font-size: 12em;
@@ -44,34 +63,14 @@
       border-radius: 26px;
     }
 
-    .container {
-      position: relative;
-      height: 100vh;
-      width: 100%;
-      display: flex;
-      /*align-items: center;
-      justify-content: center;*/
-    }
-
-    .container::before {
-      content: "";
-      background-image: url("images/underwater.jpeg");
-      background-size: cover;
-      position: absolute;
-      top: 0px;
-      right: 0px;
-      bottom: 0px;
-      left: 0px;
-      opacity: 0.3;
-    }
 
     .body-btn {
-      background-image: linear-gradient(rgba(45, 168, 184, 0.3917), rgba(47, 169, 186, 0.3058));
+      background-image: linear-gradient(rgba(45, 168, 184, 0.2), rgba(47, 169, 186, 0.1));
       border-radius: 66px;
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 200px;
+      width: 180px;
     }
 
     .light-btn {
