@@ -14,6 +14,8 @@
       <div id="slider-swell-hgt" data-min="<%= @preference.swell_hgt_min %>" data-max="<%= @preference.swell_hgt_max %>" data-range="30"></div>
       <%= f.hidden_field :swell_hgt_min %>
       <%= f.hidden_field :swell_hgt_max%>
+      <div id="value-swell-hgt-min">Min: <%= @preference.swell_hgt_min.to_i %></div>
+      <div id="value-swell-hgt-max">Max: <%= @preference.swell_hgt_max.to_i %></div>
       <br>
       <br>
       <%= f.hint 'Greater swell interval = greater wave power.' %> <!-- Swell interval refers to the time between equal points of passing waves -->

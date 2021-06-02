@@ -12,13 +12,16 @@ const doubleSliderAction = () => {
   // swell height
   const preferenceSwellHgtMin = document.getElementById('preference_swell_hgt_min');
   const preferenceSwellHgtMax = document.getElementById('preference_swell_hgt_max');
+  const valueSwellHgtMin = document.getElementById('value-swell-hgt-min');
+  const valueSwellHgtMax = document.getElementById('value-swell-hgt-max');
 
   const sliderSwellHgt = new DoubleSlider(document.getElementById('slider-swell-hgt'));
   sliderSwellHgt.addEventListener('slider:input', () => {
     const {min, max} = sliderSwellHgt.value;
-    console.log(`Min is: ${min}, max is: ${max}`);
     preferenceSwellHgtMin.value = min;
     preferenceSwellHgtMax.value = max;
+    valueSwellHgtMin.innerText = `Min: ${min}`;
+    valueSwellHgtMax.innerText = `Max: ${max}`;
   });
 
   // swell interval
