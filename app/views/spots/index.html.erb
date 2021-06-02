@@ -1,49 +1,57 @@
-<div class="top-container">
+<div class="wrapper">
 
-  <div class="left-top-container">
-    <h2 style="text-align: center">Search New Spots </h2>
-    <h1 style="text-align: center"> by Location</h1>
-    <%= form_with url: spots_path, local: true, html: { class: "form-search" } ,method: :get do |form| %>
-      <%= form.text_field :query, class: "search-text" %>
-      <%= form.submit "Search", class: "search-button"%>
-    <% end %>
-  </div>
-  <div id="map"
-    data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
-
-</div>
-
-<div class="bottom-container">
-  <div class=my-spots>
-
-
+  <div class="top-container">
+    <div class="left-top-container">
+      <h2 style="text-align: center">Search New Surf Spots </h2>
+      <h1 style="text-align: center"> by Location</h1>
+      <%= form_with url: spots_path, remote: true, html: { class: "form-search" } ,method: :get do |form| %>
+        <%= form.text_field :query, class: "search-text", placeholder: 'Florida' %>
+        <%= form.submit "Search", class: "search-button"%>
+      <% end %>
+    </div>
+    <div id="map"
+      data-markerssaved="<%= @markers_saved.to_json %>"
+      data-markersnew="<%= @markers_new.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
   </div>
 
-  <div class="New spots">
-    <% @spots.each do |spot| %>
-      <div class="d-flex justify-content-center">
-          <div class="card-trip" style="margin:20px; width: 60%; overflow: hidden; background: white; box-shadow: 0 0 15px rgba(0,0,0,0.2);">
-            
-            <img src="https://source.unsplash.com/700x200/?/" style="height: 200px; width: 100%; object-fit: cover;"
-            <div class="card-trip-infos" style=" padding: 16px; display: flex; justify-content: space-between; align-items: flex-end; position: relative;">
-              <div>
-                <h2 style=" font-size: 16px; font-weight: bold; margin: 10px;"><%= spot.name.capitalize %></h2>
+  <div class="bottom-container">
+    <div class=my-spots>
+      <h2>My spots</h2>
+      <div class="left-bubbles">
+        <% if current_user.user_spots.empty? %>
+         <%= image_tag "sad_dog.png", id: "replacement-img" %>
+        <% else %>
+          <% @spots.each do |spot| %>
+            <% if @user_spots.select { |user_spot| user_spot.spot_id == spot.id } != []  %>
+              <div class="bubble">
+                <h3 style="width: 16%" id="<%= spot.name%>"><%= spot.name.capitalize %></h3>
+                <img src="https://source.unsplash.com/800x200/?<%= spot.name %>,waves,surf/">
+                <% user_spot = @user_spots.find { |user_spot| user_spot.spot_id == spot.id } %>
+                <%= link_to "Remove", "/spots/#{spot.id}/user_spots/#{user_spot.id}", method: :delete, remote: true, class: "bubble-btn" %>
               </div>
-              <div style=" margin-right: 10px; margin-bottom: 10px; text-align: right">
-                <% if @user_spots.select { |user_spot| user_spot.spot_id == spot.id } != []  %>
-                <p> Spot already saved ✅ <p>
-                <% else %>
-                <%= link_to "Add this spot to your Spots", spot_user_spots_path(spot), method: :post, class: "btn btn-primary" %>
-                <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="new-spots">
+      <h2>New Spots</h2>
+      <div class="right-bubbles">
+        <% @spots.each do |spot| %>
+          <% unless @user_spots.select { |user_spot| user_spot.spot_id == spot.id } != []  %>
+            <div class="spots-bubble">
+              <div class="bubble">
+                <h3 style="width: 16%"><%= spot.name.capitalize %></h3>
+                <img src="https://source.unsplash.com/1000x200/?<%= spot.name %>,waves,surf/">
+                <%= link_to "Add", spot_user_spots_path(spot), method: :post, remote: true, class: "bubble-btn" %>
               </div>
             </div>
-          </div>
+          <% end %>
+        <% end %>
       </div>
-    <% end %>
-
+    </div>
   </div>
-
+  
 </div>
-

@@ -19,15 +19,35 @@ class SpotsController < ApplicationController
     else
       @spots = Spot.all
     end
-    
-    @markers = @spots.map do |spot|
-      {
-        lat: spot.latitude,
-        lng: spot.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { spot: spot })
-      }
+
+    @markers_saved = []
+    @markers_new = []
+    @user_spots = UserSpot.all
+    @spots = Spot.all
+    pp @new_spots = @spots - @user_spots
+    @user_spots.each do |user_spot|
+      @markers_saved.push(
+          {
+            lat: user_spot.spot.latitude,
+            lng: user_spot.spot.longitude,
+            # info_window: render_to_string(partial: "infowindow", locals: { user_spot: user_spot }),
+            image_url: helpers.asset_url('saved.png')
+            
+          }
+        )
     end
-    @user_spots = current_user.user_spots
+    @spots.each do |spot|
+      unless @user_spots.select { |user_spot| user_spot.spot_id == spot.id } != []
+        @markers_new.push(
+          {
+          lat: spot.latitude,
+          lng: spot.longitude,
+          # info_window: render_to_string(partial: "infowindow", locals: { new_spot: new_spot }),
+          image_url: helpers.asset_url('wave.png')
+        }
+      )
+      end
+    end
     @spot = Spot.new
   end
 
@@ -36,7 +56,7 @@ class SpotsController < ApplicationController
     @markers =
       [{
         lat: @spot.latitude,
-        lng: @spot.longitude
+        lng: @spot.longitude,
       }]
   end
 

@@ -1,0 +1,50 @@
+.bubble {
+  display: flex;
+  margin: 16px auto 16px 16px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $bubble;
+  border-radius: 50px;
+  font-family: $body-font;
+  color: white;
+  height: 80px;
+  padding: 10px 24px;
+}
+
+.bubble h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 !important;
+}
+
+
+.bubble a{
+  margin: 0 !important;
+}
+
+.bubble img{
+  height: inherit;
+  margin: 2px 16px; 
+  filter: brightness(0.9);
+}
+
+.bubble-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-color: $bodybtn;
+  border-radius: 25px;
+  border:  1px;
+  height: 2.2rem;
+  width: 5rem;
+  color: white;
+  font-weight: 900;
+  font-size: 15px;
+  padding: 0 8px;
+}
+
+.bubble a:hover{
+    color: white;
+    text-decoration: none;
+}
