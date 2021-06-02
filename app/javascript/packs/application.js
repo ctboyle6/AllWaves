@@ -33,6 +33,7 @@ import "controllers"
 // import { initSelect2 } from '../components/init_select2';
 import { initMapbox } from '../plugins/init_mapbox';
 import { doubleSliderAction } from '../plugins/init_doubleslider';
+// import { initSelect2 } from '../plugins/init_select2';
 // import { initFormtoggle } from '../components/init_formtoggle';
 // import { initDropdownSelect } from '../components/init_dropdown_select';
 // import { initResultCreator } from '../components/init_result_creator';
@@ -40,6 +41,7 @@ import { doubleSliderAction } from '../plugins/init_doubleslider';
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
   doubleSliderAction();
+  // initSelect2();
   // initFormtoggle();
   // initResultCreator();
   // initDropdownSelect();
