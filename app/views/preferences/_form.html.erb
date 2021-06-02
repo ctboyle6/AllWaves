@@ -5,7 +5,7 @@
     <%= simple_form_for preference, remote: true do |f| %>
 
     <div class="name-favorite">
-      <%= f.input :name %>
+      <%= f.input :name, label: false %>
       <%= f.input :favourite %>
     </div>
 
@@ -21,8 +21,8 @@
       
     <div class="settings-block">
 
-    <%= f.hint 'Greater swell height = greater wave size.' %>  <!-- Swell height refers to the distance between the trough (lowest point) to peak (highest point) of a wave as it passes a nearby buoy -->
-    
+    <%#= f.hint 'Greater swell height = greater wave size.' %>  <!-- Swell height refers to the distance between the trough (lowest point) to peak (highest point) of a wave as it passes a nearby buoy -->
+
       <div id="slider-swell-hgt" data-min="<%= preference.swell_hgt_min %>" data-max="<%= preference.swell_hgt_max %>" data-range="30"></div>
         <%= f.hidden_field :swell_hgt_min %>
         <%= f.hidden_field :swell_hgt_max%>
@@ -32,8 +32,8 @@
       <div id="value-swell-hgt-max">Max: <%= preference.swell_hgt_max.to_i %></div>
       </div>
       
-      <%= f.hint 'Greater swell interval = greater wave power.' %> <!-- Swell interval refers to the time between equal points of passing waves -->
-      
+      <%#= f.hint 'Greater swell interval = greater wave power.' %> <!-- Swell interval refers to the time between equal points of passing waves -->
+
       <div id="slider-swell-int" data-min="<%= preference.swell_int_min %>" data-max="<%= preference.swell_int_max %>" data-range="30"></div>
         <%= f.hidden_field :swell_int_min %>
         <%= f.hidden_field :swell_int_max %>
@@ -43,7 +43,7 @@
       <div id="value-swell-int-max">Max: <%= preference.swell_int_max.to_i %></div>
       </div>
       
-      <%= f.hint 'More perpendicular to your coast (with no obstructions) = better wave quality.' %> <!-- Swell direction refers to the trajectory of an incoming swell -->
+      <%#= f.hint 'More perpendicular to your coast (with no obstructions) = better wave quality.' %> <!-- Swell direction refers to the trajectory of an incoming swell -->
       
       <div id="slider-swell-dir" data-min="<%= preference.swell_dir_min %>" data-max="<%= preference.swell_dir_max %>" data-range="360"></div>
         <%= f.hidden_field :swell_dir_min %>
@@ -60,14 +60,14 @@
   <div class="pref-section wind-section">
   <div class="light-label"></div>
 
-    <div class="wind-info">  
+    <div class="wind-info">
 
     <h3>Wind</h3>
 
     </div>
     <div class="settings-block">
     
-    <%= f.hint 'Generally, lighter winds = greater wave quality.' %> <!-- Wind strength refers to the force of nearby winds. Strong winds can mess or subdue incoming swells. Light winds can help push or pull wave faces -->
+    <%#= f.hint 'Generally, lighter winds = greater wave quality.' %> <!-- Wind strength refers to the force of nearby winds. Strong winds can mess or subdue incoming swells. Light winds can help push or pull wave faces -->
 
     <div id="slider-wind-str" data-min="<%= preference.wind_str_min %>" data-max="<%= preference.wind_str_max %>" data-range="50"></div>
       <%= f.hidden_field :wind_str_min %>
@@ -78,7 +78,7 @@
     <div id="value-wind-str-max">Max: <%= preference.wind_str_max.to_i %></div>
     </div>    
     
-    <%= f.hint 'Generally, offshore winds = greater wave quality.' %> <!-- Wind direction refers to the trajectory of nearby winds. Onshore winds (perpendicular and toward beach) push behind incoming swell, while offshores (perpendicular and toward sea) groom up the faces of incoming swells -->
+    <%#= f.hint 'Generally, offshore winds = greater wave quality.' %> <!-- Wind direction refers to the trajectory of nearby winds. Onshore winds (perpendicular and toward beach) push behind incoming swell, while offshores (perpendicular and toward sea) groom up the faces of incoming swells -->
     
     <div id="slider-wind-dir" data-min="<%= preference.wind_dir_min %>" data-max="<%= preference.wind_dir_max %>" data-range="360"></div>
       <%= f.hidden_field :wind_dir_min %>
@@ -102,10 +102,11 @@
     </div>
     <div class="settings-block">
 
-    <%= f.hint 'If you are not sure, choose "NORMAL" and then consult with your locals!' %> <!-- Tide position refers to the time periods where the tide is at its lowest, highest, or mid-points. High tide with too weak of swell may result in a flat day, while low tide may introduce more friction to incoming swells -->
+    <%#= f.hint 'If you are not sure, choose "NORMAL" and then consult with your locals!' %> <!-- Tide position refers to the time periods where the tide is at its lowest, highest, or mid-points. High tide with too weak of swell may result in a flat day, while low tide may introduce more friction to incoming swells -->
     
     <div class="checkbox">
-      <%= f.input :pref_tide_position, as: :radio_buttons, collection: ['LOW', 'NORMAL', 'HIGH'], label: 'Preferred Tide Position' %>
+      <h5>Position</h5>
+      <%= f.input :pref_tide_position, as: :radio_buttons, collection: ['LOW', 'NORMAL', 'HIGH'], label: false %>
     </div>
     
     </div>
