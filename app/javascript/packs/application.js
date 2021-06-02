@@ -41,10 +41,10 @@ import { initWeather } from '../components/init_weather';
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
+  initWeather();
   doubleSliderAction();
   // initSelect2();
   // initFormtoggle();
-  initWeather();
   // initResultCreator();
   // initDropdownSelect();
 });

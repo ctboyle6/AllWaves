@@ -17,6 +17,32 @@ h1, h2 {
   justify-content: space-around;
   align-items: center;
   color: white;
+  p {
+    font-size: 28px;
+  }
+}
+
+#temp-degrees {
+  display: flex;
+  position: relative;
+}
+
+#temp {
+  font-size: 144px;
+}
+
+#degrees {
+  font-size: 48px;
+  position: absolute;
+  top: 8px;
+  right: -54px;
+}
+
+#icon-desc {
+  text-align: center;
+}
+.date-location {
+
 }
 
 // Middle block containing the preferences and spots dropdowns/buttons
@@ -24,7 +50,7 @@ h1, h2 {
 .preference-spot-block {
   display: flex;
   margin: 0px 20px;
-  
+
   align-items: center;
 }
 
