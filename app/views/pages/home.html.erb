@@ -1,27 +1,17 @@
 <div id="home">
 
-  <h1>AllWaves</h1>
-
   <div id="banner">
-    <div id="video">Video</div>
-    <div id="exemple">Exemple</div>
-  </div>
-
-  <div class="bubbles">
-    <div class="home-bubble">
-      <h2>Setup</h2>
-      <p>Set your desired surf conditions <br>and favorite surf spots</p>
-    </div>
-    <div class="home-bubble">
-      <h2>Schedule</h2>
-      <p>Select one of your preference <br>and spot to get a live schedule<br> with Go days</p>
-    </div>
-    <div class="home-bubble">
-      <h2>Go Surf</h2>
-      <p>Get ready and go shred in<br> your perfect conditions! </p>
+    <div class="video-background">
+      <div class="video-foreground">
+      
+        <iframe src="https://www.youtube.com/embed/axK-ieZp1vo?rel=0;&autoplay=1&mute=1&loop=1" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
   </div>
-
+  <div class="viewport-header">
+    <h1>Find your right conditions</br>
+    <span>allWaves</span></h1>
+  </div>
   <div id="get-started">
     <%= link_to "Get Started", new_user_registration_path, class: "body-btn light-btn" %>
   </div>
