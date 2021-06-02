@@ -33,12 +33,14 @@ import "controllers"
 // import { initSelect2 } from '../components/init_select2';
 import { initMapbox } from '../plugins/init_mapbox';
 import { initFormtoggle } from '../components/init_formtoggle';
-import { initDropdownSelect } from '../components/init_dropdown_select';
-import { initResultCreator } from '../components/init_result_creator';
+import { initWeather } from '../components/init_weather';
+// import { initDropdownSelect } from '../components/init_dropdown_select';
+// import { initResultCreator } from '../components/init_result_creator';
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initFormtoggle();
+  initWeather();
   // initResultCreator();
   // initDropdownSelect();
 });

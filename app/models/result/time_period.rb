@@ -1,5 +1,6 @@
 class Result
   class TimePeriod
+    attr_reader :condition
     def initialize(params = {})
       @condition  = params[:condition]
       @preference = params[:preference]
