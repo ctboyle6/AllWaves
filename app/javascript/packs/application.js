@@ -39,6 +39,8 @@ import { initWeather } from '../components/init_weather';
 // import { initDropdownSelect } from '../components/init_dropdown_select';
 // import { initResultCreator } from '../components/init_result_creator';
 
+window.doubleSliderAction = doubleSliderAction;
+
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initWeather();

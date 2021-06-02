@@ -22,7 +22,7 @@ class PreferencesController < ApplicationController
     @preference.user = current_user
     authorize @preference
     if @preference.save
-      redirect_to preferences_path
+      redirect_to user_root_path
     else
       render :new
     end
@@ -33,7 +33,7 @@ class PreferencesController < ApplicationController
   def update
     if @preference.update(preference_params)
       falsify_favourites! if @preference.favourite
-      redirect_to preferences_path
+      redirect_to user_root_path
     else
       render :edit
     end

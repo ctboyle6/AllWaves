@@ -7,6 +7,7 @@ const initWeather = () => {
   const desc = document.getElementById("desc");
   const icon = document.getElementById("weather-icon");
   const temp = document.getElementById("temp");
+  if(!city) return
 
 
   const createUrl = () => {
