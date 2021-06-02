@@ -61,8 +61,8 @@ const initMapbox = () => {
         element_saved.className = 'marker-saved';
         element_saved.style.backgroundImage = `url('${marker.image_url}')`;
         element_saved.style.backgroundSize = 'contain';
-        element_saved.style.width = '30px';
-        element_saved.style.height = '30px';
+        element_saved.style.width = '8px';
+        element_saved.style.height = '26px';
 
         new mapboxgl.Marker(element_saved)
         .setLngLat([marker.lng, marker.lat])
@@ -79,7 +79,7 @@ const initMapbox = () => {
         element_new.className = 'marker-saved';
         element_new.style.backgroundImage = `url('${marker.image_url}')`;
         element_new.style.backgroundSize = 'contain';
-        element_new.style.width = '30px';
+        element_new.style.width = '24px';
         element_new.style.height = '30px';
 
         new mapboxgl.Marker(element_new)
