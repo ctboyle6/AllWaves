@@ -35,12 +35,12 @@ import { initMapbox } from '../plugins/init_mapbox';
 import { initFormtoggle } from '../components/init_formtoggle';
 import { initDropdownSelect } from '../components/init_dropdown_select';
 import { initResultCreator } from '../components/init_result_creator';
-import { mySliderAction } from '../plugins/init_doubleslider';
+import { doubleSliderAction } from '../plugins/init_doubleslider';
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initFormtoggle();
-  mySliderAction();
+  doubleSliderAction();
   // initResultCreator();
   // initDropdownSelect();
 });

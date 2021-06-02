@@ -1,15 +1,12 @@
 import DoubleSlider from 'double-slider';
 
-const form_ranges = document.querySelectorAll('.c-src')
-console.log(form_ranges);
-
 
 // range slider display value
 const render = (template, node) => {
   node.innerHTML = template;
 }
 
-const mySliderAction = () => {
+const doubleSliderAction = () => {
 
   // Swell Sliders (3)
   // swell height
@@ -75,4 +72,4 @@ const mySliderAction = () => {
 
 }
 
-export { mySliderAction };
+export { doubleSliderAction };

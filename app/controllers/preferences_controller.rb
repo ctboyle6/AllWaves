@@ -9,7 +9,10 @@ class PreferencesController < ApplicationController
   def show; end
 
   def new
-    @preference = Preference.new
+    @preference = Preference.new(swell_hgt_min: 10, swell_hgt_max: 20, swell_int_min: 10, swell_int_max: 20,
+                                 swell_dir_min: 90, swell_dir_max: 270, wind_str_min: 15, wind_str_max: 35,
+                                 wind_dir_min: 90, wind_dir_max: 270, pref_tide_position: 'NORMAL',
+                                 pref_unit: 'FT')
     authorize(@preference)
   end
 

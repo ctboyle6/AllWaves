@@ -11,23 +11,23 @@
       <br>
       <%= f.hint 'Greater swell height = greater wave size.' %>  <!-- Swell height refers to the distance between the trough (lowest point) to peak (highest point) of a wave as it passes a nearby buoy -->
       <br>
-      <div id="slider-swell-hgt" data-min="5" data-max="15" data-range="30"></div>
-      <%= f.hidden_field :swell_hgt_min, value: "" %>
-      <%= f.hidden_field :swell_hgt_max, value: "" %>
+      <div id="slider-swell-hgt" data-min="<%= @preference.swell_hgt_min %>" data-max="<%= @preference.swell_hgt_max %>" data-range="30"></div>
+      <%= f.hidden_field :swell_hgt_min %>
+      <%= f.hidden_field :swell_hgt_max%>
       <br>
       <br>
       <%= f.hint 'Greater swell interval = greater wave power.' %> <!-- Swell interval refers to the time between equal points of passing waves -->
       <br>
-      <div id="slider-swell-int" data-min="5" data-max="15" data-range="30"></div>
-      <%= f.hidden_field :swell_int_min, value: "" %>
-      <%= f.hidden_field :swell_int_max, value: "" %>
+      <div id="slider-swell-int" data-min="<%= @preference.swell_int_min %>" data-max="<%= @preference.swell_int_max %>" data-range="30"></div>
+      <%= f.hidden_field :swell_int_min %>
+      <%= f.hidden_field :swell_int_max %>
       <br>
       <br>
       <%= f.hint 'More perpendicular to your coast (with no obstructions) = better wave quality.' %> <!-- Swell direction refers to the trajectory of an incoming swell -->
       <br>
-      <div id="slider-swell-dir" data-min="45" data-max="180" data-range="360"></div>
-      <%= f.hidden_field :swell_dir_min, value: "" %>
-      <%= f.hidden_field :swell_dir_max, value: "" %>
+      <div id="slider-swell-dir" data-min="<%= @preference.swell_dir_min %>" data-max="<%= @preference.swell_dir_max %>" data-range="360"></div>
+      <%= f.hidden_field :swell_dir_min %>
+      <%= f.hidden_field :swell_dir_max %>
       <br>
       <br>
       <h3>Wind</h3>
@@ -35,16 +35,16 @@
       <br>
       <%= f.hint 'Generally, lighter winds = greater wave quality.' %> <!-- Wind strength refers to the force of nearby winds. Strong winds can mess or subdue incoming swells. Light winds can help push or pull wave faces -->
       <br>
-      <div id="slider-wind-str" data-min="5" data-max="15" data-range="50"></div>
-      <%= f.hidden_field :wind_str_min, value: "" %>
-      <%= f.hidden_field :wind_str_max, value: "" %>
+      <div id="slider-wind-str" data-min="<%= @preference.wind_str_min %>" data-max="<%= @preference.wind_str_max %>" data-range="50"></div>
+      <%= f.hidden_field :wind_str_min %>
+      <%= f.hidden_field :wind_str_max %>
       <br>
       <br>
       <%= f.hint 'Generally, offshore winds = greater wave quality.' %> <!-- Wind direction refers to the trajectory of nearby winds. Onshore winds (perpendicular and toward beach) push behind incoming swell, while offshores (perpendicular and toward sea) groom up the faces of incoming swells -->
       <br>
-      <div id="slider-wind-dir" data-min="45" data-max="180" data-range="360"></div>
-      <%= f.hidden_field :wind_dir_min, value: "" %>
-      <%= f.hidden_field :wind_dir_max, value: "" %>
+      <div id="slider-wind-dir" data-min="<%= @preference.wind_dir_min %>" data-max="<%= @preference.wind_dir_max %>" data-range="360"></div>
+      <%= f.hidden_field :wind_dir_min %>
+      <%= f.hidden_field :wind_dir_max %>
       <br>
       <br>
       <h3>Tide</h3>
