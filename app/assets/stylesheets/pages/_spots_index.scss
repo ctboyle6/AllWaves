@@ -34,11 +34,11 @@
 }
 
 .left-top-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  margin: 0 auto;
 }
 
 .form-search {
@@ -91,12 +91,12 @@
 }
 
 .new-spots {
-  width: 76% ;
+  width: 60%;
   margin: 0 auto;
 }
 
 .my-spots {
-  min-width: 582px; 
+  width: 40%; 
   margin: 0 auto;
 }
 
@@ -107,10 +107,18 @@
   text-align: center;
 }
 
+.left-bubbles img{
+  width: 56%;
+}
+
 .right-bubbles {
   overflow-y: auto;
   height: 100%;
   padding-right: 20px;
+}
+
+.right-bubbles img {
+  width: 64%;
 }
 
 #replacement-img {
