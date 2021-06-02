@@ -1,1 +1,80 @@
 // Specific CSS for your home-page
+
+#home {
+  margin-top: 20px;
+}
+
+#home > h1 {
+  text-align: center;
+}
+
+#login {
+  // position: fixed;
+  margin-top: 10px;
+  // bottom: -760px;
+}
+
+.bubbles {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.home-bubble {
+  background-color: $bubble;
+  width: 320px;
+  height: 200px;
+  border-radius: 26px;
+  color: white;
+  text-align: center;
+}
+
+.home-bubble > h2 {
+  margin-top: 10px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.home-bubble > p {
+  margin-top: 40px;
+  font-size: 18px;
+}
+
+#banner {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 20px;
+}
+
+#video {
+  width: 600px;
+  height: 400px;
+  background-color: $bubble;
+  border-radius: 26px;
+  color: white;
+}
+
+#exemple {
+  background-color: $bubble;
+  width: 600px;
+  height: 400px;
+  border-radius: 26px;
+  color: white;
+  
+}
+
+#get-started {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+#get-started > a {
+  width: 200px;
+  height: 60px;
+  font-size: 24px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+}

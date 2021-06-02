@@ -35,6 +35,7 @@ import { initMapbox } from '../plugins/init_mapbox';
 import { doubleSliderAction } from '../plugins/init_doubleslider';
 // import { initSelect2 } from '../plugins/init_select2';
 // import { initFormtoggle } from '../components/init_formtoggle';
+import { initWeather } from '../components/init_weather';
 // import { initDropdownSelect } from '../components/init_dropdown_select';
 // import { initResultCreator } from '../components/init_result_creator';
 
@@ -43,6 +44,7 @@ document.addEventListener('turbolinks:load', () => {
   doubleSliderAction();
   // initSelect2();
   // initFormtoggle();
+  initWeather();
   // initResultCreator();
   // initDropdownSelect();
 });
