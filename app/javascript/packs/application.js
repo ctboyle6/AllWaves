@@ -31,16 +31,16 @@ import "controllers"
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
-// import { initMapbox } from '../plugins/init_mapbox';
+import { initMapbox } from '../plugins/init_mapbox';
+import { doubleSliderAction } from '../plugins/init_doubleslider';
 // import { initFormtoggle } from '../components/init_formtoggle';
 // import { initDropdownSelect } from '../components/init_dropdown_select';
 // import { initResultCreator } from '../components/init_result_creator';
-import { doubleSliderAction } from '../plugins/init_doubleslider';
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
-  // initFormtoggle();
   doubleSliderAction();
+  // initFormtoggle();
   // initResultCreator();
   // initDropdownSelect();
 });
