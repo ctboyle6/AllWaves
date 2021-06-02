@@ -37,7 +37,6 @@ class SpotsController < ApplicationController
     end
     @spots.each do |spot|
       unless @user_spots.select { |user_spot| user_spot.spot_id == spot.id } != []
-        # raise
         @markers_new.push(
           {
           lat: spot.latitude,
@@ -46,8 +45,8 @@ class SpotsController < ApplicationController
           image_url: helpers.asset_url('wave.png')
         }
       )
-      end
     end
+  end
     @spot = Spot.new
   end
 

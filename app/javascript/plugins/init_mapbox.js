@@ -79,7 +79,7 @@ const initMapbox = () => {
         element_new.className = 'marker-new';
         element_new.style.backgroundImage = `url('${marker.image_url}')`;
         element_new.style.backgroundSize = 'contain';
-        element_new.style.width = '206 px';
+        element_new.style.width = '26 px';
         element_new.style.height = '16px';
 
         new mapboxgl.Marker(element_new)
