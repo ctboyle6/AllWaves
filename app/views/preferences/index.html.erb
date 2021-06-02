@@ -1,5 +1,8 @@
 <div class="container m-3">
   <h1>Your Preferences</h1>
+  <div>
+    <%= link_to "Back to dashboard", user_root_path, class: "btn btn-secondary mr-3 my-3" %>
+  </div>
 
   <ul>
     <% current_user.preferences.each_with_index do |preference, index| %>
@@ -7,16 +10,16 @@
         <%= link_to preference.name, preference_path(preference), remote: true %>
       </li>
     <% end %>
+    <li>
+      <%= link_to "New Preference", new_preference_path  %>
+    </li>
   </ul>
+
 
   <div id="preference-form">
     <%= render 'form', preference: current_user.preferences.first %>
   </div>
 
-  <div>
-    <%= link_to "New Preference", new_preference_path, class: "btn btn-primary"  %>
-    <%= link_to "Back to dashboard", user_root_path, class: "btn btn-secondary mr-3 my-3" %>
-  </div>
 </div>
 
 
