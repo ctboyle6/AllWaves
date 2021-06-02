@@ -3,14 +3,12 @@ body {
   background-color: rgb(5,40,80);
   background-image: linear-gradient(180deg,rgba(237,238,240,0.195), rgba(2,21,43,0));
   background-repeat: no-repeat;
-  // overflow-y: hidden; /* Removes the scroll bar */
+  overflow-y: hidden; /* Removes the scroll bar */
 }
 
 .sidebar-margin {
   margin-left: 14vw !important;
 }
-
-#home:not
 
 ::-webkit-scrollbar {
   width: 10px;
