@@ -90,24 +90,30 @@
 }
 
 .new-spots {
-  width: 74% ;
+  width: 76% ;
   margin: 0 auto;
 }
 
 .my-spots {
-  // width: 26%;
+  min-width: 582px; 
   margin: 0 auto;
 }
 
 .left-bubbles {
   overflow-y: auto;
   height: 100%;
-  min-width: 526px;
-  padding-right: 20PX;
+  padding-right: 20px;
+  text-align: center;
 }
 
 .right-bubbles {
   overflow-y: auto;
   height: 100%;
+  padding-right: 20px;
+}
+
+#replacement-img {
+  height: 100%;
+  margin: 0px auto;
 }
 

@@ -1,4 +1,5 @@
 <div class="wrapper">
+
   <div class="top-container">
     <div class="left-top-container">
       <h2 style="text-align: center">Search New Surf Spots </h2>
@@ -9,24 +10,28 @@
       <% end %>
     </div>
     <div id="map"
-      data-markers="<%= @markers.to_json %>"
+      data-markerssaved="<%= @markers_saved.to_json %>"
+      data-markersnew="<%= @markers_new.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
-
   </div>
 
   <div class="bottom-container">
     <div class=my-spots>
       <h2>My spots</h2>
       <div class="left-bubbles">
-        <% @spots.each do |spot| %>
-          <% if @user_spots.select { |user_spot| user_spot.spot_id == spot.id } != []  %>
-            <div class="bubble">
-              <h3 style="width: 16%" id="<%= spot.name%>"><%= spot.name.capitalize %></h3>
-              <img src="https://source.unsplash.com/800x200/?<%= spot.name %>,waves,surf/">
-              <% user_spot = @user_spots.find { |user_spot| user_spot.spot_id == spot.id } %>
-              <%= link_to "Remove", "/spots/#{spot.id}/user_spots/#{user_spot.id}", method: :delete, remote: true, class: "bubble-btn" %>
-            </div>
+        <% if current_user.user_spots.empty? %>
+         <%= image_tag "sad_dog.png", id: "replacement-img" %>
+        <% else %>
+          <% @spots.each do |spot| %>
+            <% if @user_spots.select { |user_spot| user_spot.spot_id == spot.id } != []  %>
+              <div class="bubble">
+                <h3 style="width: 16%" id="<%= spot.name%>"><%= spot.name.capitalize %></h3>
+                <img src="https://source.unsplash.com/800x200/?<%= spot.name %>,waves,surf/">
+                <% user_spot = @user_spots.find { |user_spot| user_spot.spot_id == spot.id } %>
+                <%= link_to "Remove", "/spots/#{spot.id}/user_spots/#{user_spot.id}", method: :delete, remote: true, class: "bubble-btn" %>
+              </div>
+            <% end %>
           <% end %>
         <% end %>
       </div>
@@ -48,4 +53,5 @@
       </div>
     </div>
   </div>
+  
 </div>
