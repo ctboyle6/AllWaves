@@ -1,12 +1,12 @@
 <div class="top-bubble-lg">
     <%# display flex %>
-    <h2>27</h2>
+    <h2 id="temp"></h2>
     <div>
-      <p>clear sky</p>
+      <p id="desc"></p>
+      <img id="weather-icon" src="" alt="weather-icon">
     </div>
     <div>
-      <p>today</p>
-     <p>friday, 28 May</p>
-      <p>Miami, Florida</p>
+      <p data-date-today="<%= DateTime.now.strftime("%A, %b %e") %>" id="date"></p>
+      <p data-location="<%= current_user.location %>" id="city"></p>
     </div>
 </div>
