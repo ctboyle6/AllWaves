@@ -4,7 +4,7 @@
   <ul>
     <% current_user.preferences.each do |preference| %>
       <li>
-        <%= link_to preference.name, preference_path(preference) %>
+        <%= link_to preference.name, preference_path(preference), remote: true %>
       </li>
     <% end %>
   </ul>
