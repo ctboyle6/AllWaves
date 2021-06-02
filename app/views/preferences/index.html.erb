@@ -4,16 +4,18 @@
     <%= link_to "Back to dashboard", user_root_path, class: "btn btn-secondary mr-3 my-3" %>
   </div>
 
-  <ul>
-    <% current_user.preferences.each_with_index do |preference, index| %>
-      <li class="<%= index.zero? ? 'active' : '' %> preference-item" id="preference-<%= preference.id %>">
-        <%= link_to preference.name, preference_path(preference), remote: true %>
-      </li>
-    <% end %>
-    <li>
-      <%= link_to "New Preference", new_preference_path  %>
-    </li>
-  </ul>
+
+  <!-- bootstrap dropdown -->
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Your Preferences
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <% current_user.preferences.each_with_index do |preference, index| %>
+        <a data-remote=true id="preference-<%= preference.id %>" class="dropdown-item <%= index.zero? ? 'active' : '' %> preference-item" href="<%= preference_path(preference)%>"><%= preference.name %></a>
+      <% end %>
+    </div>
+  </div>
 
 
   <div id="preference-form">
