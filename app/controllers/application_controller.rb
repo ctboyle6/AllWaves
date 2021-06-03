@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
   # Uncomment when you *really understand* Pundit!
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+  def default_url_options
+    { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
+  
   private
 
   def user_not_authorized

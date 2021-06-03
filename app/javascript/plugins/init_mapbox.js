@@ -55,7 +55,7 @@ const initMapbox = () => {
       console.log(markersSaved);
       let markers = [];
       markersSaved.forEach((marker) => {
-        // const popup = new mapboxgl.Popup().setHTML(marker.info_window);
+        const popup = new mapboxgl.Popup().setHTML(marker.info_window);
 
         const element_saved = document.createElement('div');
         element_saved.className = 'marker-saved';
@@ -66,29 +66,29 @@ const initMapbox = () => {
 
         new mapboxgl.Marker(element_saved)
         .setLngLat([marker.lng, marker.lat])
-        // .setPopup(popup)
+        .setPopup(popup)
         .addTo(map);
         markers.push({ lng: marker.lng, lat: marker.lat})
 
       });
       
       markersNew.forEach((marker) => {
-        // const popup = new mapboxgl.Popup().setHTML(marker.info_window);
+        const popup = new mapboxgl.Popup().setHTML(marker.info_window);
 
         const element_new = document.createElement('div');
         element_new.className = 'marker-saved';
         element_new.style.backgroundImage = `url('${marker.image_url}')`;
         element_new.style.backgroundSize = 'contain';
         element_new.style.width = '24px';
-        element_new.style.height = '30px';
+        element_new.style.height = '16px';
 
         new mapboxgl.Marker(element_new)
-        .setLngLat([marker.lng, marker.lat])
-        // .setPopup(popup)
-        .addTo(map);
-        markers.push({ lng: marker.lng, lat: marker.lat})
+          .setLngLat([marker.lng, marker.lat])
+          .setPopup(popup)
+          .addTo(map);
+        markers.push({ lng: marker.lng, lat: marker.lat })
       });
-
+      
       markers.push(userLocation._userLocationDotMarker._lngLat)
       fitMapToMarkersAndLocation(map, markers);
     }

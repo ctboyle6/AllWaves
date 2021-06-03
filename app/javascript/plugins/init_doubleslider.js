@@ -14,6 +14,7 @@ const doubleSliderAction = () => {
   const preferenceSwellHgtMax = document.getElementById('preference_swell_hgt_max');
   const valueSwellHgtMin = document.getElementById('value-swell-hgt-min');
   const valueSwellHgtMax = document.getElementById('value-swell-hgt-max');
+
   if(!preferenceSwellHgtMin) return
 
   const sliderSwellHgt = new DoubleSlider(document.getElementById('slider-swell-hgt'));
@@ -89,7 +90,6 @@ const doubleSliderAction = () => {
     valueWindDirMin.innerText = `Min: ${min}`;
     valueWindDirMax.innerText = `Max: ${max}`;
   });
-
 }
 
 export { doubleSliderAction };

@@ -43,10 +43,10 @@ window.doubleSliderAction = doubleSliderAction;
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
+  initWeather();
   doubleSliderAction();
   // initSelect2();
   // initFormtoggle();
-  initWeather();
   // initResultCreator();
   // initDropdownSelect();
 });
