@@ -4,7 +4,9 @@
     <div class="day <%= index.zero? ? 'active-day' : '' %>">
       <h2 class="weekday-name"><%= day.date.strftime("%A") %></h2>
       <h3 class="month-name"><%= day.date.strftime("%B %e") %></h3>
-      <div class="go-light <%= day.any_go? ? 'on' : 'off' %>"></div>
+      <div class="go-light <%= day.any_go? ? 'on' : 'off' %>">
+        <p><%= day.any_go? ? 'Go!' : '' %></p>
+      </div>
     </div>
   </a>
 <% end %>

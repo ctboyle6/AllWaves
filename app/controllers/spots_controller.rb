@@ -27,7 +27,7 @@ class SpotsController < ApplicationController
             lng: user_spot.spot.longitude,
             info_window: render_to_string(partial: "info_window", locals: { spot: user_spot.spot }),
             image_url: helpers.asset_url('saved.png')
-            
+
           }
         )
     end
@@ -51,7 +51,7 @@ class SpotsController < ApplicationController
     @markers =
       [{
         lat: @spot.latitude,
-        lng: @spot.longitude,
+        lng: @spot.longitude
       }]
   end
 
@@ -65,7 +65,7 @@ class SpotsController < ApplicationController
     else
       url_spot_id = scrap_surfline_spot_id(location_human_to_query(params["query"]))
       spot_id = get_id_location(url_spot_id)
-      @spot = Spot.new(name: params["query"])
+      @spot = Spot.new(name: params["query"].split.map(&:capitalize).join(" "))
       @spot.surfline_spot = spot_id
 
       wind_json = call_wind_api(spot_id)
@@ -87,7 +87,7 @@ class SpotsController < ApplicationController
       if @spot.id.nil?
         flash[:alert] = "Spot already exists"
       else
-        create_condition(@spot,spot_id)
+        create_condition(@spot, spot_id)
       end
     end
   end
