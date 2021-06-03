@@ -8,6 +8,15 @@ h1, h2 {
 
 // Top bubble info
 
+#no-spots {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  h2 {
+    opacity: 50%;
+  }
+}
+
 .top-bubble-lg {
   background-color: $bubble;
   display: flex;
