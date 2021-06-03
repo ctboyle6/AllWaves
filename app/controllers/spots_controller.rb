@@ -3,17 +3,17 @@ require_relative '../../db/spot_scrape'
 class SpotsController < ApplicationController
   def index
     @search_message = ""
-    @spots = Spot.all
+    @spots = Spot.all.order("id DESC")
 
     if params[:query].present?
-      @spots = Spot.search_by_spot_name(params[:query])
+      @spots = Spot.search_by_spot_name(params[:query]).order("id DESC")
       if @spots.size.zero?
         @spot = Spot.new
         create()
         if @spot.save
           @spot = Spot.search_by_spot_name(params[:query])
         else
-          @spots = Spot.near(params[:query], 500)
+          @spots = Spot.near(params[:query], 500).order("id DESC")
         end
       end
     end
