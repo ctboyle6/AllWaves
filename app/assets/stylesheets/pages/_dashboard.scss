@@ -90,6 +90,9 @@ h1, h2 {
   border-radius: 30px;
   padding-left: 14px;
   margin-right: 10px;
+  &:focus-visible {
+    outline: none !important;
+  }
 }
 
 #spot {
@@ -102,6 +105,9 @@ h1, h2 {
   margin-left: 228px;
   margin-right: 10px;
   padding-left: 14px;
+  &:focus-visible {
+    outline: none !important;
+  }
 }
 
 // Weekly schedule with days
@@ -252,7 +258,6 @@ h1, h2 {
 
 .go {
   background-color: $green;
-  opacity: 0.7;
 }
 
 .condition {
