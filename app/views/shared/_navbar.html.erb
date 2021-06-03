@@ -5,8 +5,8 @@
       <%= link_to "/" do %>
         <%= image_tag "allWaves_logo_bright.png", id: "logo" %>
       <% end %>
-      <div class="dark nav-button" id="dashboard">
-        <%= link_to "Dashboard", user_root_path %>
+      <div class="nav-button" id="dashboard">
+        <%= link_to "Dashboard", user_root_path, class: "dark nav-button" %>
       </div>
 
     </div>
@@ -21,11 +21,11 @@
       <p id="username"><%= current_user.username.capitalize %></p>
       </div>
       <div class="light nav-button" id="logout">
-        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+        <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "light nav-button" %>
       </div>
       <% else %>
-        <div class="light nav-button" id="login">
-          <%= link_to "Log in", new_user_session_path %>
+        <div class="nav-button" id="login">
+          <%= link_to "Log in", new_user_session_path, class: "light nav-button" %>
         </div>
       <% end %>
       
