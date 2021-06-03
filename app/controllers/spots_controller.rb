@@ -3,6 +3,7 @@ require_relative '../../db/spot_scrape'
 class SpotsController < ApplicationController
   def index
     @search_message = ""
+    @spots = Spot.all
 
     if params[:query].present?
       @spots = Spot.search_by_spot_name(params[:query])
@@ -14,23 +15,19 @@ class SpotsController < ApplicationController
         else
           @spots = Spot.near(params[:query], 500)
         end
-        else
       end
-    else
-      @spots = Spot.all
     end
+    # raise
 
     @markers_saved = []
     @markers_new = []
     @user_spots = UserSpot.all
-    @spots = Spot.all
-    pp @new_spots = @spots - @user_spots
     @user_spots.each do |user_spot|
       @markers_saved.push(
           {
             lat: user_spot.spot.latitude,
             lng: user_spot.spot.longitude,
-            # info_window: render_to_string(partial: "infowindow", locals: { user_spot: user_spot }),
+            info_window: render_to_string(partial: "info_window", locals: { spot: user_spot.spot }),
             image_url: helpers.asset_url('saved.png')
             
           }
@@ -42,12 +39,12 @@ class SpotsController < ApplicationController
           {
           lat: spot.latitude,
           lng: spot.longitude,
-          # info_window: render_to_string(partial: "infowindow", locals: { new_spot: new_spot }),
+          info_window: render_to_string(partial: "info_window", locals: { spot: spot }),
           image_url: helpers.asset_url('wave.png')
         }
       )
-      end
     end
+  end
     @spot = Spot.new
   end
 
@@ -66,7 +63,7 @@ class SpotsController < ApplicationController
 
   def create
     if scrap_surfline_spot_id(location_human_to_query(params["query"])) == true
-      flash[:alert] = "Sorry, the location you entered is not a Surf spot"
+      flash[:alert] = "Sorry, the location you entered is not a Surf spot. See above for nearby spots"
     else
       url_spot_id = scrap_surfline_spot_id(location_human_to_query(params["query"]))
       spot_id = get_id_location(url_spot_id)
@@ -84,10 +81,8 @@ class SpotsController < ApplicationController
 
       if @spot.save
         flash[:alert] = "Spot successfully created"
-        redirect_to spots_path
       else
         flash[:alert] = "We couldn't save this spot, please try again later"
-        redirect_to spots_path
       end
 
       spot_id = get_id_location(url_spot_id)
