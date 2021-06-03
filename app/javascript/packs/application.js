@@ -36,15 +36,18 @@ import { doubleSliderAction } from '../plugins/init_doubleslider';
 // import { initSelect2 } from '../plugins/init_select2';
 // import { initFormtoggle } from '../components/init_formtoggle';
 import { initWeather } from '../components/init_weather';
+import { initActiveDay } from '../components/init_active_day';
 // import { initDropdownSelect } from '../components/init_dropdown_select';
 // import { initResultCreator } from '../components/init_result_creator';
 
 window.doubleSliderAction = doubleSliderAction;
+window.initActiveDay = initActiveDay
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initWeather();
   doubleSliderAction();
+  initActiveDay();
   // initSelect2();
   // initFormtoggle();
   // initResultCreator();
