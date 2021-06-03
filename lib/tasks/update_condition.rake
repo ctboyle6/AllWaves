@@ -4,13 +4,10 @@ require 'twilio-ruby'
 
 namespace :update_conditions do
   desc "Update conditions of a specific spot"
-  task refresh_conditions_spot_id_1: :environment do
-    # puts "is this thing on?"
-    @spot = Spot.find(1)
-    @condition = Condition.where(spot: @spot)
-    puts 'Cleaning out old conditions..'
+  task refresh_conditions_last_spot: :environment do
 
-    @condition.destroy_all
+    @spot = User.first.spots.last
+    puts 'Cleaning out old conditions..'
 
     puts 'Refreshing conditions..'
     puts "updating #{@spot.name}'s conditions"
