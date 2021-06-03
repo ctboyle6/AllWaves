@@ -1,8 +1,8 @@
 <div class="preference-page">
+
+<% content_for :meta_title, "allWaves - My Preferences" %>
+
   <h1>Your Preferences</h1>
-
-  
-
 
   <div id="preference-form">
     <%= render 'form', preference: current_user.preferences.first %>

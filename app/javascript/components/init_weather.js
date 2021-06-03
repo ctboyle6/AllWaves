@@ -2,7 +2,8 @@
 const initWeather = () => {
   const apiKey = "3cc1136953500e619f88e19a9a56b51b";
   const city = document.getElementById("city");
-  const date = document.getElementById("date");
+  const weekday = document.getElementById("weekday");
+  const month = document.getElementById("month");
   const desc = document.getElementById("desc");
   const icon = document.getElementById("weather-icon");
   const temp = document.getElementById("temp");
@@ -19,17 +20,19 @@ const initWeather = () => {
 
   const injectValues = (data) => {
     city.innerText = data.name;
-    date.innerText = date.dataset.dateToday;
+    weekday.innerText = weekday.dataset.dateWeekday;
+    month.innerText = month.dataset.dateMonth;
     desc.innerText = data.weather[0].description.replace(/\b\w/g, l => l.toUpperCase());
     icon.src = iconUrl(data.weather[0].icon);
-    temp.innerText = `${Math.round(Number.parseInt(data.main.temp, 10))}°C`;
+    temp.innerText = `${Math.round(Number.parseInt(data.main.temp, 10))}`;
   };
-
-  fetch(createUrl())
-    .then(response => response.json())
-    .then((data) => {
-      injectValues(data);
-    });
+  if (city) {
+    fetch(createUrl())
+      .then(response => response.json())
+      .then((data) => {
+        injectValues(data);
+      });
+  }
 };
 
 export { initWeather };

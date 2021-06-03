@@ -17,6 +17,32 @@ h1, h2 {
   justify-content: space-around;
   align-items: center;
   color: white;
+  p {
+    font-size: 28px;
+  }
+}
+
+#temp-degrees {
+  display: flex;
+  position: relative;
+}
+
+#temp {
+  font-size: 144px;
+}
+
+#degrees {
+  font-size: 48px;
+  position: absolute;
+  top: 8px;
+  right: -54px;
+}
+
+#icon-desc {
+  text-align: center;
+}
+.date-location {
+
 }
 
 // Middle block containing the preferences and spots dropdowns/buttons
@@ -24,7 +50,7 @@ h1, h2 {
 .preference-spot-block {
   display: flex;
   margin: 0px 20px;
-  
+
   align-items: center;
 }
 
@@ -67,8 +93,35 @@ h1, h2 {
   min-height: 175px;
   border-radius: 26px;
   margin: 0px 5px;
+  text-align: center;
+  &:hover {
+    background-color: $bubble-hover;
+  }
 }
 
+.day-link {
+  text-decoration: none;
+  color: white;
+  &:hover {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.go-light {
+  width: 75%;
+  height: 48px;
+  margin: 0 auto;
+  border-radius: 26px;
+}
+
+.on {
+  background-color: green;
+}
+
+.off {
+  background-color: $bubble;
+}
 // Bottom block
 
 .bottom-block {
