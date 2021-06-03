@@ -3,24 +3,24 @@
   <div class="preference time text-center">
     <p><%= day.preference.name %></p>
   </div>
-  <div class="preference">
+  <div class="preference wave-pref-block">
     <p>Waves</p>
-    <div class="pref-summary wave">
+    <div class="pref-summary-wave">
       <p><%= day.preference.swell_hgt_min %>m - <%= day.preference.swell_hgt_max %>m</p>
       <p><%= day.preference.swell_dir_min %>° - <%= day.preference.swell_dir_max %>°</p>
       <p><%= day.preference.swell_int_min %>s - <%= day.preference.swell_int_max %>s</p>
     </div>
   </div>
-  <div class="preference">
+  <div class="preference wind-pref-block">
     <p>Wind</p>
-    <div class="pref-summary wind">
+    <div class="pref-summary-wind">
       <p><%= day.preference.wind_str_min %>kmh - <%= day.preference.wind_str_max %>kmh</p>
       <p><%= day.preference.wind_dir_min %>° - <%= day.preference.wind_dir_max %>°</p>
     </div>
   </div>
-  <div class="preference">
+  <div class="preference tide-pref-block">
     <p>Tide</p>
-    <div class="pref-summary tide">
+    <div class="pref-summary-tide">
       <p><%= day.preference.pref_tide_position %></p>
     </div>
   </div>
@@ -32,7 +32,7 @@
         <p><%= index * 3 %>:00</p>
       </div>
       <div class="condition wave">
-        <p><%= block.condition.waves_swell_height.round(1) %>ft</p>
+        <p><%= block.condition.waves_swell_height.round(1) %>m</p>
         <p><%= block.condition.waves_swell_direction.round(0) %>°</p>
         <p><%= block.condition.waves_swell_period %>s</p>
       </div>
