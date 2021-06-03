@@ -3,7 +3,7 @@ require_relative '../app/mailers/sms_sender'
 require 'twilio-ruby'
 
 # <<---- Spot seeds ---->>
-spot_names = %w[ pipeline] #jaws trestles 
+spot_names = %w[ pipeline jaws trestles]
 spot_names.each do |name|
   puts "Creating new spot names..."
   new_spot = Spot.new(name: name)
@@ -37,13 +37,13 @@ spot_names.each do |name|
 end
 
 # <<---- User seeds ---->>
-user1 = User.create!(email: "a@a.a", password:"123456", username:"user1", location: "Miami", phone_number: "+15142681755")
+stephfoo = User.create!(email: "stephfoo.surf@gmail.com", password:"123456", username:"Stephfoo", location: "Miami", phone_number: "+15142681755")
 user2 = User.create!(email: "allwavesproject@gmail.com", password:"123456", username:"user2", location: "Florida")
 
 
 # <<---- Preference seeds ---->>
 preset1 = Preference.new(name: "Default - Rookie", pref_unit: "FT", swell_hgt_min: 0.5, swell_hgt_max: 2, swell_int_min: 10, swell_int_max: 15, swell_dir_min: 150, swell_dir_max: 200, wind_str_min: 2, wind_str_max: 10, wind_dir_min: 200, wind_dir_max: 300, pref_tide_position: "LOW", pref_tide_range: 1 )
-preset1.user = user1
+preset1.user = stephfoo
 if preset1.save
   puts "#{preset1.name} preference was saved"
 else
@@ -51,7 +51,7 @@ else
 end
 
 preset2 = Preference.new(name: "Default - Mediocre", pref_unit: "FT", swell_hgt_min: 0.5, swell_hgt_max: 2, swell_int_min: 10, swell_int_max: 15, swell_dir_min: 150, swell_dir_max: 200, wind_str_min: 2, wind_str_max: 10, wind_dir_min: 200, wind_dir_max: 300, pref_tide_position: "NORMAL", pref_tide_range: 2 )
-preset2.user = user1
+preset2.user = stephfoo
 if preset2.save
   puts "#{preset2.name} preference was saved"
 else
@@ -59,18 +59,18 @@ else
 end
 
 preset3 = Preference.new(name: "Default - Advanced", pref_unit: "FT", swell_hgt_min: 0.5, swell_hgt_max: 2, swell_int_min: 10, swell_int_max: 15, swell_dir_min: 150, swell_dir_max: 200, wind_str_min: 2, wind_str_max: 10, wind_dir_min: 200, wind_dir_max: 300, pref_tide_position: "HIGH", pref_tide_range: 3 )
-preset3.user = user1
+preset3.user = stephfoo
 if preset3.save
   puts "#{preset3.name} preference was saved"
 else
   puts"#{preset3.name} preference was not saved"
 end
 
-user1_spot = UserSpot.new(user: user1, spot: Spot.last)
+stephfoo_spot = UserSpot.new(user: stephfoo, spot: Spot.last)
 
-if user1_spot.save!
-  send_sms_notification(user1, user1_spot)
-  puts "Sms sent to #{user1.phone_number}" 
+if stephfoo_spot.save!
+  send_sms_notification(stephfoo, stephfoo_spot)
+  puts "Sms sent to #{stephfoo.phone_number}" 
 end
 
 user_spot2 =  UserSpot.new(user: user2, spot: Spot.first)
