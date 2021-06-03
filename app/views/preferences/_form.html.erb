@@ -1,67 +1,166 @@
-<div class="card">
-  <%= simple_form_for preference, remote: true do |f| %>
-    <%= f.input :name %>
-    <%= f.input :favourite %>
-    <%= f.input :pref_unit, as: :radio_buttons, collection: ['FT', 'M'], label: 'Preferred Units 📏' %>
-    <h3>Swell</h3>
-    <hr>
-    <br>
-    <%= f.hint 'Greater swell height = greater wave size.' %>  <!-- Swell height refers to the distance between the trough (lowest point) to peak (highest point) of a wave as it passes a nearby buoy -->
-    <br>
-    <div id="slider-swell-hgt" data-min="<%= preference.swell_hgt_min %>" data-max="<%= preference.swell_hgt_max %>" data-range="30"></div>
-    <%= f.hidden_field :swell_hgt_min %>
-    <%= f.hidden_field :swell_hgt_max%>
-    <div id="value-swell-hgt-min">Min: <%= preference.swell_hgt_min.to_i %></div>
-    <div id="value-swell-hgt-max">Max: <%= preference.swell_hgt_max.to_i %></div>
-    <br>
-    <br>
-    <%= f.hint 'Greater swell interval = greater wave power.' %> <!-- Swell interval refers to the time between equal points of passing waves -->
-    <br>
-    <div id="slider-swell-int" data-min="<%= preference.swell_int_min %>" data-max="<%= preference.swell_int_max %>" data-range="30"></div>
-    <%= f.hidden_field :swell_int_min %>
-    <%= f.hidden_field :swell_int_max %>
-    <div id="value-swell-int-min">Min: <%= preference.swell_int_min.to_i %></div>
-    <div id="value-swell-int-max">Max: <%= preference.swell_int_max.to_i %></div>
-    <br>
-    <br>
-    <%= f.hint 'More perpendicular to your coast (with no obstructions) = better wave quality.' %> <!-- Swell direction refers to the trajectory of an incoming swell -->
-    <br>
-    <div id="slider-swell-dir" data-min="<%= preference.swell_dir_min %>" data-max="<%= preference.swell_dir_max %>" data-range="360"></div>
-    <%= f.hidden_field :swell_dir_min %>
-    <%= f.hidden_field :swell_dir_max %>
-    <div id="value-swell-dir-min">Min: <%= preference.swell_dir_min.to_i %></div>
-    <div id="value-swell-dir-max">Max: <%= preference.swell_dir_max.to_i %></div>
-    <br>
-    <br>
-    <h3>Wind</h3>
-    <hr>
-    <br>
-    <%= f.hint 'Generally, lighter winds = greater wave quality.' %> <!-- Wind strength refers to the force of nearby winds. Strong winds can mess or subdue incoming swells. Light winds can help push or pull wave faces -->
-    <br>
-    <div id="slider-wind-str" data-min="<%= preference.wind_str_min %>" data-max="<%= preference.wind_str_max %>" data-range="50"></div>
-    <%= f.hidden_field :wind_str_min %>
-    <%= f.hidden_field :wind_str_max %>
-    <div id="value-wind-str-min">Min: <%= preference.wind_str_min.to_i %></div>
-    <div id="value-wind-str-max">Max: <%= preference.wind_str_max.to_i %></div>
-    <br>
-    <br>
-    <%= f.hint 'Generally, offshore winds = greater wave quality.' %> <!-- Wind direction refers to the trajectory of nearby winds. Onshore winds (perpendicular and toward beach) push behind incoming swell, while offshores (perpendicular and toward sea) groom up the faces of incoming swells -->
-    <br>
-    <div id="slider-wind-dir" data-min="<%= preference.wind_dir_min %>" data-max="<%= preference.wind_dir_max %>" data-range="360"></div>
-    <%= f.hidden_field :wind_dir_min %>
-    <%= f.hidden_field :wind_dir_max %>
-    <div id="value-wind-dir-min">Min: <%= preference.wind_dir_min.to_i %></div>
-    <div id="value-wind-dir-max">Max: <%= preference.wind_dir_max.to_i %></div>
-    <br>
-    <br>
-    <h3>Tide</h3>
-    <hr>
-    <%= f.hint 'If you are not sure, choose "NORMAL" and then consult with your locals!' %> <!-- Tide position refers to the time periods where the tide is at its lowest, highest, or mid-points. High tide with too weak of swell may result in a flat day, while low tide may introduce more friction to incoming swells -->
-    <br>
-    <%= f.input :pref_tide_position, as: :radio_buttons, collection: ['LOW', 'NORMAL', 'HIGH'], label: 'Preferred Tide Position' %>
-    <br>
-    <br>
-    <%= f.button :submit, class: "btn btn-primary" %>
+<div class="preference-params">
+
+  <%= simple_form_for preference do |f| %>
+
+    <div class="pref-info">
+
+      <!-- bootstrap dropdown -->
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Your Preferences
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <% current_user.preferences.each_with_index do |preference, index| %>
+            <a data-remote=true id="preference-<%= preference.id %>" class="dropdown-item preference-item" href="<%= preference_path(preference)%>"><%= preference.name %></a>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="name-favorite">
+        <%= f.input :name, label: false %>
+        <%= f.input :favourite %>
+      </div>
+
+    </div>
+
+    <div class="pref-section swell-section">
+      <div class="light-label"></div>
+
+      <h3>Swell</h3>
+
+      <div class="settings-block">
+
+        <%#= f.hint 'Greater swell height = greater wave size.' %>  <!-- Swell height refers to the distance between the trough (lowest point) to peak (highest point) of a wave as it passes a nearby buoy -->
+
+        <div class="setting-slider-group">
+
+          <h5>Height</h5>
+
+          <div id="slider-swell-hgt" data-min="<%= preference.swell_hgt_min %>" data-max="<%= preference.swell_hgt_max %>" data-range="30"></div>
+          <%= f.hidden_field :swell_hgt_min %>
+          <%= f.hidden_field :swell_hgt_max %>
+        </div>
+
+        <div class="min-max-block">
+          <div id="value-swell-hgt-min">Min: <%= preference.swell_hgt_min.to_i %></div>
+          <div id="value-swell-hgt-max">Max: <%= preference.swell_hgt_max.to_i %></div>
+        </div>
+        
+        <%#= f.hint 'Greater swell interval = greater wave power.' %> <!-- Swell interval refers to the time between equal points of passing waves -->
+
+        <div class="setting-slider-group">
+
+          <h5>Interval</h5>
+
+          <div id="slider-swell-int" data-min="<%= preference.swell_int_min %>" data-max="<%= preference.swell_int_max %>" data-range="30"></div>
+          <%= f.hidden_field :swell_int_min %>
+          <%= f.hidden_field :swell_int_max %>
+        </div>
+
+        <div class="min-max-block">
+          <div id="value-swell-int-min">Min: <%= preference.swell_int_min.to_i %></div>
+          <div id="value-swell-int-max">Max: <%= preference.swell_int_max.to_i %></div>
+        </div>
+        
+        <%#= f.hint 'More perpendicular to your coast (with no obstructions) = better wave quality.' %> <!-- Swell direction refers to the trajectory of an incoming swell -->
+        
+        <div class="setting-slider-group">
+
+          <h5>Direction</h5>
+
+          <div id="slider-swell-dir" data-min="<%= preference.swell_dir_min %>" data-max="<%= preference.swell_dir_max %>" data-range="360"></div>
+          <%= f.hidden_field :swell_dir_min %>
+          <%= f.hidden_field :swell_dir_max %>
+        </div>
+
+        <div class="min-max-block">
+          <div id="value-swell-dir-min">Min: <%= preference.swell_dir_min.to_i %></div>
+          <div id="value-swell-dir-max">Max: <%= preference.swell_dir_max.to_i %></div>
+        </div>
+
+      </div>
+      
+    </div>
+
+    <div class="pref-section wind-section">
+      <div class="light-label"></div>
+
+      <div class="wind-info">
+
+        <h3>Wind</h3>
+
+      </div>
+
+      <div class="settings-block">
+      
+        <%#= f.hint 'Generally, lighter winds = greater wave quality.' %> <!-- Wind strength refers to the force of nearby winds. Strong winds can mess or subdue incoming swells. Light winds can help push or pull wave faces -->
+
+        <div class="setting-slider-group">
+
+          <h5>Strength</h5>
+
+          <div id="slider-wind-str" data-min="<%= preference.wind_str_min %>" data-max="<%= preference.wind_str_max %>" data-range="50"></div>
+          <%= f.hidden_field :wind_str_min %>
+          <%= f.hidden_field :wind_str_max %>
+        </div>
+
+        <div class="min-max-block">
+          <div id="value-wind-str-min">Min: <%= preference.wind_str_min.to_i %></div>
+          <div id="value-wind-str-max">Max: <%= preference.wind_str_max.to_i %></div>
+        </div>    
+        
+        <%#= f.hint 'Generally, offshore winds = greater wave quality.' %> <!-- Wind direction refers to the trajectory of nearby winds. Onshore winds (perpendicular and toward beach) push behind incoming swell, while offshores (perpendicular and toward sea) groom up the faces of incoming swells -->
+        
+        <div class="setting-slider-group">
+
+          <h5>Direction</h5>
+
+          <div id="slider-wind-dir" data-min="<%= preference.wind_dir_min %>" data-max="<%= preference.wind_dir_max %>" data-range="360"></div>
+          <%= f.hidden_field :wind_dir_min %>
+          <%= f.hidden_field :wind_dir_max %>
+        </div>
+
+        <div class="min-max-block">
+          <div id="value-wind-dir-min">Min: <%= preference.wind_dir_min.to_i %></div>
+          <div id="value-wind-dir-max">Max: <%= preference.wind_dir_max.to_i %></div>
+        </div>
+
+      </div>
+      
+    </div>
+
+    <div class="pref-section tide-section">
+      <div class="light-label"></div>
+
+      <div class="tide-info">
+        <h3>Tide</h3>
+      </div>
+
+      <div class="settings-block">
+
+        <%#= f.hint 'If you are not sure, choose "NORMAL" and then consult with your locals!' %> <!-- Tide position refers to the time periods where the tide is at its lowest, highest, or mid-points. High tide with too weak of swell may result in a flat day, while low tide may introduce more friction to incoming swells -->
+      
+        <div class="setting-slider-group">
+
+          <h5>Position</h5>
+        
+          <div class="boxes">
+            <%= f.input :pref_tide_position, as: :radio_buttons, collection: ['LOW', 'NORMAL', 'HIGH'], label: false, class: "test" %>
+          </div>
+        </div>
+      
+      </div>
+
+    </div>
+
+    <div class="save-discard">
+
+      <%= link_to "Delete Preference", preference_path(preference), method: :delete, class: "discard" %>
+
+      <%= f.button :submit, class: "save" %>
+      
+    </div>
+
   <% end %>
-  <%= link_to "Delete Preference", preference_path(preference), method: :delete, class: "btn btn-danger"  %>
+
 </div>

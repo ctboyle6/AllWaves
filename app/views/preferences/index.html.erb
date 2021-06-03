@@ -1,31 +1,11 @@
 <% content_for :meta_title, "allWaves - My Preferences" %>
 
+<div class="preference-page">
 
-<div class="container m-3">
   <h1>Your Preferences</h1>
-  <div>
-    <%= link_to "Back to dashboard", user_root_path, class: "btn btn-secondary mr-3 my-3" %>
-  </div>
-
-
-  <!-- bootstrap dropdown -->
-  <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Your Preferences
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <% current_user.preferences.each_with_index do |preference, index| %>
-        <a data-remote=true id="preference-<%= preference.id %>" class="dropdown-item <%= index.zero? ? 'active' : '' %> preference-item" href="<%= preference_path(preference)%>"><%= preference.name %></a>
-      <% end %>
-    </div>
-  </div>
-
 
   <div id="preference-form">
     <%= render 'form', preference: current_user.preferences.first %>
   </div>
 
 </div>
-
-
-

@@ -1,0 +1,225 @@
+.preference-page {
+  font-family: $body-font;
+  color:white;
+  
+  > h1 {
+    text-align: center;
+    padding-top: 20px;
+  }
+
+  .name-favorite {
+    display: flex;
+  }
+
+  .pref-info {
+    display: flex;
+    align-items: center;
+    width: 75%;
+    margin: 40px auto;
+    padding-left: 28px;
+    margin-bottom: 20px;
+    
+    .dropdown-toggle {
+      background-color: transparent;
+      background-image: $lightbtn;
+      border-radius: 26px;
+      border: none;
+      color: white;
+      width: 200px;
+      margin-right: 40px;
+    }
+
+    .dropdown-menu {
+      background-color: transparent;
+      background-image: $lightbtn;
+      width: 200px;
+      border: none;
+      border-radius: 26px;
+      margin: 0px;
+      margin-top: 4px;
+      // padding-top: 8px;
+      // height: 200px;
+    }
+    .dropdown-item {
+      // background-color: $bubble;
+      
+      // border-radius: 26px;
+      border: none;
+      color: white;
+      padding: 0px auto;
+    }
+
+    .dropdown-item:hover {
+      background-color: transparent;
+      color: rgba(255, 255, 255, 0.748);
+
+    }
+
+    #preference_name {
+      background-color: $bubble;
+      // background-image: $lightbtn;
+      border-radius: 26px;
+      border: none;
+      color: white;
+      width: 180px;
+      height: 36px;
+      outline: none;
+      padding-left: 16px;
+      padding-bottom: 2px;
+    }
+
+    .preference_favourite {
+      display: flex;
+      align-items: center;
+    }
+
+    .optional {
+      margin: 0;
+      margin-left: 6px;
+    }
+  }
+
+  .pref-section {
+    display: flex;
+    background-color: $bubble;
+    width: 75%;
+    border-radius: 26px;
+    margin: 25px auto;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .swell-section {
+    height: 220px;
+  }
+
+  .swell-info, .wind-info, .tide-info {
+    // margin-left: 20px;
+  }
+
+  .wind-section {
+    height: 160px;
+  }
+
+  .tide-section {
+    height: 100px;
+  }
+  
+  .preference_pref_tide_position {
+    display: flex;
+  }
+
+  .min-max-block {
+    display: flex;
+    margin-left: 120px;
+    margin-bottom: 10px;
+    height: 18px;
+  }
+
+  .settings-block {
+    padding-left: 100px;
+    margin-right: 60px;
+  }
+
+  .light-label {
+    background-color: $bubble;
+    width: 26px;
+    height:inherit;
+    border-radius: 30px 0px 0px 30px;
+  }
+
+  // Slider class found in the rendered html
+  .c-src, #slider-swell-hgt, #slider-swell-int, #slider-swell-dir {
+    height: 20px;
+    width: 400px;
+    // margin-top: 20px;
+  }
+
+  .checkbox {
+    display: flex;
+  }
+
+  h5 {
+    font-weight: 600;
+    width: 100px;
+  }
+
+  .boxes {
+    // margin-left: 120px;
+    
+  }
+
+  .setting-slider-group {
+    display: flex;
+    // width: 600px;
+    margin-top: 20px;
+    height: 20px;
+  }
+
+  .setting-slider-group > h5 {
+    margin-right: 20px;
+    margin-bottom: 0px;
+  }
+
+  .c-src-control {
+    width: 20px;
+    height: 20px;
+  }
+
+  .min-max-block div {
+    margin-right: 10px;
+  }
+
+  h3 {
+    font-size: 48px;
+  }
+
+  .tide-section .settings-block {
+    margin-right: 62px;
+    margin-bottom: 20px;
+  }
+
+  .preference_pref_tide_position {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+  }
+
+  .collection_radio_buttons {
+    padding-left: 6px;
+  }
+
+  .save-discard {
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+    margin: 0 auto;
+    .discard, .save {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 180px;
+      height: 40px;
+      background-color: transparent;
+      background-image: $lightbtn;
+      border-radius: 26px;
+      border: none;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .discard {
+      // margin-left: 158px;
+      margin-top: 40px;
+      background-color: $bubble;
+      background-image: none;
+    }
+
+    .save {
+      // margin-right: 158px;
+      margin-top: 40px;
+    }
+  } 
+}
