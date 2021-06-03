@@ -19,3 +19,7 @@
 @import "pages/spots_index";
 @import "components/simpleform";
 @import "components/slider";
+
+body {
+  font-family: $body-font !important;
+}
