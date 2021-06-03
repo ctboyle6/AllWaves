@@ -4,7 +4,7 @@
 
   <div class="top-container">
     <div class="left-top-container">
-    <h1 style="text-align: center">Search for Spots </h1>
+    <h1 style="text-align: center">Search Spots </h1>
     <%= form_with url: spots_path, local: true, html: { class: "form-search" } ,method: :get do |form| %>
       <%= form.text_field :query, class: "search-text" %>
       <%= form.submit "Search", class: "search-button"%>
@@ -22,7 +22,7 @@
       <h2>My Spots</h2>
       <div class="left-bubbles">
         <% if current_user.user_spots.empty? %>
-         <h4>You got no Spots Saved <br/> Please add one !</h4>
+         <h4>You don't have any spots saved. <br/>Please add one!</h4>
         <% else %>
             <% @user_spots.each do |user_spot| %>
               <div class="bubble">
