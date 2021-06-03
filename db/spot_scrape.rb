@@ -148,5 +148,6 @@ def create_condition(new_spot,spot_id)
       waves_swell_direction_min: @waves_swell_direction_min,
       waves_swell_optimal_score: @waves_swell_optimal_score,
     )
+    
   end
 end

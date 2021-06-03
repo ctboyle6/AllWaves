@@ -36,6 +36,7 @@ const initMapbox = () => {
       trackUserLocation: false
     });
     map.addControl(geolocate);
+    map.resize();
     map.on('load', function () {
       geolocate.trigger();
     });
