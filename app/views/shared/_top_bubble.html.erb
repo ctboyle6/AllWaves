@@ -1,16 +1,15 @@
 <div class="top-bubble-lg">
-    <%# display flex %>
-    <div id="temp-degrees">
-      <h2 id="temp"></h2>
-      <h4 id="degrees">°C</h4>
-    </div>
-    <div id=icon-desc>
-      <p id="desc"></p>
-      <img id="weather-icon" src="" alt="weather-icon">
-    </div>
-    <div id="date-location">
-      <p data-date-weekday="<%= DateTime.now.strftime("%A") %>" id="weekday"></p>
-      <p data-date-month="<%= DateTime.now.strftime("%B %e") %>" id="month"></p>
-      <p data-location="<%= current_user.location %>" id="city"></p>
-    </div>
+  <div id="temp-degrees">
+    <h2 id="temp"></h2>
+    <h4 id="degrees">°C</h4>
+  </div>
+  <div id=icon-desc>
+    <p id="desc"></p>
+    <img id="weather-icon" src="" alt="weather-icon">
+  </div>
+  <div id="date-location">
+    <p data-date-weekday="<%= DateTime.now.strftime("%A") %>" id="weekday"></p>
+    <p data-date-month="<%= DateTime.now.strftime("%B %e") %>" id="month"></p>
+    <p data-location="<%= current_user.location %>" id="city"></p>
+  </div>
 </div>
