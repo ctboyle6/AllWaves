@@ -39,7 +39,7 @@ const initMapbox = () => {
     map.on('load', function () {
       geolocate.trigger();
     });
-    
+    map.resize();
     function sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
     }
