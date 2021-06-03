@@ -4,6 +4,10 @@ h1, h2 {
 
 .dashboard-all {
   padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 // Top bubble info
@@ -12,6 +16,8 @@ h1, h2 {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
+  height: 480px;
   h2 {
     opacity: 50%;
   }
@@ -181,7 +187,6 @@ h1, h2 {
 .bottom-block {
   display: flex;
   justify-content: space-between;
-  height: 340px;
   margin-bottom: 20px;
 }
 
@@ -266,7 +271,7 @@ h1, h2 {
 }
 
 .go {
-  background-color: $green;
+  background-color: rgba(30, 221, 136, 0.7);
 }
 
 .condition {

@@ -10,7 +10,9 @@
   <% else %>
     <div id="no-spots">
       <h2>You don't have any spots saved!</h2>
-      <%= link_to "Add a new spot", spots_path, class: "body-btn light-btn" %>
+      <div id="no-spots-add">
+        <%= link_to "Add a new spot", spots_path, class: "body-btn light-btn" %>
+      </div>
     </div>
 <% end %>
 
