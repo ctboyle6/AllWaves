@@ -12,6 +12,17 @@ h1, h2 {
 
 // Top bubble info
 
+#no-spots {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 480px;
+  h2 {
+    opacity: 50%;
+  }
+}
+
 .top-bubble-lg {
   background-color: $bubble;
   display: flex;
@@ -266,7 +277,7 @@ h1, h2 {
 }
 
 .go {
-  background-color: $green;
+  background-color: rgba(30, 221, 136, 0.7);
 }
 
 .condition {

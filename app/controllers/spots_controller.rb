@@ -17,11 +17,9 @@ class SpotsController < ApplicationController
         end
       end
     end
-    # raise
-
     @markers_saved = []
     @markers_new = []
-    @user_spots = UserSpot.all
+    @user_spots = UserSpot.where(user_id: current_user.id)
     @user_spots.each do |user_spot|
       @markers_saved.push(
           {
