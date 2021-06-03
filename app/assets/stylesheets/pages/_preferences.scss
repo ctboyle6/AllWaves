@@ -1,12 +1,10 @@
 .preference-page {
   font-family: $body-font;
+  color:white;
   
   > h1 {
     text-align: center;
-  }
-
-  .preference-params {
-    color:white;
+    padding-top: 20px;
   }
 
   .name-favorite {
@@ -15,6 +13,70 @@
 
   .pref-info {
     display: flex;
+    align-items: center;
+    width: 75%;
+    margin: 40px auto;
+    padding-left: 28px;
+    margin-bottom: 20px;
+    
+    .dropdown-toggle {
+      background-color: transparent;
+      background-image: $lightbtn;
+      border-radius: 26px;
+      border: none;
+      color: white;
+      width: 200px;
+      margin-right: 40px;
+    }
+
+    .dropdown-menu {
+      background-color: transparent;
+      background-image: $lightbtn;
+      width: 200px;
+      border: none;
+      border-radius: 26px;
+      margin: 0px;
+      margin-top: 4px;
+      // padding-top: 8px;
+      // height: 200px;
+    }
+    .dropdown-item {
+      // background-color: $bubble;
+      
+      // border-radius: 26px;
+      border: none;
+      color: white;
+      padding: 0px auto;
+    }
+
+    .dropdown-item:hover {
+      background-color: transparent;
+      color: rgba(255, 255, 255, 0.748);
+
+    }
+
+    #preference_name {
+      background-color: $bubble;
+      // background-image: $lightbtn;
+      border-radius: 26px;
+      border: none;
+      color: white;
+      width: 180px;
+      height: 36px;
+      outline: none;
+      padding-left: 16px;
+      padding-bottom: 2px;
+    }
+
+    .preference_favourite {
+      display: flex;
+      align-items: center;
+    }
+
+    .optional {
+      margin: 0;
+      margin-left: 6px;
+    }
   }
 
   .pref-section {
@@ -130,6 +192,8 @@
   .save-discard {
     display: flex;
     justify-content: space-between;
+    width: 75%;
+    margin: 0 auto;
     .discard, .save {
       display: flex;
       justify-content: center;
@@ -147,14 +211,14 @@
     }
 
     .discard {
-      margin-left: 158px;
+      // margin-left: 158px;
       margin-top: 40px;
       background-color: $bubble;
       background-image: none;
     }
 
     .save {
-      margin-right: 158px;
+      // margin-right: 158px;
       margin-top: 40px;
     }
   } 

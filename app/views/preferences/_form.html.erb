@@ -2,12 +2,24 @@
 
   <div class="pref-info">
 
+    <!-- bootstrap dropdown -->
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Your Preferences
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <% current_user.preferences.each_with_index do |preference, index| %>
+          <a data-remote=true id="preference-<%= preference.id %>" class="dropdown-item preference-item" href="<%= preference_path(preference)%>"><%= preference.name %></a>
+        <% end %>
+      </div>
+    </div>
+
     <%= simple_form_for preference, remote: true do |f| %>
 
-    <%# <div class="name-favorite"> %>
+    <div class="name-favorite">
       <%= f.input :name, label: false %>
       <%= f.input :favourite %>
-    <%# </div> %>
+    </div>
 
   </div>
 
