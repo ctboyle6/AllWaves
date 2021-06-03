@@ -4,6 +4,10 @@ h1, h2 {
 
 .dashboard-all {
   padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 // Top bubble info
@@ -120,6 +124,7 @@ h1, h2 {
   justify-content: space-between;
 }
 
+
 .day {
   background-color: $bubble;
   min-width: 150px;
@@ -133,6 +138,11 @@ h1, h2 {
   &:hover {
     background-color: $bubble-hover;
   }
+}
+
+.active-day {
+  background-color: $bubble-hover;
+  border: 2px solid rgba(255, 255, 255, 0.7);
 }
 
 .day-link {
@@ -162,6 +172,7 @@ h1, h2 {
 .on {
   background-color: $green;
   opacity: 0.7;
+  box-shadow: 0 0px 4px $green;
 }
 
 .off {
@@ -172,8 +183,6 @@ h1, h2 {
 .bottom-block {
   display: flex;
   justify-content: space-between;
-  height: 340px;
-  margin-bottom: 20px;
 }
 
 .current-day {

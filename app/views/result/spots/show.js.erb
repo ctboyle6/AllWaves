@@ -1,4 +1,5 @@
 var result_template = '<%= j render "result", result: @result %>'
 var result_container = document.getElementById("weekly-schedule")
 result_container.innerHTML = result_template
+initActiveDay();
 // console.log(result_template)
