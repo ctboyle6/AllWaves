@@ -2,24 +2,22 @@ h1, h2 {
   color:white;
 }
 
+.dashboard-all {
+  padding: 20px 40px;
+}
+
 // Top bubble info
 
 .top-bubble-lg {
   background-color: $bubble;
   display: flex;
-  position: relative;
-  top: 20px;
   border-radius: 26px;
-  margin: 0px 20px;
-  margin-bottom: 40px;
-  min-width: 1198px;
+  margin-bottom: 20px;
+  min-width: 1100px;
   height: 220px;
   justify-content: space-around;
   align-items: center;
   color: white;
-  p {
-    font-size: 28px;
-  }
 }
 
 #temp-degrees {
@@ -40,25 +38,54 @@ h1, h2 {
 
 #icon-desc {
   text-align: center;
+  position: relative;
+  margin-bottom: 40px;
 }
-.date-location {
 
+#weather-icon {
+  height: 144px;
+}
+
+#desc {
+  position: absolute;
+  bottom: -16px;
+  right: -40px;
+  font-size: 20px
+}
+
+#date-location {
+  text-align: center;
+}
+
+#month {
+  font-size: 80px;
+  margin: 0px;
+}
+
+#weekday {
+  font-size: 20px;
+  margin: 0px;
+}
+
+#city {
+  font-size: 20px;
+  margin: 0px;
 }
 
 // Middle block containing the preferences and spots dropdowns/buttons
 
 .preference-spot-block {
   display: flex;
-  margin: 0px 20px;
-
   align-items: center;
+  margin-bottom: 20px;
+  // justify-content: space-between;
 }
 
 #preference {
   background-color: $bubble;
   color: white;
   border: none;
-  width: 200px;
+  width: 191px;
   height: 48px;
   border-radius: 30px;
   padding-left: 14px;
@@ -69,31 +96,34 @@ h1, h2 {
   background-color: $bubble;
   color: white;
   border: none;
-  width: 266px;
-  height: 60px;
-  border-radius: 50px;
-  margin-left: 200px;
+  width: 191px;
+  height: 48px;
+  border-radius: 30px;
+  margin-left: 228px;
   margin-right: 10px;
   padding-left: 14px;
 }
 
 // Weekly schedule with days
 
-.weekly-schedule {
+#weekly-schedule {
   display: flex;
-  margin: 20px 20px;
-  min-width: 1198px;
+  margin: 0 0 20px;
+  min-width: 1100px;
   height: 160px;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .day {
   background-color: $bubble;
-  min-width: 190px;
-  min-height: 175px;
+  min-width: 150px;
+  min-height: 150px;
   border-radius: 26px;
-  margin: 0px 5px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  // padding: 8px;
   &:hover {
     background-color: $bubble-hover;
   }
@@ -108,15 +138,24 @@ h1, h2 {
   }
 }
 
+.weekday-name {
+  font-size: 20px;
+}
+
+.month-name {
+  font-size: 16px;
+}
+
 .go-light {
   width: 75%;
-  height: 48px;
+  height: 32px;
   margin: 0 auto;
   border-radius: 26px;
 }
 
 .on {
-  background-color: green;
+  background-color: $green;
+  opacity: 0.7;
 }
 
 .off {
@@ -127,9 +166,8 @@ h1, h2 {
 .bottom-block {
   display: flex;
   justify-content: space-between;
-  margin: 0px 40px;
-  margin-top: 20px;
   height: 340px;
+  margin-bottom: 20px;
 }
 
 .current-day {
@@ -141,26 +179,108 @@ h1, h2 {
 }
 
 .preferences-overview {
-  margin-top: 40px;
+  // margin-top: 20px;
   color: white;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 280px;
+  margin-right: 20px;
+  p {
+    margin: 0;
+  }
 }
 
 .preference {
-  width: 170px;
-  height: 58px;
+  display: flex;
+  min-width: 280px;
   background-color: $bubble;
   border-radius: 26px;
-  margin-left: 30px;
-  margin-right: 30px;
-  margin-top: 8px;
+  // margin-left: 30px;
+  // margin-right: 30px;
+  // margin-top: 8px;
+  justify-content: space-around;
 }
 
 .time-schedule {
+  display: flex;
   min-width: 570px;
   flex-grow: 1;
-  height: 300px;
+  height: 280px;
   background-color: $bubble;
   border-radius: 26px;
-  margin-top: 20px;
+  // margin-top: 20px;
+  justify-content: space-around;
+  p {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.time-period {
+  margin: 8px 0px;
+  border-radius: 16px;
+  background-color: $bubble;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.go {
+  background-color: $green;
+  opacity: 0.7;
+}
+
+.condition {
+  color: white;
+}
+
+.time {
+  height: 32px;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.preference.time {
+  height: 40px;
+}
+
+.wave {
+  height: 96px;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.preference.wave {
+  height: 120px;
+}
+
+.wind {
+  height: 64px;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.preference.wind {
+  height: 80px;
+}
+
+.tide {
+  height: 32px;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.pref-summary.tide {
+  height: 40px;
+  padding: 28px 0;
 }
