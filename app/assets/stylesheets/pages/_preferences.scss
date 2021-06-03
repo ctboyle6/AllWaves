@@ -1,5 +1,6 @@
 .preference-page {
   font-family: $body-font;
+  
   > h1 {
     text-align: center;
   }
@@ -12,6 +13,10 @@
     display: flex;
   }
 
+  .pref-info {
+    display: flex;
+  }
+
   .pref-section {
     display: flex;
     background-color: $bubble;
@@ -19,6 +24,7 @@
     border-radius: 26px;
     margin: 25px auto;
     align-items: center;
+    justify-content: space-between;
   }
 
   .swell-section {
@@ -26,7 +32,7 @@
   }
 
   .swell-info, .wind-info, .tide-info {
-    margin-left: 20px;
+    // margin-left: 20px;
   }
 
   .wind-section {
@@ -44,11 +50,13 @@
   .min-max-block {
     display: flex;
     margin-left: 120px;
+    margin-bottom: 10px;
     height: 18px;
   }
 
   .settings-block {
     padding-left: 100px;
+    margin-right: 60px;
   }
 
   .light-label {
@@ -75,13 +83,15 @@
   }
 
   .boxes {
-    margin-left: 120px;
+    // margin-left: 120px;
+    
   }
 
   .setting-slider-group {
     display: flex;
     // width: 600px;
     margin-top: 20px;
+    height: 20px;
   }
 
   .setting-slider-group > h5 {
@@ -97,4 +107,55 @@
   .min-max-block div {
     margin-right: 10px;
   }
+
+  h3 {
+    font-size: 48px;
+  }
+
+  .tide-section .settings-block {
+    margin-right: 62px;
+    margin-bottom: 20px;
+  }
+
+  .preference_pref_tide_position {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+  }
+
+  .collection_radio_buttons {
+    padding-left: 6px;
+  }
+
+  .save-discard {
+    display: flex;
+    justify-content: space-between;
+    .discard, .save {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 180px;
+      height: 40px;
+      background-color: transparent;
+      background-image: $lightbtn;
+      border-radius: 26px;
+      border: none;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .discard {
+      margin-left: 158px;
+      margin-top: 40px;
+      background-color: $bubble;
+      background-image: none;
+    }
+
+    .save {
+      margin-right: 158px;
+      margin-top: 40px;
+    }
+  } 
 }
