@@ -79,6 +79,10 @@ h1, h2 {
   align-items: center;
   margin-bottom: 20px;
   // justify-content: space-between;
+
+  select option {
+    color: black;
+  }
 }
 
 #preference {
