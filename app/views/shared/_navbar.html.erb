@@ -1,33 +1,34 @@
 <div id="navbar">
   <div id="navbar-content">
+    <div class="navbar-top">
 
-    <%= link_to "/" do %>
-      <%= image_tag "allWaves_logo_bright.png", id: "logo" %>
-    <% end %>
-
-    <% if user_signed_in? %>
-    <div id="user-info">
-
-      <%= link_to "#" do %>
-        <%= image_tag "Stephfoo.png", id: "user-image" %>
+      <%= link_to "/" do %>
+        <%= image_tag "allWaves_logo_bright.png", id: "logo" %>
       <% end %>
-
-     <p id="username"><%= current_user.username %></p>
-    </div>
-
-
-    <div class="dark nav-button" id="dashboard">
-      <%= link_to "Dashboard", user_root_path %>
-    </div>
-
-    <div class="light nav-button" id="logout">
-      <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-    </div>
-
-    <% else %>
-      <div class="light nav-button" id="login">
-        <%= link_to "Log in", new_user_session_path %>
+      <div class="dark nav-button" id="dashboard">
+        <%= link_to "Dashboard", user_root_path %>
       </div>
-    <% end %>
+
+    </div>
+
+    <div class="navbar-bottom">
+
+      <% if user_signed_in? %>
+      <div id="user-info">
+        <%= link_to "#" do %>
+          <%= image_tag "Stephfoo.png", id: "user-image" %>
+        <% end %>
+      <p id="username"><%= current_user.username.capitalize %></p>
+      </div>
+      <div class="light nav-button" id="logout">
+        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+      </div>
+      <% else %>
+        <div class="light nav-button" id="login">
+          <%= link_to "Log in", new_user_session_path %>
+        </div>
+      <% end %>
+      
+    </div>
   </div>
 </div>
