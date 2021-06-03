@@ -1,0 +1,15 @@
+// Assignments
+var preferenceTemplate = "<%= j render 'form', preference: @preference %>"
+var preferenceForm = document.getElementById('preference-form');
+var preferenceItems = document.querySelectorAll('.preference-item');
+var activeItem = document.querySelector('#preference-new');
+
+
+// execution
+preferenceForm.innerHTML = preferenceTemplate;
+preferenceItems.forEach((item) => {
+  item.classList.remove('active');
+});
+activeItem.classList.add('active');
+
+doubleSliderAction();

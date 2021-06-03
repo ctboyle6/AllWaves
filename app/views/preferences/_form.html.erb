@@ -1,6 +1,7 @@
 <div class="preference-params">
 
   <%= simple_form_for preference do |f| %>
+    <%= f.hidden_field :pref_unit %>
 
     <div class="pref-info">
 
@@ -10,6 +11,7 @@
           Your Preferences
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a data-remote=true id="preference-new" class="dropdown-item preference-item" href="<%=new_preference_path%>">Create New Preference</a>
           <% current_user.preferences.each_with_index do |preference, index| %>
             <a data-remote=true id="preference-<%= preference.id %>" class="dropdown-item preference-item" href="<%= preference_path(preference)%>"><%= preference.name %></a>
           <% end %>
@@ -17,8 +19,9 @@
       </div>
 
       <div class="name-favorite">
-        <%= f.input :name, label: false %>
+        <%= f.input :name %>
         <%= f.input :favourite %>
+
       </div>
 
     </div>
@@ -45,7 +48,7 @@
           <div id="value-swell-hgt-min">Min: <%= preference.swell_hgt_min.to_i %></div>
           <div id="value-swell-hgt-max">Max: <%= preference.swell_hgt_max.to_i %></div>
         </div>
-        
+
         <%#= f.hint 'Greater swell interval = greater wave power.' %> <!-- Swell interval refers to the time between equal points of passing waves -->
 
         <div class="setting-slider-group">
@@ -61,9 +64,9 @@
           <div id="value-swell-int-min">Min: <%= preference.swell_int_min.to_i %></div>
           <div id="value-swell-int-max">Max: <%= preference.swell_int_max.to_i %></div>
         </div>
-        
+
         <%#= f.hint 'More perpendicular to your coast (with no obstructions) = better wave quality.' %> <!-- Swell direction refers to the trajectory of an incoming swell -->
-        
+
         <div class="setting-slider-group">
 
           <h5>Direction</h5>
@@ -79,7 +82,7 @@
         </div>
 
       </div>
-      
+
     </div>
 
     <div class="pref-section wind-section">
@@ -92,7 +95,7 @@
       </div>
 
       <div class="settings-block">
-      
+
         <%#= f.hint 'Generally, lighter winds = greater wave quality.' %> <!-- Wind strength refers to the force of nearby winds. Strong winds can mess or subdue incoming swells. Light winds can help push or pull wave faces -->
 
         <div class="setting-slider-group">
@@ -107,10 +110,10 @@
         <div class="min-max-block">
           <div id="value-wind-str-min">Min: <%= preference.wind_str_min.to_i %></div>
           <div id="value-wind-str-max">Max: <%= preference.wind_str_max.to_i %></div>
-        </div>    
-        
+        </div>
+
         <%#= f.hint 'Generally, offshore winds = greater wave quality.' %> <!-- Wind direction refers to the trajectory of nearby winds. Onshore winds (perpendicular and toward beach) push behind incoming swell, while offshores (perpendicular and toward sea) groom up the faces of incoming swells -->
-        
+
         <div class="setting-slider-group">
 
           <h5>Direction</h5>
@@ -126,7 +129,7 @@
         </div>
 
       </div>
-      
+
     </div>
 
     <div class="pref-section tide-section">
@@ -139,26 +142,26 @@
       <div class="settings-block">
 
         <%#= f.hint 'If you are not sure, choose "NORMAL" and then consult with your locals!' %> <!-- Tide position refers to the time periods where the tide is at its lowest, highest, or mid-points. High tide with too weak of swell may result in a flat day, while low tide may introduce more friction to incoming swells -->
-      
+
         <div class="setting-slider-group">
 
           <h5>Position</h5>
-        
+
           <div class="boxes">
             <%= f.input :pref_tide_position, as: :radio_buttons, collection: ['LOW', 'NORMAL', 'HIGH'], label: false, class: "test" %>
           </div>
         </div>
-      
+
       </div>
 
     </div>
 
     <div class="save-discard">
-
-      <%= link_to "Delete Preference", preference_path(preference), method: :delete, class: "discard" %>
-
+      <div>
+        <%= link_to "Delete Preference", preference_path(preference), method: :delete, class: "discard" if preference.persisted? %>
+      </div>
       <%= f.button :submit, class: "save" %>
-      
+
     </div>
 
   <% end %>
