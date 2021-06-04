@@ -4,7 +4,7 @@ include SendGrid
 class UserNotifierMailer < ApplicationMailer
   # default :from => 'allwavesproject@gmail.com'
   
-  def update_conditions(user,user_spot)
+  def update_conditions(user,user_spot, condition)
     from = Email.new(email: 'allwavesproject@gmail.com')
     to = Email.new(email: user.email)
     subject = "#{user_spot.name.capitalize} conditions have been updated !"
@@ -12,6 +12,9 @@ class UserNotifierMailer < ApplicationMailer
       #{user_spot.name.capitalize} received new conditions :
       <br/>
       <br/>
+
+      #{condition.wind_optimal_score}
+
       Go to <a href='https://www.allwaves.app/dashboard'>Allwaves</a> to check them out !
       <br/>
       <br/>
