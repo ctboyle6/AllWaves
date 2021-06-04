@@ -104,11 +104,13 @@ h1, h2 {
   background-color: $bubble;
   color: white;
   border: none;
-  width: 191px;
-  height: 48px;
-  border-radius: 30px;
+  width: 200px;
+  height: 50px;
+  border-radius: 26px;
   padding-left: 14px;
   margin-right: 10px;
+  font-size: 17px;
+  // font-weight: 600;
   &:focus-visible {
     outline: none !important;
   }
@@ -118,12 +120,14 @@ h1, h2 {
   background-color: $bubble;
   color: white;
   border: none;
-  width: 191px;
-  height: 48px;
-  border-radius: 30px;
+  width: 200px;
+  height: 50px;
+  border-radius: 26px;
   margin-left: 228px;
   margin-right: 10px;
   padding-left: 14px;
+  font-size: 18px;
+  // font-weight: 600;
   &:focus-visible {
     outline: none !important;
   }
@@ -133,22 +137,21 @@ h1, h2 {
 
 #weekly-schedule {
   display: flex;
-  margin: 0 0 20px;
-  min-width: 1100px;
-  height: 160px;
+  width: 100%;
+  height: 26%;
   justify-content: space-between;
 }
 
 
 .day {
   background-color: $bubble;
-  min-width: 150px;
-  min-height: 150px;
+  height: 80%;
   border-radius: 26px;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  font
   // padding: 8px;
   &:hover {
     background-color: $bubble-hover;
@@ -163,6 +166,7 @@ h1, h2 {
 .day-link {
   text-decoration: none;
   color: white;
+  width: 14%;
   &:hover {
     text-decoration: none;
     color: white;
@@ -170,11 +174,12 @@ h1, h2 {
 }
 
 .weekday-name {
-  font-size: 20px;
+  font-size: 24px;
+  font-weight: 600;
 }
 
 .month-name {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .go-light {
@@ -187,6 +192,12 @@ h1, h2 {
 .on {
   background-color: rgba(30, 221, 136, 0.7);
   box-shadow: 0 0px 4px $green;
+  p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2px;
+  }
 }
 
 .off {
