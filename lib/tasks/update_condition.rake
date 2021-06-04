@@ -34,7 +34,7 @@ namespace :notifications do
 
 
 
-    UserNotifierMailer.update_conditions(User.first, @spot, @condition).deliver
+    UserNotifierMailer.update_conditions(User.first, @spot).deliver
     
     puts 'Conditions refreshed'
     end
