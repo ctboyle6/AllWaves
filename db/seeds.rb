@@ -49,13 +49,13 @@ user2 = User.create!(email: "allwavesproject@gmail.com", password:"123456", user
 stephfoo_spot = UserSpot.new(user: stephfoo, spot: Spot.last)
 
 
-if stephfoo_spot.save!
-  send_sms_notification(stephfoo, stephfoo_spot)
-  puts "Sms sent to #{stephfoo.phone_number}" 
-end
+# if stephfoo_spot.save!
+#   send_sms_notification(stephfoo, stephfoo_spot)
+#   puts "Sms sent to #{stephfoo.phone_number}" 
+# end
 
-user_spot2 =  UserSpot.new(user: user2, spot: Spot.first)
+# user_spot2 =  UserSpot.new(user: user2, spot: Spot.first)
 
-if user_spot2.save
-  UserNotifierMailer.update_conditions(user2,user_spot2).deliver
-end
+# if user_spot2.save
+#   UserNotifierMailer.update_conditions(user2,user_spot2).deliver
+# end
