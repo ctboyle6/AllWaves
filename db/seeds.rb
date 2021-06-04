@@ -4,7 +4,7 @@ require 'twilio-ruby'
 
 # <<---- Spot seeds ---->>
 
-spot_names = %w[ Pipeline Jaws Trestles]
+spot_names = [ "Trestles", "Del Mar", "Pipeline", "Jaws", "Ocean Ave", "Rockaway", "Ventura", "Cocoa Beach", "Folly Beach", "Witches Rock", "La Punta", "Puerto Escondido" ]
 
 spot_names.each do |name|
   puts "Creating new spot names..."
@@ -51,7 +51,7 @@ clayton = User.create!(email: "claytonlandrysurf@gmail.com", password:"123456", 
 
 # if stephfoo_spot.save!
 #   send_sms_notification(stephfoo, stephfoo_spot)
-#   puts "Sms sent to #{stephfoo.phone_number}" 
+#   puts "Sms sent to #{stephfoo.phone_number}"
 # end
 
 # user_spot2 =  UserSpot.new(user: user2, spot: Spot.first)

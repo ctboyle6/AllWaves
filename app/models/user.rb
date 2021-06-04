@@ -17,7 +17,7 @@ class User < ApplicationRecord
   private
 
   def create_default_preferences
-    preferences.new(name: "Default - Rookie", pref_unit: "M", swell_hgt_min: 0.5, swell_hgt_max: 2, swell_int_min: 10, swell_int_max: 15, swell_dir_min: 150, swell_dir_max: 200, wind_str_min: 2, wind_str_max: 10, wind_dir_min: 200, wind_dir_max: 300, pref_tide_position: "LOW", pref_tide_range: 1 )
+    preferences.new(name: "Default - Rookie", pref_unit: "M", swell_hgt_min: 0, swell_hgt_max: 1, swell_int_min: 10, swell_int_max: 15, swell_dir_min: 150, swell_dir_max: 200, wind_str_min: 0, wind_str_max: 2.5, wind_dir_min: 100, wind_dir_max: 200, pref_tide_position: "NORMAL", pref_tide_range: 1 )
     preferences.new(name: "Default - Mediocre", pref_unit: "M", swell_hgt_min: 0.5, swell_hgt_max: 2, swell_int_min: 10, swell_int_max: 15, swell_dir_min: 150, swell_dir_max: 200, wind_str_min: 2, wind_str_max: 10, wind_dir_min: 200, wind_dir_max: 300, pref_tide_position: "NORMAL", pref_tide_range: 2 )
     preferences.new(name: "Default - Advanced", pref_unit: "M", swell_hgt_min: 0.5, swell_hgt_max: 2, swell_int_min: 10, swell_int_max: 15, swell_dir_min: 150, swell_dir_max: 200, wind_str_min: 2, wind_str_max: 10, wind_dir_min: 200, wind_dir_max: 300, pref_tide_position: "HIGH", pref_tide_range: 3 )
   end
