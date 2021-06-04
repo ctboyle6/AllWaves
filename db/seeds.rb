@@ -4,7 +4,7 @@ require 'twilio-ruby'
 
 # <<---- Spot seeds ---->>
 
-spot_names = %w[ pipeline jaws trestles]
+spot_names = %w[ Pipeline Jaws Trestles]
 
 spot_names.each do |name|
   puts "Creating new spot names..."
@@ -40,13 +40,13 @@ end
 
 # <<---- User seeds ---->>
 stephfoo = User.create!(email: "stephfoo.surf@gmail.com", password:"123456", username:"Stephfoo", location: "Miami", phone_number: "+15142681755")
-user2 = User.create!(email: "allwavesproject@gmail.com", password:"123456", username:"user2", location: "Florida")
+clayton = User.create!(email: "claytonlandrysurf@gmail.com", password:"123456", username:"Clayton", location: "Los Angeles")
 
 
 # <<---- Preference seeds ---->>
 
 
-stephfoo_spot = UserSpot.new(user: stephfoo, spot: Spot.last)
+# stephfoo_spot = UserSpot.new(user: stephfoo, spot: Spot.last)
 
 
 # if stephfoo_spot.save!

@@ -154,7 +154,8 @@ class UserNotifierMailer < ApplicationMailer
     <tbody>
       <tr>
         <td style='font-size:6px; line-height:10px; padding:0px 0px 0px 0px;' valign='top' align='center'>
-          <a href='http://'><img class='max-width' border='0' style='display:block; color:#000000; text-decoration:none; font-family:Helvetica, arial, sans-serif; font-size:16px;' width='70' alt='' data-proportionally-constrained='true' data-responsive='false' src='https://www.allwaves.app/assets/allWaves_logo_bright-2b67b30f1f62c4e76a20643216f784cb1eca3880b20208e63ab4ba11a93ad73e.png' height='77'></a>
+        <a href='http://'><img class='max-width' border='0' style='display:block; color:#000000; text-decoration:none; font-family:Helvetica, arial, sans-serif; font-size:16px;' width='70' alt='' data-proportionally-constrained='true' data-responsive='false' src='https://www.allwaves.app/assets/allWaves_logo_bright-2b67b30f1f62c4e76a20643216f784cb1eca3880b20208e63ab4ba11a93ad73e.png' height='77'></a>
+        <h1 style='color: white; font-size:38px;'>ALLWAVES</h1>
         </td>
       </tr>
     </tbody>
