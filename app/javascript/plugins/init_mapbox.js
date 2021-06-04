@@ -23,7 +23,7 @@ const initMapbox = () => {
       // maxZoom: 1,
       center: [-80.6862, 28.3067]
     });
-
+    map.resize();
     let geolocate = new mapboxgl.GeolocateControl({
       fitBoundsOptions: {
        linear: true,
@@ -36,11 +36,10 @@ const initMapbox = () => {
       trackUserLocation: false
     });
     map.addControl(geolocate);
-    map.resize();
     map.on('load', function () {
       geolocate.trigger();
     });
-    
+    map.resize();
     function sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
     }
