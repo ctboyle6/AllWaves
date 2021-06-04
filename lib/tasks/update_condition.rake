@@ -6,7 +6,7 @@ namespace :notifications do
   desc "Update conditions of a specific spot"
   task update_last_spot_conditions: :environment do
 
-    @spot = User.first.spots.last
+    @spot = User.last.spots.last
     puts 'Cleaning out old conditions..'
 
     puts 'Refreshing conditions..'
@@ -34,7 +34,7 @@ namespace :notifications do
 
 
 
-    UserNotifierMailer.update_conditions(User.first, @spot).deliver
+    UserNotifierMailer.update_conditions(User.last, @spot).deliver
     
     puts 'Conditions refreshed'
     end
