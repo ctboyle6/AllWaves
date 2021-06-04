@@ -187,7 +187,7 @@ class UserNotifierMailer < ApplicationMailer
               <tbody>
                 <tr>
                 <td align='center' bgcolor='#66beff' class='inner-td' style='border-radius:6px; font-size:16px; text-align:center; background-color:inherit;'>
-                  <a href='http://www.allwaves.app' style='background-color:#66beff; border:1px solid 66BEFF; border-color:66BEFF; border-radius:0px; border-width:1px; color:#ffffff; display:inline-block; font-size:15px; font-weight:normal; letter-spacing:0px; line-height:normal; padding:12px 50px 12px 50px; text-align:center; text-decoration:none; border-style:solid; font-family:inherit;' target='_blank'>See your Spots</a>
+                  <a href='http://www.allwaves.app/dashboard' style='background-color:#66beff; border:1px solid 66BEFF; border-color:66BEFF; border-radius:0px; border-width:1px; color:#ffffff; display:inline-block; font-size:15px; font-weight:normal; letter-spacing:0px; line-height:normal; padding:12px 50px 12px 50px; text-align:center; text-decoration:none; border-style:solid; font-family:inherit;' target='_blank'>See your Spots</a>
                 </td>
                 </tr>
               </tbody>
