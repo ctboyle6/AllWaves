@@ -1,34 +1,32 @@
 <div id="navbar">
   <div id="navbar-content">
     <div class="navbar-top">
-
       <%= link_to "/" do %>
         <%= image_tag "allWaves_logo_bright.png", id: "logo" %>
       <% end %>
       <div class="nav-button" id="dashboard">
         <%= link_to "Dashboard", user_root_path, class: "dark nav-button" %>
       </div>
-
     </div>
 
     <div class="navbar-bottom">
-
       <% if user_signed_in? %>
-      <div id="user-info">
-        <%= link_to "#" do %>
-          <%= image_tag "clayton.jpg", id: "user-image" %>
-        <% end %>
-      <p id="username"><%= current_user.username.capitalize %></p>
-      </div>
-      <div class="light nav-button" id="logout">
-        <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "light nav-button" %>
-      </div>
+        <div id="user-info">
+          <% if current_user.avatar.attached? %>
+            <%= cl_image_tag current_user.avatar.key, crop: :fill, id: "user-image"%>
+          <% else %>
+            <p id="no-logo"><%= current_user.username[0..1].upcase %></p>
+          <% end %>
+          <p id="username"><%= current_user.username.capitalize %></p>
+        </div>
+        <div class="light nav-button" id="logout">
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "light nav-button" %>
+        </div>
       <% else %>
         <div class="nav-button" id="login">
           <%= link_to "Log in", new_user_session_path, class: "light nav-button" %>
         </div>
-      <% end %>
-      
+    <% end %>
     </div>
   </div>
 </div>
