@@ -23,17 +23,23 @@
   // margin-top: 20px;
 }
 
-#user-info {
-  // margin-top: 100px;
-}
-
 #user-image {
   width: 80px;
+  height: 80px;
   border-radius: 25%;
 }
 
-#dashboard {
-  // margin-top: 150px;
+#no-logo {
+  margin: 0 auto;
+  width: 80px;
+  height: 80px;
+  border-radius: 25%;
+  background-color: #1A5D7C;
+  font-size: 30px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #logout {
